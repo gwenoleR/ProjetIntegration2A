@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post a new message</title>
+</head>
+<body>
+<button id="send">John is dead :(</button>
+
+<script
+        src="http://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+<script type="application/javascript">
+
+    $('#send').click(function () {
+        $.ajax({
+            method: "POST",
+            url: "http://localhost:3000/post_new",
+            data: {
+                title: "John is dead :(",
+                content: "John has been found this morning, lying on his fat, " +
+                "greasy belly. His hands were tied to an eletric pylon. NPD" +
+                " director said that it could be a suicide."
+            }
+        })
+            .done(function (msg) {
+                console.log(msg)
+            });
+    })
+
+
+</script>
+</body>
+</html>
