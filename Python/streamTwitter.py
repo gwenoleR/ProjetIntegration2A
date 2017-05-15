@@ -18,11 +18,12 @@ api = tweepy.API(auth)
 class StdOutListener(StreamListener):
 
     def on_data(self, data):
-        infoToSend = {'name':'', 'screen_name':'', 'text':''}
+        infoToSend = {'name':'', 'screen_name':'', 'text':'', 'image': ''}
         infoTweet = json.loads(data)        
         infoToSend['name'] = infoTweet['user']['name']
         infoToSend['screen_name'] = infoTweet['user']['screen_name']
         infoToSend['text'] = infoTweet['text']
+        infoToSend['image'] = infoTweet['entities']['media'][0]['media_url']
         r.publish('JO_Soc', json.dumps(infoToSend))
         print (data)
         return True
@@ -37,12 +38,18 @@ if __name__ == '__main__':
     r = redis.StrictRedis(host='localhost', port=6379, db=0)
 
     test = tweepy.Cursor(api.search, q='JOIMERIR').items(10)
-    infoToSend = {'name':'', 'screen_name':'', 'text':''}
+    infoToSend = {'name':'', 'screen_name':'', 'text':'', 'image':''}
     for tweet in test:
-        infoTweet = tweet._json       
+        infoTweet = tweet._json
+        print(tweet._json)     
         infoToSend['name'] = infoTweet['user']['name']
         infoToSend['screen_name'] = infoTweet['user']['screen_name']
-        infoToSend['text'] = infoTweet['text']
+        infoToSend['text'] = infoTweet['text']  
+        try:      
+            infoToSend['image'] = infoTweet['entities']['media'][0]['media_url']
+        except KeyError:
+            infoToSend['image'] = ""
+            pass
         r.publish('JO_Soc', json.dumps(infoToSend))
 
     listener = StdOutListener()
