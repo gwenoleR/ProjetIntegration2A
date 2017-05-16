@@ -17,6 +17,26 @@ let sql_connection = mysql.createConnection({
 });
 
 
+app.get('/getTags', function (req, res) {
+    response = null
+    try {
+        sql_connection.query(
+            "SELECT name FROM tag", function (error, results, fields) {
+                if (error) throw error;
+                console.log(results);
+                response = results;
+                res.send(response)
+            });
+
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(500)
+    }
+});
+
+
+
+
 app.get('/getLastPost', function (req, res) {
     response = null
     try {
@@ -56,6 +76,34 @@ app.get('/getLast10Post', function (req, res) {
 app.get('/post_new', function (req, res) {
     res.sendFile(__dirname + "/post_message.html")
 });
+
+
+app.post('/post_new_tag', function (req, res) {
+    body = '';
+    post = null;
+    req.on('data', function (data) {
+        body += data;
+    });
+
+    //We'll wait the end signal of the request to treat it's content.
+    req.on('end', function () {
+        post = qs.parse(body);
+        console.log(post)
+        try {
+            sql_connection.query(
+                "INSERT INTO tag (id, name) VALUES (NULL,?)", [post.name], function (error, results, fields) {
+                    if (error) throw error;
+                });
+            console.log("Tag added !");
+            res.sendStatus(200)
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(500)
+        }
+    });
+
+});
+
 
 
 app.post('/post_new', function (req, res) {
