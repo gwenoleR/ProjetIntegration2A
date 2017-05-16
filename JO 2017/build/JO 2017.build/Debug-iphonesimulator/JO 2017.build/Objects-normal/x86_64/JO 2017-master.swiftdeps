@@ -1,0 +1,9 @@
+version: "Apple Swift version 3.1 (swiftlang-802.0.53 clang-802.0.42)"
+options: "151c620301fb82d2c1362c0a8ebea569"
+build_time: [548249967, 152746000]
+inputs:
+  "/Users/Gwenole/Desktop/ProjetIntegration2A/JO 2017/JO 2017/Geotification.swift": [548243428, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A/JO 2017/JO 2017/MapViewController.swift": [548249957, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A/JO 2017/JO 2017/Utilities.swift": [548243475, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A/JO 2017/JO 2017/SwiftyJSON.swift": [548169856, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A/JO 2017/JO 2017/AppDelegate.swift": [548242708, 0]
