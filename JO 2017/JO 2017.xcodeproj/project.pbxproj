@@ -19,6 +19,8 @@
 		A5BDEA581ECB22F600E41639 /* TestLocations.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A5BDEA561ECB22F600E41639 /* TestLocations.gpx */; };
 		A5BDEA591ECB22F600E41639 /* poi.json in Resources */ = {isa = PBXBuildFile; fileRef = A5BDEA571ECB22F600E41639 /* poi.json */; };
 		A5BDEA5B1ECB23B400E41639 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5BDEA5A1ECB23B400E41639 /* MapKit.framework */; };
+		A5E237541ECB472300C59DD8 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E237531ECB472300C59DD8 /* FeedViewController.swift */; };
+		A5E237561ECC46EB00C59DD8 /* DetailFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E237551ECC46EB00C59DD8 /* DetailFeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		A5BDEA561ECB22F600E41639 /* TestLocations.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = TestLocations.gpx; path = "JO 2017/TestLocations.gpx"; sourceTree = "<group>"; };
 		A5BDEA571ECB22F600E41639 /* poi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = poi.json; path = "JO 2017/poi.json"; sourceTree = "<group>"; };
 		A5BDEA5A1ECB23B400E41639 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A5E237531ECB472300C59DD8 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		A5E237551ECC46EB00C59DD8 /* DetailFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailFeedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,8 @@
 				A5BDEA481ECB02D700E41639 /* Geotification.swift */,
 				A5BDEA4A1ECB02F800E41639 /* Utilities.swift */,
 				A5BDEA4C1ECB034400E41639 /* SwiftyJSON.swift */,
+				A5E237531ECB472300C59DD8 /* FeedViewController.swift */,
+				A5E237551ECC46EB00C59DD8 /* DetailFeedViewController.swift */,
 			);
 			path = "JO 2017";
 			sourceTree = "<group>";
@@ -282,10 +288,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5E237561ECC46EB00C59DD8 /* DetailFeedViewController.swift in Sources */,
 				A5BDEA491ECB02D700E41639 /* Geotification.swift in Sources */,
 				A5BDEA541ECB05D200E41639 /* MapViewController.swift in Sources */,
 				A5BDEA4B1ECB02F800E41639 /* Utilities.swift in Sources */,
 				A5BDEA4D1ECB034400E41639 /* SwiftyJSON.swift in Sources */,
+				A5E237541ECB472300C59DD8 /* FeedViewController.swift in Sources */,
 				A5BDEA1B1ECAFFF700E41639 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,6 +543,7 @@
 				A5BDEA411ECAFFF700E41639 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A5BDEA421ECAFFF700E41639 /* Build configuration list for PBXNativeTarget "JO 2017Tests" */ = {
 			isa = XCConfigurationList;
@@ -543,6 +552,7 @@
 				A5BDEA441ECAFFF700E41639 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A5BDEA451ECAFFF700E41639 /* Build configuration list for PBXNativeTarget "JO 2017UITests" */ = {
 			isa = XCConfigurationList;
@@ -551,6 +561,7 @@
 				A5BDEA471ECAFFF700E41639 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

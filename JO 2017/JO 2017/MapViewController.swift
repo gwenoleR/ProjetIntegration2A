@@ -32,6 +32,8 @@ class MapViewController: UIViewController {
         
         loadAllGeotifications()
         
+        mapView.zoomToUserLocation()
+        
         do {
             if let file = Bundle.main.url(forResource: "poi", withExtension: "json") {
                 let data = try Data(contentsOf: file)
@@ -237,11 +239,17 @@ extension MapViewController: MKMapViewDelegate {
             var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
             if annotationView == nil {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        
                 annotationView?.canShowCallout = true
                 let removeButton = UIButton(type: .custom)
                 removeButton.frame = CGRect(x: 0, y: 0, width: 23, height: 23)
                 removeButton.setImage(UIImage(named: "DeleteGeotification")!, for: .normal)
-                annotationView?.leftCalloutAccessoryView = removeButton
+                
+                if let annotationView = annotationView{
+                    annotationView.leftCalloutAccessoryView = removeButton
+                    annotationView.image = UIImage(named: "stadium")
+                }
+               
             } else {
                 annotationView?.annotation = annotation
             }

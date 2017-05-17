@@ -134,9 +134,9 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if defined(__has_feature) && __has_feature(modules)
 @import UIKit;
 @import CoreLocation;
+@import Foundation;
 @import ObjectiveC;
 @import MapKit;
-@import Foundation;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -162,7 +162,38 @@ SWIFT_CLASS("_TtC7JO_201711AppDelegate")
 - (void)locationManager:(CLLocationManager * _Nonnull)manager didExitRegion:(CLRegion * _Nonnull)region;
 @end
 
+@class UILabel;
+@class UITextView;
+@class NSBundle;
 @class NSCoder;
+
+SWIFT_CLASS("_TtC7JO_201724DetailFeedViewController")
+@interface DetailFeedViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified t;
+@property (nonatomic, weak) IBOutlet UITextView * _Null_unspecified content;
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UITableView;
+@class UITableViewCell;
+@class UIStoryboardSegue;
+
+SWIFT_CLASS("_TtC7JO_201718FeedViewController")
+@interface FeedViewController : UIViewController <UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified tableView;
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)prepareForSegueWithSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 SWIFT_CLASS("_TtC7JO_201713Geotification")
 @interface Geotification : NSObject <MKAnnotation, NSCoding>
@@ -183,9 +214,7 @@ SWIFT_CLASS("_TtC7JO_201713Geotification")
 - (void)zoomToUserLocation;
 @end
 
-@class UIStoryboardSegue;
 @class CLCircularRegion;
-@class NSBundle;
 
 SWIFT_CLASS("_TtC7JO_201717MapViewController")
 @interface MapViewController : UIViewController
@@ -209,6 +238,13 @@ SWIFT_CLASS("_TtC7JO_201717MapViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+@interface MapViewController (SWIFT_EXTENSION(JO_2017)) <CLLocationManagerDelegate>
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager monitoringDidFailForRegion:(CLRegion * _Nullable)region withError:(NSError * _Nonnull)error;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
+@end
+
 @class MKAnnotationView;
 @protocol MKOverlay;
 @class MKOverlayRenderer;
@@ -218,13 +254,6 @@ SWIFT_CLASS("_TtC7JO_201717MapViewController")
 - (MKAnnotationView * _Nullable)mapView:(MKMapView * _Nonnull)mapView viewForAnnotation:(id <MKAnnotation> _Nonnull)annotation SWIFT_WARN_UNUSED_RESULT;
 - (MKOverlayRenderer * _Nonnull)mapView:(MKMapView * _Nonnull)mapView rendererForOverlay:(id <MKOverlay> _Nonnull)overlay SWIFT_WARN_UNUSED_RESULT;
 - (void)mapView:(MKMapView * _Nonnull)mapView annotationView:(MKAnnotationView * _Nonnull)view calloutAccessoryControlTapped:(UIControl * _Nonnull)control;
-@end
-
-
-@interface MapViewController (SWIFT_EXTENSION(JO_2017)) <CLLocationManagerDelegate>
-- (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
-- (void)locationManager:(CLLocationManager * _Nonnull)manager monitoringDidFailForRegion:(CLRegion * _Nullable)region withError:(NSError * _Nonnull)error;
-- (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
 @end
 
 
