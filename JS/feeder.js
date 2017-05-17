@@ -12,7 +12,7 @@ let MongoClient = require('mongodb').MongoClient
     , assert = require('assert');
 
 
-let parameters = require('./params.json')
+let parameters = require('../JSON/params.json')
 
 let sql_connection = mysql.createConnection({
     host: parameters.db.host,
@@ -196,10 +196,10 @@ app.post('/post_new', function (req, res) {
                     if (error) throw error;
                 });
             console.log("Post added !");
-            res.sendStatus(200)
+            res.sendStatus(200);
         } catch (e) {
             console.log(e);
-            res.sendStatus(500)
+            res.sendStatus(500);
         }
     });
 
