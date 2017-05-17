@@ -12,6 +12,8 @@ class Feed{
     let Titre: String
     let Content: String
     
+    
+    
     init(titre: String, content: String) {
         self.Titre = titre
         self.Content = content
@@ -22,6 +24,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     var feeds : [Feed] = []
     var json : JSON = JSON.null
+    
+    var selectedFeed : Feed!
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -89,15 +93,16 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        print(indexPath.row)
+        print(feeds[indexPath.row])
+        selectedFeed = feeds[indexPath.row]
         self.performSegue(withIdentifier: "showDetail", sender: indexPath);
     }
     
     //MARK: Navigation
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail"{
-            
-            let selectedFeed = feeds[(sender as! NSIndexPath).row]
+
             print(selectedFeed)
             
             guard let detailViewController = segue.destination as? DetailFeedViewController else {

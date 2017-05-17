@@ -21,6 +21,7 @@
 		A5BDEA5B1ECB23B400E41639 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5BDEA5A1ECB23B400E41639 /* MapKit.framework */; };
 		A5E237541ECB472300C59DD8 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E237531ECB472300C59DD8 /* FeedViewController.swift */; };
 		A5E237561ECC46EB00C59DD8 /* DetailFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E237551ECC46EB00C59DD8 /* DetailFeedViewController.swift */; };
+		A5E237581ECC837700C59DD8 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E237571ECC837700C59DD8 /* LocationSearchTable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		A5BDEA5A1ECB23B400E41639 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A5E237531ECB472300C59DD8 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		A5E237551ECC46EB00C59DD8 /* DetailFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailFeedViewController.swift; sourceTree = "<group>"; };
+		A5E237571ECC837700C59DD8 /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				A5BDEA4C1ECB034400E41639 /* SwiftyJSON.swift */,
 				A5E237531ECB472300C59DD8 /* FeedViewController.swift */,
 				A5E237551ECC46EB00C59DD8 /* DetailFeedViewController.swift */,
+				A5E237571ECC837700C59DD8 /* LocationSearchTable.swift */,
 			);
 			path = "JO 2017";
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				A5E237561ECC46EB00C59DD8 /* DetailFeedViewController.swift in Sources */,
 				A5BDEA491ECB02D700E41639 /* Geotification.swift in Sources */,
 				A5BDEA541ECB05D200E41639 /* MapViewController.swift in Sources */,
+				A5E237581ECC837700C59DD8 /* LocationSearchTable.swift in Sources */,
 				A5BDEA4B1ECB02F800E41639 /* Utilities.swift in Sources */,
 				A5BDEA4D1ECB034400E41639 /* SwiftyJSON.swift in Sources */,
 				A5E237541ECB472300C59DD8 /* FeedViewController.swift in Sources */,

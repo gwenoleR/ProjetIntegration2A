@@ -10,7 +10,7 @@ import UIKit
 
 class DetailFeedViewController: UIViewController {
     
-    var feed : Feed = Feed(titre: "", content: "")
+    var feed : Feed!
 
     
     @IBOutlet weak var t: UILabel!

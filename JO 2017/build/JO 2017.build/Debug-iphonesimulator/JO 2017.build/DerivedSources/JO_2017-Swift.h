@@ -189,7 +189,7 @@ SWIFT_CLASS("_TtC7JO_201718FeedViewController")
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-- (void)prepareForSegueWithSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
+- (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -209,6 +209,30 @@ SWIFT_CLASS("_TtC7JO_201713Geotification")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
+@class MKMapItem;
+@class MKMapView;
+
+SWIFT_CLASS("_TtC7JO_201719LocationSearchTable")
+@interface LocationSearchTable : UITableViewController
+@property (nonatomic, copy) NSArray<MKMapItem *> * _Nonnull matchingItems;
+@property (nonatomic, strong) MKMapView * _Nullable mapView;
+- (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UISearchController;
+
+@interface LocationSearchTable (SWIFT_EXTENSION(JO_2017)) <UISearchResultsUpdating>
+- (void)updateSearchResultsForSearchController:(UISearchController * _Nonnull)searchController;
+@end
+
+
+@interface LocationSearchTable (SWIFT_EXTENSION(JO_2017))
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
 
 @interface MKMapView (SWIFT_EXTENSION(JO_2017))
 - (void)zoomToUserLocation;
@@ -221,6 +245,7 @@ SWIFT_CLASS("_TtC7JO_201717MapViewController")
 @property (nonatomic, weak) IBOutlet MKMapView * _Null_unspecified mapView;
 @property (nonatomic, copy) NSArray<Geotification *> * _Nonnull geotifications;
 @property (nonatomic, strong) CLLocationManager * _Nonnull locationManager;
+@property (nonatomic, strong) UISearchController * _Null_unspecified resultSearchController;
 - (void)viewDidLoad;
 - (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 - (void)loadAllGeotifications;

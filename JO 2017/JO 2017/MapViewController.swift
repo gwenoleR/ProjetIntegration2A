@@ -22,9 +22,26 @@ class MapViewController: UIViewController {
     var geotifications: [Geotification] = []
     var locationManager = CLLocationManager()
     
+    var resultSearchController:UISearchController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         super.viewDidLoad()
+        
+        
+        //MARK: Search Bar
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController?.searchResultsUpdater = locationSearchTable
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search for places"
+        navigationItem.titleView = resultSearchController?.searchBar
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
+        locationSearchTable.mapView = mapView
+        
         
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()

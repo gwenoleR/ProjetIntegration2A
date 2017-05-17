@@ -22,27 +22,35 @@
 		</data>
 		<key>Base.lproj/Main.storyboardc/3Fu-Ib-b20-view-tbR-ho-zcV.nib</key>
 		<data>
-		EMhlVkPb4C4dVOjKIP6ql8vXlX4=
+		La1JrXSkjrjzwpElk9zI5tnV66M=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
 		<data>
-		PEXPHPgzNHxgKjMKjq5QnG9tFdQ=
+		pzO5ChemnPVqGug/5NM9bADdCQQ=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Lj9-hZ-6Af-view-Bb1-rx-zXL.nib</key>
 		<data>
-		waj+yXWkusWX9uZ2KqcmQWFvlZ8=
+		d13wXHZDO3qpcNG4wH2oC0cjeXM=
+		</data>
+		<key>Base.lproj/Main.storyboardc/LocationSearchTable.nib</key>
+		<data>
+		ZI5tXl4Z8P4JC45nMeUCbi7Oweo=
+		</data>
+		<key>Base.lproj/Main.storyboardc/Lye-jj-w7l-view-QLi-AY-2oN.nib</key>
+		<data>
+		qRlIaqAfWQTyagJcDdww6PcT1Es=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Ngg-my-WdP-view-vcc-yM-lNT.nib</key>
 		<data>
-		JbQlnuby0fR463jMlFdgXbLsqUU=
+		0RkqpWKtOPcgfVgDMhG5a0wj5HE=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UITabBarController-bTq-CI-ajh.nib</key>
 		<data>
-		hbqBllbxIuRqj+KnuTGkLlDldVQ=
+		I3VMwdc+6DdcYoKozvJXwoeXgRQ=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-3Fu-Ib-b20.nib</key>
 		<data>
-		LudqMpvCNuncV1+qDaQuhpin3E4=
+		i0GYnMfQt4xkfRcBbsGLtscYuYc=
 		</data>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<data>
@@ -163,66 +171,88 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			EMhlVkPb4C4dVOjKIP6ql8vXlX4=
+			La1JrXSkjrjzwpElk9zI5tnV66M=
 			</data>
 			<key>hash2</key>
 			<data>
-			bZQBcct5dK9N2T6EuEp7i5sIbfpCYDz+8DN0zt9soMQ=
+			dHoikAV3PfyOkU7TkhmPMSfaUxgzicC2iXNuv5iZhRY=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			PEXPHPgzNHxgKjMKjq5QnG9tFdQ=
+			pzO5ChemnPVqGug/5NM9bADdCQQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			k78EcE8mUKsrpMQMofFnMyQ5Mn9nWyVUBZ22Zby27GA=
+			9N/O1krqCjTn69qITtwqDZfMZDnUDXm5xgOI25H5qKI=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/Lj9-hZ-6Af-view-Bb1-rx-zXL.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			waj+yXWkusWX9uZ2KqcmQWFvlZ8=
+			d13wXHZDO3qpcNG4wH2oC0cjeXM=
 			</data>
 			<key>hash2</key>
 			<data>
-			UlgXViWBP7W1oo1HLE55SH2xFRdfn8Gg0RwcJ78D4wU=
+			Ykv5fPs6Evi7j70JjmgruAL3M3I4BuLKlfybFWH0VII=
+			</data>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/LocationSearchTable.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ZI5tXl4Z8P4JC45nMeUCbi7Oweo=
+			</data>
+			<key>hash2</key>
+			<data>
+			vHSpMcgFU2HE9J7+5uYDhvoXpyZuRiT9ONg6u20q3R0=
+			</data>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/Lye-jj-w7l-view-QLi-AY-2oN.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			qRlIaqAfWQTyagJcDdww6PcT1Es=
+			</data>
+			<key>hash2</key>
+			<data>
+			ACxCsDbYqj/leoZuy81Ll7eCg0k6ofOaPeWSDCWFOXs=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/Ngg-my-WdP-view-vcc-yM-lNT.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			JbQlnuby0fR463jMlFdgXbLsqUU=
+			0RkqpWKtOPcgfVgDMhG5a0wj5HE=
 			</data>
 			<key>hash2</key>
 			<data>
-			Hl4z6kBkRtPFhFIUO7RUKRmFOHAZEyky3YEN6U4Bpn4=
+			lmrPkyEhdIp9sF538W5B3qPuz2A12VR1MHnuppKBLSY=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/UITabBarController-bTq-CI-ajh.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hbqBllbxIuRqj+KnuTGkLlDldVQ=
+			I3VMwdc+6DdcYoKozvJXwoeXgRQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			l5W1SJ1yg08um573gb8O+iXFNxuFKbCYTLfHCsZYsRI=
+			L3S5DWDNfK6LJZHXkwCWhnqeVSdJ8cHN9rzC7mGkBVU=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/UIViewController-3Fu-Ib-b20.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			LudqMpvCNuncV1+qDaQuhpin3E4=
+			i0GYnMfQt4xkfRcBbsGLtscYuYc=
 			</data>
 			<key>hash2</key>
 			<data>
-			RjCxCPGSZj3DW2p/2jZxbTIYmyaV2kMjQ0uputJylzM=
+			dG9YE5wej361v8Rssfy1dCeNS0rtDrWnPlAVDgj0rzk=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftCore.dylib</key>
