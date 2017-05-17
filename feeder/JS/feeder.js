@@ -67,15 +67,20 @@ app.get("/getPostAbout/:tag", function (req, res) {
 
 
 app.get('/getTags', function (req, res) {
-    response = null
+    response = null;
     try {
-        sql_connection.query(
-            "SELECT name FROM tag", function (error, results, fields) {
-                if (error) throw error;
-                console.log(results);
+        MongoClient.connect(url, function (err, db) {
+            assert.equal(null, err);
+            console.log("Connected correctly to server");
+            db.collection('tags').find({}).toArray(function (err, results) {
+                assert.equal(err, null);
+                console.log("Found the following records");
                 response = results;
-                res.send(response)
+                console.log(response);
+                res.send(response);
             });
+            db.close();
+        });
 
     } catch (e) {
         console.log(e);
