@@ -27,7 +27,7 @@ let url = 'mongodb://' + parameters.mongoDB.host + ':27017/' + parameters.mongoD
 // Use connect method to connect to the Server
 MongoClient.connect(url, function (err, db) {
     assert.equal(null, err);
-    console.log("Connected correctly to database server");
+    console.log("Database is up and ready.");
     db.close();
 });
 
