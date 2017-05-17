@@ -2,11 +2,9 @@
 
 # params.json requis
 `{
-   "db": {
-     "host": "{hostname}",
-     "user": "{username}",
-     "password": "{password}",
-     "database": "{database name}"
+   "mongoDB" : {
+     "host" : "soc.catala.ovh",
+     "database" : "jo"
    }
  }
  `

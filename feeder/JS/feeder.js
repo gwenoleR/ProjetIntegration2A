@@ -44,7 +44,7 @@ let findUsers = function (db, callback) {
         callback(docs);
     });
 
-}
+};
 
 
 app.get("/getPostAbout/:tag", function (req, res) {
@@ -81,6 +81,11 @@ app.get('/getTags', function (req, res) {
         console.log(e);
         res.sendStatus(500)
     }
+});
+
+app.post('/checkQrCode', function (req, res) {
+    response = null
+
 });
 
 
