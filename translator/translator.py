@@ -65,4 +65,4 @@ def translate():
 
 if __name__ == '__main__':    
     getLangagesAvailable()
-    app.run()
+    app.run(host:'0.0.0.0')
