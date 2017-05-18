@@ -1,0 +1,27 @@
+POST : /v2/translate
+{
+  "model_id": "string",
+  "source": "string",
+  "target": "string",
+  "text": [
+    "string"
+  ]
+}
+
+
+
+GET(traduction possible) : /v2/models
+
+exemple de retour:
+    {    
+        "models": 
+            {
+                "model_id": [
+                    "ar-en",
+                    "ar-en-conversational",
+                    "arz-en",
+                    "pt-en-patent", "zh-en-patent"
+
+                    ]
+            }
+     }
