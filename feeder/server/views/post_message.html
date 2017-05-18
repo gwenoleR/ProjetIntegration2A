@@ -7,9 +7,6 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-<!-- Latest compiled and minified CSS -->
-
-<!-- Latest compiled and minified JavaScript -->
 
 
 <div>
@@ -60,10 +57,10 @@
         url: "http://localhost:3000/getTags"
     })
         .done(function (response) {
-            console.log(response);
+
             for (i in response) {
                 $('#tagList').append(
-                    "<li><label for=" + response[i].name + ">" + response[i].name + "</label><input type='checkbox' id=" + response[i].name + " value=" + response[i].name + "></li>"
+                    "<li><label for=" + response[i].name + ">" + response[i].name + "</label><input type='checkbox'  class = 'tagChkBox' id=" + response[i].name + " value=" + response[i].name + "></li>"
                 )
             }
         });
@@ -80,13 +77,25 @@
             .done(function (msg) {
                 console.log(msg);
                 $('#tagList').append(
-                    "<li><label for=" + tagname + ">" + tagname + "</label><input type='checkbox' id=" + tagname + " value=" + tagname + "></li>")
+                    "<li><label for=" + tagname + ">" + tagname + "</label><input type='checkbox' class = 'tagChkBox' id=" + tagname + " value=" + tagname + "></li>")
             });
     })
 </script>
 
 
 <script type="application/javascript">
+    function getChecked() {
+        tags = []
+        $('.tagChkBox').each(function () {
+            if ($(this).checked) {
+                console.log("append !");
+                tags.push($(this).val())
+            }
+        });
+        console.log("tags :", tags);
+        return tags
+    }
+
 
     $('#send').click(function () {
         $.ajax({
@@ -94,7 +103,8 @@
             url: "http://localhost:3000/post_new",
             data: {
                 title: $('#title').val(),
-                content: $('#content').val()
+                content: $('#content').val(),
+                tags: getChecked()
             }
         })
             .done(function (msg) {

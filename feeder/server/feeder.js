@@ -24,7 +24,6 @@ MongoClient.connect(url, function (err, db) {
 });
 
 
-
 app.get("/getPostAbout/:tag", function (req, res) {
     console.log(req.params)
     if (req.params.tag == 'sport') {
@@ -93,14 +92,23 @@ app.get('/getLastPost', function (req, res) {
     }
 });
 
+app.get('/tag', function (req, res) {
+    post = {
+        'title': 'tagTitle',
+        'content': 'Hey its a post with some tags',
+        'tags': ['sport', 'some', 'sex']
+    };
+    res.send(post)
+});
+
 
 app.get('/getLast10Post', function (req, res) {
-    response = null
+    response = null;
     try {
         MongoClient.connect(url, function (err, db) {
             assert.equal(null, err);
             console.log("Connected correctly to server");
-            db.collection('posts').find({}).limit(10).toArray(function (err, results) {
+            db.collection('posts').find({}).limit(100).toArray(function (err, results) {
                 assert.equal(err, null);
                 console.log("Found the following records");
                 response = results;
@@ -132,13 +140,11 @@ app.post('/post_new_tag', function (req, res) {
     //We'll wait the end signal of the request to treat it's content.
     req.on('end', function () {
         post = qs.parse(body);
-        console.log(post)
+        console.log(post);
         try {
             MongoClient.connect(url, function (err, db) {
                 assert.equal(null, err);
                 console.log("Connected correctly to server");
-
-
                 db.collection('tags').insertOne(
                     {
                         name: post.name
@@ -170,7 +176,7 @@ app.post('/post_new', function (req, res) {
     //We'll wait the end signal of the request to treat it's content.
     req.on('end', function () {
         post = qs.parse(body);
-        console.log(post);
+        console.log('post :', post);
         try {
             MongoClient.connect(url, function (err, db) {
                 assert.equal(null, err);
@@ -178,10 +184,12 @@ app.post('/post_new', function (req, res) {
                 db.collection('posts').insertOne(
                     {
                         title: post.title,
-                        content: post.content
-                    }, function (err, r) {
+                        content: post.content,
+                        tags: post.tags
+                    }
+                    , function (err, r) {
                         assert.equal(null, err);
-                        console.log("success !")
+                        console.log("success !");
                     });
                 db.close();
             });
@@ -194,6 +202,13 @@ app.post('/post_new', function (req, res) {
     });
 
 });
+
+
+app.post('/saveDest', function (req, res) {
+    console.log("saveDest received")
+    res.sendStatus(200);
+})
+
 
 app.listen(3000, function () {
     console.log('JO app listening on port 3000!')
