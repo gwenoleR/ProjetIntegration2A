@@ -15,6 +15,7 @@ class DetailFeedViewController: UIViewController {
     
     @IBOutlet weak var t: UILabel!
     @IBOutlet weak var content: UITextView!
+    @IBOutlet weak var tags: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,15 @@ class DetailFeedViewController: UIViewController {
         // Do any additional setup after loading the view.
         t.text = feed.Titre
         content.text = feed.Content
+        
+        print(feed.tags)
+        
+        var textTag = ""
+        for t in feed.tags{
+            textTag = textTag + t + ", "
+        }
+        
+        tags.text = textTag
     }
 
     override func didReceiveMemoryWarning() {

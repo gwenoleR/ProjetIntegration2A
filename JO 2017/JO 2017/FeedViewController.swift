@@ -11,12 +11,14 @@ import UIKit
 class Feed{
     let Titre: String
     let Content: String
+    let tags : [String]
     
     
     
-    init(titre: String, content: String) {
+    init(titre: String, content: String, tags: [String]) {
         self.Titre = titre
         self.Content = content
+        self.tags = tags
     }
 }
 
@@ -49,10 +51,18 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     
                     for f in self.json{
                         
+                        print(f)
+                        
                         let content = f.1["content"].stringValue
                         let title = f.1["title"].stringValue
+                        let tagsArray = f.1["tags"].arrayValue
                         
-                        let feed = Feed(titre: title, content: content)
+                        var tags:[String] = []
+                        for t in tagsArray{
+                            tags.append(t.stringValue)
+                        }
+
+                        let feed = Feed(titre: title, content: content, tags: tags)
                         
                         self.feeds.append(feed)
                     }

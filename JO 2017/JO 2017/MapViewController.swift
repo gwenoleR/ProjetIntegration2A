@@ -15,6 +15,11 @@ struct PreferencesKeys {
     static let savedItems = "savedItems"
 }
 
+//MARK: Search Protocol
+protocol HandleMapSearch {
+    func dropPinZoomIn(placemark:MKPlacemark)
+}
+
 class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
@@ -23,6 +28,7 @@ class MapViewController: UIViewController {
     var locationManager = CLLocationManager()
     
     var resultSearchController:UISearchController!
+    var selectedPin:MKPlacemark? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +47,7 @@ class MapViewController: UIViewController {
         resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
         locationSearchTable.mapView = mapView
+        locationSearchTable.handleMapSearchDelegate = self
         
         
         locationManager.delegate = self
@@ -212,6 +219,14 @@ class MapViewController: UIViewController {
             locationManager.stopMonitoring(for: circularRegion)
         }
     }
+    
+    func getDirections(){
+        if let selectedPin = selectedPin {
+            let mapItem = MKMapItem(placemark: selectedPin)
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+            mapItem.openInMaps(launchOptions: launchOptions)
+        }
+    }
 }
 
 // MARK: AddGeotificationViewControllerDelegate
@@ -229,6 +244,33 @@ class MapViewController: UIViewController {
 //  }
 //
 //}
+
+//MARK: Search Delegate
+extension MapViewController: HandleMapSearch {
+    func dropPinZoomIn(placemark:MKPlacemark){
+        // cache the pin
+        selectedPin = placemark
+        // clear existing pins
+        for anno in mapView.annotations{
+            if anno is SearchAnnotation{
+                mapView.removeAnnotation(anno)
+            }
+        }
+        //mapView.removeAnnotation(mapView.annotations.last!)
+        
+        let annotation = SearchAnnotation(coordinate: placemark.coordinate, name: "search")
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        if let city = placemark.locality,
+            let state = placemark.administrativeArea {
+            annotation.subtitle = "\(city) \(state)"
+        }
+        mapView.addAnnotation(annotation)
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegionMake(placemark.coordinate, span)
+        mapView.setRegion(region, animated: true)
+    }
+}
 
 // MARK: - Location Manager Delegate
 extension MapViewController: CLLocationManagerDelegate {
@@ -267,9 +309,27 @@ extension MapViewController: MKMapViewDelegate {
                     annotationView.image = UIImage(named: "stadium")
                 }
                
-            } else {
+            }
+            
+            else {
                 annotationView?.annotation = annotation
             }
+            return annotationView
+        }
+        else if annotation is SearchAnnotation{
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+            
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.tintColor = UIColor.blue
+            annotationView?.canShowCallout = true
+            
+            let goButton = UIButton(type: .custom)
+            goButton.frame = CGRect(x: 0, y: 0, width: 23, height: 23)
+            goButton.setImage(UIImage(named: "CurrentLocation")!, for: .normal)
+            goButton.addTarget(self, action: #selector(MapViewController.getDirections), for: .touchUpInside)
+            
+            annotationView?.leftCalloutAccessoryView = goButton
+            
             return annotationView
         }
         return nil
@@ -289,9 +349,12 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         // Delete geotification
-        let geotification = view.annotation as! Geotification
-        remove(geotification: geotification)
-        saveAllGeotifications()
+        if view.annotation is Geotification{
+            let geotification = view.annotation as! Geotification
+            remove(geotification: geotification)
+            saveAllGeotifications()
+        }
+        
     }
     
 }

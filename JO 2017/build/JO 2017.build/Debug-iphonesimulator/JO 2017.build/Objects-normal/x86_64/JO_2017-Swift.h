@@ -211,14 +211,21 @@ SWIFT_CLASS("_TtC7JO_201713Geotification")
 
 @class MKMapItem;
 @class MKMapView;
+@class MKPlacemark;
 
 SWIFT_CLASS("_TtC7JO_201719LocationSearchTable")
 @interface LocationSearchTable : UITableViewController
 @property (nonatomic, copy) NSArray<MKMapItem *> * _Nonnull matchingItems;
 @property (nonatomic, strong) MKMapView * _Nullable mapView;
+- (NSString * _Nonnull)parseAddressWithSelectedItem:(MKPlacemark * _Nonnull)selectedItem SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface LocationSearchTable (SWIFT_EXTENSION(JO_2017))
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 @end
 
 @class UISearchController;
@@ -246,6 +253,7 @@ SWIFT_CLASS("_TtC7JO_201717MapViewController")
 @property (nonatomic, copy) NSArray<Geotification *> * _Nonnull geotifications;
 @property (nonatomic, strong) CLLocationManager * _Nonnull locationManager;
 @property (nonatomic, strong) UISearchController * _Null_unspecified resultSearchController;
+@property (nonatomic, strong) MKPlacemark * _Nullable selectedPin;
 - (void)viewDidLoad;
 - (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 - (void)loadAllGeotifications;
@@ -259,15 +267,14 @@ SWIFT_CLASS("_TtC7JO_201717MapViewController")
 - (CLCircularRegion * _Nonnull)regionWithGeotification:(Geotification * _Nonnull)geotification SWIFT_WARN_UNUSED_RESULT;
 - (void)startMonitoringWithGeotification:(Geotification * _Nonnull)geotification;
 - (void)stopMonitoringWithGeotification:(Geotification * _Nonnull)geotification;
+- (void)getDirections;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
-@interface MapViewController (SWIFT_EXTENSION(JO_2017)) <CLLocationManagerDelegate>
-- (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
-- (void)locationManager:(CLLocationManager * _Nonnull)manager monitoringDidFailForRegion:(CLRegion * _Nullable)region withError:(NSError * _Nonnull)error;
-- (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
+@interface MapViewController (SWIFT_EXTENSION(JO_2017))
+- (void)dropPinZoomInPlacemark:(MKPlacemark * _Nonnull)placemark;
 @end
 
 @class MKAnnotationView;
@@ -282,8 +289,26 @@ SWIFT_CLASS("_TtC7JO_201717MapViewController")
 @end
 
 
+@interface MapViewController (SWIFT_EXTENSION(JO_2017)) <CLLocationManagerDelegate>
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager monitoringDidFailForRegion:(CLRegion * _Nullable)region withError:(NSError * _Nonnull)error;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
+@end
+
+
 @interface NSNumber (SWIFT_EXTENSION(JO_2017))
 @property (nonatomic, readonly) BOOL isBool;
+@end
+
+
+SWIFT_CLASS("_TtC7JO_201716SearchAnnotation")
+@interface SearchAnnotation : NSObject <MKAnnotation>
+@property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic, copy) NSString * _Null_unspecified name;
+@property (nonatomic, copy) NSString * _Null_unspecified title;
+@property (nonatomic, copy) NSString * _Null_unspecified subtitle;
+- (nonnull instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate name:(NSString * _Nonnull)name OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
 

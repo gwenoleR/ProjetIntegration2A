@@ -137,6 +137,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import Foundation;
 @import ObjectiveC;
 @import MapKit;
+@import AVFoundation;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -171,6 +172,7 @@ SWIFT_CLASS("_TtC7JO_201724DetailFeedViewController")
 @interface DetailFeedViewController : UIViewController
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified t;
 @property (nonatomic, weak) IBOutlet UITextView * _Null_unspecified content;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified tags;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
@@ -211,28 +213,33 @@ SWIFT_CLASS("_TtC7JO_201713Geotification")
 
 @class MKMapItem;
 @class MKMapView;
-@class UISearchController;
+@class MKPlacemark;
 
 SWIFT_CLASS("_TtC7JO_201719LocationSearchTable")
 @interface LocationSearchTable : UITableViewController
 @property (nonatomic, copy) NSArray<MKMapItem *> * _Nonnull matchingItems;
 @property (nonatomic, strong) MKMapView * _Nullable mapView;
-- (void)updateSearchResultsForSearchController:(UISearchController * _Nonnull)for_;
+- (NSString * _Nonnull)parseAddressWithSelectedItem:(MKPlacemark * _Nonnull)selectedItem SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
-@interface LocationSearchTable (SWIFT_EXTENSION(JO_2017)) <UISearchResultsUpdating>
-- (void)updateSearchResultsForSearchControllerWithSearchController:(UISearchController * _Nonnull)searchController;
+@interface LocationSearchTable (SWIFT_EXTENSION(JO_2017))
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 @end
 
-@class NSIndexPath;
+@class UISearchController;
+
+@interface LocationSearchTable (SWIFT_EXTENSION(JO_2017)) <UISearchResultsUpdating>
+- (void)updateSearchResultsForSearchController:(UISearchController * _Nonnull)searchController;
+@end
+
 
 @interface LocationSearchTable (SWIFT_EXTENSION(JO_2017))
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (UITableViewCell * _Nonnull)tableViewWithTableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -247,7 +254,8 @@ SWIFT_CLASS("_TtC7JO_201717MapViewController")
 @property (nonatomic, weak) IBOutlet MKMapView * _Null_unspecified mapView;
 @property (nonatomic, copy) NSArray<Geotification *> * _Nonnull geotifications;
 @property (nonatomic, strong) CLLocationManager * _Nonnull locationManager;
-@property (nonatomic, strong) UISearchController * _Nullable resultSearchController;
+@property (nonatomic, strong) UISearchController * _Null_unspecified resultSearchController;
+@property (nonatomic, strong) MKPlacemark * _Nullable selectedPin;
 - (void)viewDidLoad;
 - (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 - (void)loadAllGeotifications;
@@ -261,15 +269,14 @@ SWIFT_CLASS("_TtC7JO_201717MapViewController")
 - (CLCircularRegion * _Nonnull)regionWithGeotification:(Geotification * _Nonnull)geotification SWIFT_WARN_UNUSED_RESULT;
 - (void)startMonitoringWithGeotification:(Geotification * _Nonnull)geotification;
 - (void)stopMonitoringWithGeotification:(Geotification * _Nonnull)geotification;
+- (void)getDirections;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
-@interface MapViewController (SWIFT_EXTENSION(JO_2017)) <CLLocationManagerDelegate>
-- (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
-- (void)locationManager:(CLLocationManager * _Nonnull)manager monitoringDidFailForRegion:(CLRegion * _Nullable)region withError:(NSError * _Nonnull)error;
-- (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
+@interface MapViewController (SWIFT_EXTENSION(JO_2017))
+- (void)dropPinZoomInPlacemark:(MKPlacemark * _Nonnull)placemark;
 @end
 
 @class MKAnnotationView;
@@ -284,8 +291,47 @@ SWIFT_CLASS("_TtC7JO_201717MapViewController")
 @end
 
 
+@interface MapViewController (SWIFT_EXTENSION(JO_2017)) <CLLocationManagerDelegate>
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager monitoringDidFailForRegion:(CLRegion * _Nullable)region withError:(NSError * _Nonnull)error;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
+@end
+
+
 @interface NSNumber (SWIFT_EXTENSION(JO_2017))
 @property (nonatomic, readonly) BOOL isBool;
+@end
+
+@class UIView;
+@class AVCaptureSession;
+@class AVCaptureVideoPreviewLayer;
+@class AVCaptureOutput;
+@class AVCaptureConnection;
+
+SWIFT_CLASS("_TtC7JO_201724ScanQRCodeViewController")
+@interface ScanQRCodeViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate>
+@property (nonatomic, strong) IBOutlet UILabel * _Null_unspecified messageLabel;
+@property (nonatomic, strong) IBOutlet UIView * _Null_unspecified topbar;
+@property (nonatomic, strong) AVCaptureSession * _Nullable captureSession;
+@property (nonatomic, strong) AVCaptureVideoPreviewLayer * _Nullable videoPreviewLayer;
+@property (nonatomic, strong) UIView * _Nullable qrCodeFrameView;
+@property (nonatomic) BOOL readed;
+- (void)viewDidLoad;
+- (void)captureOutput:(AVCaptureOutput * _Null_unspecified)captureOutput didOutputMetadataObjects:(NSArray * _Null_unspecified)metadataObjects fromConnection:(AVCaptureConnection * _Null_unspecified)connection;
+- (void)didReceiveMemoryWarning;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC7JO_201716SearchAnnotation")
+@interface SearchAnnotation : NSObject <MKAnnotation>
+@property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic, copy) NSString * _Null_unspecified name;
+@property (nonatomic, copy) NSString * _Null_unspecified title;
+@property (nonatomic, copy) NSString * _Null_unspecified subtitle;
+- (nonnull instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate name:(NSString * _Nonnull)name OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
 

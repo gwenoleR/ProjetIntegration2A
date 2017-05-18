@@ -1,11 +1,12 @@
 version: "Apple Swift version 3.1 (swiftlang-802.0.53 clang-802.0.42)"
-options: "40cfd2ed2b12c063f591496f446177d6"
-build_time: [548349605, 68441000]
+options: "cad142d45c515b92536bf127152903a3"
+build_time: [548415227, 978334000]
 inputs:
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/SearchAnnotation.swift": [548410714, 0]
   "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/DetailFeedViewController.swift": [548345748, 0]
   "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/Geotification.swift": [548252588, 0]
-  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/MapViewController.swift": [548349405, 0]
-  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/LocationSearchTable.swift": !dirty [548349602, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/MapViewController.swift": [548412711, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/LocationSearchTable.swift": [548415225, 0]
   "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/Utilities.swift": [548252588, 0]
   "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/SwiftyJSON.swift": [548252588, 0]
   "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/FeedViewController.swift": [548347062, 0]
