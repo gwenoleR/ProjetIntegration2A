@@ -5,7 +5,6 @@
 let express = require('express');
 let app = express();
 let qs = require('querystring');
-let mysql = require('mysql');
 
 
 let MongoClient = require('mongodb').MongoClient
@@ -13,13 +12,6 @@ let MongoClient = require('mongodb').MongoClient
 
 
 let parameters = require('../JSON/params.json')
-
-let sql_connection = mysql.createConnection({
-    host: parameters.db.host,
-    user: parameters.db.user,
-    password: parameters.db.password,
-    database: parameters.db.database
-});
 
 
 // Connection URL
@@ -31,20 +23,6 @@ MongoClient.connect(url, function (err, db) {
     db.close();
 });
 
-
-let findUsers = function (db, callback) {
-    // Get the documents collection
-    let users = db.collection('documents');
-    // Find some documents
-    users.find({}).toArray(function (err, docs) {
-        assert.equal(err, null);
-        assert.equal(2, docs.length);
-        console.log("Found the following records");
-        console.dir(docs);
-        callback(docs);
-    });
-
-};
 
 
 app.get("/getPostAbout/:tag", function (req, res) {
@@ -97,13 +75,18 @@ app.post('/checkQrCode', function (req, res) {
 app.get('/getLastPost', function (req, res) {
     response = null;
     try {
-        sql_connection.query(
-            "SELECT title, content FROM news ORDER BY id DESC LIMIT 1", function (error, results, fields) {
-                if (error) throw error;
-                console.log(results);
+        MongoClient.connect(url, function (err, db) {
+            assert.equal(null, err);
+            console.log("Connected correctly to server");
+            db.collection('posts').find({}).limit(1).toArray(function (err, results) {
+                assert.equal(err, null);
+                console.log("Found the following records");
                 response = results;
+                console.log(response);
                 res.send(response);
+                db.close();
             });
+        });
     } catch (e) {
         console.log(e);
         res.sendStatus(500)
@@ -114,14 +97,18 @@ app.get('/getLastPost', function (req, res) {
 app.get('/getLast10Post', function (req, res) {
     response = null
     try {
-        sql_connection.query(
-            "SELECT title, content FROM news ORDER BY id DESC LIMIT 10", function (error, results, fields) {
-                if (error) throw error;
-                console.log(results);
+        MongoClient.connect(url, function (err, db) {
+            assert.equal(null, err);
+            console.log("Connected correctly to server");
+            db.collection('posts').find({}).limit(10).toArray(function (err, results) {
+                assert.equal(err, null);
+                console.log("Found the following records");
                 response = results;
-                res.send(response)
+                console.log(response);
+                res.send(response);
+                db.close();
             });
-
+        });
     } catch (e) {
         console.log(e);
         res.sendStatus(500)
@@ -130,7 +117,7 @@ app.get('/getLast10Post', function (req, res) {
 
 
 app.get('/post_new', function (req, res) {
-    res.sendFile(__dirname + "/post_message.html")
+    res.sendFile(__dirname + "/views/post_message.html")
 });
 
 
@@ -147,8 +134,6 @@ app.post('/post_new_tag', function (req, res) {
         post = qs.parse(body);
         console.log(post)
         try {
-
-
             MongoClient.connect(url, function (err, db) {
                 assert.equal(null, err);
                 console.log("Connected correctly to server");
@@ -159,25 +144,11 @@ app.post('/post_new_tag', function (req, res) {
                         name: post.name
                     }, function (err, r) {
                         assert.equal(null, err);
-                        //assert.equal(1, r.tagCount);
                         console.log("success !")
                     });
 
-
-                db.collection('tags').find({}).toArray(function (err, docs) {
-                    assert.equal(err, null);
-                    console.log("Found the following records");
-                    console.log(docs)
-                });
-
                 db.close();
             });
-
-
-            sql_connection.query(
-                "INSERT INTO tag (id, name) VALUES (NULL,?)", [post.name], function (error, results, fields) {
-                    if (error) throw error;
-                });
             console.log("Tag added !");
             res.sendStatus(200)
         } catch (e) {
@@ -201,10 +172,19 @@ app.post('/post_new', function (req, res) {
         post = qs.parse(body);
         console.log(post);
         try {
-            sql_connection.query(
-                "INSERT INTO news (id, title, content) VALUES (NULL,?,?)", [post.title, post.content], function (error, results, fields) {
-                    if (error) throw error;
-                });
+            MongoClient.connect(url, function (err, db) {
+                assert.equal(null, err);
+                console.log("Connected correctly to server");
+                db.collection('posts').insertOne(
+                    {
+                        title: post.title,
+                        content: post.content
+                    }, function (err, r) {
+                        assert.equal(null, err);
+                        console.log("success !")
+                    });
+                db.close();
+            });
             console.log("Post added !");
             res.sendStatus(200);
         } catch (e) {
