@@ -60,7 +60,7 @@
 
             for (i in response) {
                 $('#tagList').append(
-                    "<li><label for=" + response[i].name + ">" + response[i].name + "</label><input type='checkbox'  class = 'tagChkBox' id=" + response[i].name + " value=" + response[i].name + "></li>"
+                    "<li><label for=" + response[i]._id + ">" + response[i]._id + "</label><input type='checkbox'  class = 'tagChkBox' id=" + response[i]._id + " value=" + response[i]._id + "></li>"
                 )
             }
         });
@@ -84,32 +84,37 @@
 
 
 <script type="application/javascript">
-    function getChecked() {
+    function getChecked(callback) {
         tags = []
         $('.tagChkBox').each(function () {
-            if ($(this).checked) {
-                console.log("append !");
+            if ($(this).is(':checked')) {
                 tags.push($(this).val())
             }
         });
         console.log("tags :", tags);
-        return tags
+        callback(tags)
     }
 
 
-    $('#send').click(function () {
+    function sendPost(tags) {
+        console.log("tags :", tags)
         $.ajax({
             method: "POST",
             url: "http://localhost:3000/post_new",
             data: {
                 title: $('#title').val(),
                 content: $('#content').val(),
-                tags: getChecked()
+                tags: tags
             }
         })
             .done(function (msg) {
                 console.log(msg)
             });
+    }
+
+
+    $('#send').click(function () {
+        getChecked(sendPost)
     })
 
 

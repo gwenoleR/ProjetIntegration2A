@@ -51,9 +51,9 @@ app.get('/getTags', function (req, res) {
             console.log("Connected correctly to server");
             db.collection('tags').find({}).toArray(function (err, results) {
                 assert.equal(err, null);
-                console.log("Found the following records");
+                //console.log("Found the following records");
                 response = results;
-                console.log(response);
+                //console.log(response);
                 res.send(response);
             });
             db.close();
@@ -108,7 +108,7 @@ app.get('/getLast10Post', function (req, res) {
         MongoClient.connect(url, function (err, db) {
             assert.equal(null, err);
             console.log("Connected correctly to server");
-            db.collection('posts').find({}).limit(100).toArray(function (err, results) {
+            db.collection('posts').find({}).limit(100).sort([['_id', -1]]).toArray(function (err, results) {
                 assert.equal(err, null);
                 console.log("Found the following records");
                 response = results;
@@ -129,14 +129,39 @@ app.get('/post_new', function (req, res) {
 });
 
 
+function getNextSequenceValue() {
+    MongoClient.connect(url, function (err, db) {
+        assert.equal(null, err);
+        let seq = db.collection('counters');
+
+
+        seq.find({}).toArray(function (err, results) {
+            assert.equal(err, null);
+            //console.log("Found the following records");
+            sequence = results[0].sequence_value + 1
+            //console.log(response);
+
+
+            seq.findOneAndUpdate({name: "postid"}, {$set: {sequence_value: sequence}}, {
+                returnOriginal: true
+                , upsert: true
+            }, function (err, r) {
+                assert.equal(null, err);
+                //assert.equal(sequence+1, r.value.sequence_value);
+
+                return sequence;
+
+            })
+        });
+    })
+
+}
 app.post('/post_new_tag', function (req, res) {
     body = '';
     post = null;
     req.on('data', function (data) {
         body += data;
     });
-
-
     //We'll wait the end signal of the request to treat it's content.
     req.on('end', function () {
         post = qs.parse(body);
@@ -144,10 +169,11 @@ app.post('/post_new_tag', function (req, res) {
         try {
             MongoClient.connect(url, function (err, db) {
                 assert.equal(null, err);
+
                 console.log("Connected correctly to server");
                 db.collection('tags').insertOne(
                     {
-                        name: post.name
+                        _id: post.name
                     }, function (err, r) {
                         assert.equal(null, err);
                         console.log("success !")
@@ -175,7 +201,10 @@ app.post('/post_new', function (req, res) {
 
     //We'll wait the end signal of the request to treat it's content.
     req.on('end', function () {
+        //lets clean this body because of the type coecition caused by querystring
+        body = body.replace(/%5B%5D/g, "")
         post = qs.parse(body);
+        console.log(body)
         console.log('post :', post);
         try {
             MongoClient.connect(url, function (err, db) {
@@ -183,6 +212,7 @@ app.post('/post_new', function (req, res) {
                 console.log("Connected correctly to server");
                 db.collection('posts').insertOne(
                     {
+                        _id: getNextSequenceValue(),
                         title: post.title,
                         content: post.content,
                         tags: post.tags
