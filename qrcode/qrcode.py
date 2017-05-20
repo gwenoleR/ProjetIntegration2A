@@ -18,24 +18,36 @@ def initDatabase():
 @app.route("/generateQrCode",methods=['POST'])
 def genererQrCode():
     data = json.loads(request.data)
-    uid = str(data['user_id'])
+    try:
+        uid = str(data['user_id'])
+    except KeyError:
+        resp = make_response("Mauvais formatage du JSON",400)
+        return resp
     exist = qrCodeExist(uid)
     if exist == True:
         print("Le qrcode existe deja en base de donnee pour cet utilisateur")
         resp = make_response("Le qrcode existe deja en base de donnee pour cet utilisateur",400)
     else:
-        newqrcode = pyqrcode.create(uid)
-        imageB64 = newqrcode.png_as_base64_str(scale=5)
-        print("imageB64 = " , imageB64)
-        insertQrCodeInDb(uid,imageB64)
-        resp = make_response("qrcode created and inserted in database ! ",200)
+        exist = userExist(uid)
+        if(exist == True):
+            newqrcode = pyqrcode.create(uid)
+            imageB64 = newqrcode.png_as_base64_str(scale=5)
+            print("imageB64 = " , imageB64)
+            insertQrCodeInDb(uid,imageB64)
+            resp = make_response("Qrcode cree et insere dans la base de donnee ! ",200)
+        else:
+            resp = make_response("L'uid fourni n'existe pas en base de donnee. FRAUDE !",400)      
     print(resp)
     return resp
 
 @app.route("/checkQrCode",methods=['POST'])
 def checkQrCode():
     data = json.loads(request.data)
-    uid = str(data['read'])
+    try:
+        uid = str(data['user_id'])
+    except KeyError:
+        resp = make_response("Mauvais formatage du JSON",400)
+        return resp
     exist = qrCodeExist(uid)
     if exist == True:
         o_uid = ObjectId(uid)
@@ -50,7 +62,11 @@ def checkQrCode():
 @app.route("/getQrCode",methods=['POST'])
 def getQrCode():
     data = json.loads(request.data)
-    uid = str(data['user_id'])
+    try:
+        uid = str(data['user_id'])
+    except KeyError:
+        resp = make_response("Mauvais formatage du JSON",400)
+        return resp
     exist = qrCodeExist(uid)
     if exist == True:
         qrcodeCollection = initDatabase().qrcode
@@ -72,6 +88,12 @@ def insertQrCodeInDb(uid,imageB64):
 def qrCodeExist(uid):
     qrcodeCollection = initDatabase().qrcode
     result = qrcodeCollection.find_one({"user_id":uid})
+    return result != None
+
+def userExist(uid):
+    userCollection = initDatabase().user
+    oid = ObjectId(uid)
+    result = userCollection.find_one({"_id":oid})
     return result != None
     
 def getUserInformation(object_id):
