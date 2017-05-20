@@ -11,7 +11,6 @@ phraseTraduites = ["", "", "", "", ""]
 
 app = Flask(__name__)
 
-
 def getTraduction():
 
     headers = {
