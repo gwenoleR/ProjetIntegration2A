@@ -5,7 +5,7 @@
 let express = require('express');
 let app = express();
 let qs = require('querystring');
-
+let ObjectID = require('mongodb').ObjectID;
 
 let MongoClient = require('mongodb').MongoClient
     , assert = require('assert');
@@ -92,6 +92,27 @@ app.get('/getLastPost', function (req, res) {
     }
 });
 
+app.get('/getLastUser', function (req, res) {
+    response = null;
+    try {
+        MongoClient.connect(url, function (err, db) {
+            assert.equal(null, err);
+            console.log("Connected correctly to server");
+            db.collection('user').find({}).limit(1).sort([['_id', -1]]).toArray(function (err, results) {
+                assert.equal(err, null);
+                console.log("Found the following records");
+                response = results;
+                console.log(response);
+                res.send(response);
+                db.close();
+            });
+        });
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(500)
+    }
+});
+
 
 app.get('/tag', function (req, res) {
     post = {
@@ -105,16 +126,17 @@ app.get('/tag', function (req, res) {
 app.post('/updateTagWeight', function (req, res) {
     //_id tag weight
     //returns 201 | 401 si id faux | 400
-
     body = '';
     post = null;
     req.on('data', function (data) {
         body += data;
+        console.log(body)
     });
     //We'll wait the end signal of the request to treat it's content.
     req.on('end', function () {
         post = qs.parse(body);
-        console.log(post);
+        //let idUser = new ObjectID(post._id);
+        console.log("post request :", post);
         try {
             MongoClient.connect(url, function (err, db) {
                 assert.equal(null, err);
@@ -123,9 +145,9 @@ app.post('/updateTagWeight', function (req, res) {
                 db.collection('user').findOneAndUpdate(
                     {
                         _id: post._id,
-                        tags: {"$elemMatch": {"name": post.tag}}
+                        "tags.name": post.tag
                     }, {
-                        $set: {"tags.$.weight": post.weight}
+                        $set: {"tags.weight": post.weight}
                     }, {
                         returnOriginal: true
                         , upsert: true
@@ -134,7 +156,7 @@ app.post('/updateTagWeight', function (req, res) {
                         db.close();
                     })
             });
-            console.log("Tag added !");
+            console.log("updated ");
             res.sendStatus(201)
         } catch (e) {
             console.log(e);
@@ -170,6 +192,28 @@ app.get('/getLast10Post', function (req, res) {
 
 app.get('/post_new', function (req, res) {
     res.sendFile(__dirname + "/views/post_message.html")
+});
+
+
+app.get('/getUsers', function (req, res) {
+    response = null;
+    try {
+        MongoClient.connect(url, function (err, db) {
+            assert.equal(null, err);
+            console.log("Connected correctly to server");
+            db.collection('user').find({}).toArray(function (err, results) {
+                assert.equal(err, null);
+                console.log("Found the following records");
+                response = results;
+                console.log(response);
+                res.send(response);
+                db.close();
+            });
+        });
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(500)
+    }
 });
 
 
