@@ -35,7 +35,7 @@ def genererQrCode():
 @app.route("/checkQrCode",methods=['POST'])
 def checkQrCode():
     data = json.loads(request.data)
-    uid = str(data['read'])
+    uid = str(data['user_id'])
     exist = qrCodeExist(uid)
     if exist == True:
         o_uid = ObjectId(uid)
