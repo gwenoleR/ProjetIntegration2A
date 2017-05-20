@@ -25,7 +25,7 @@ def getTraduction():
         }
 
         r = requests.post(url,data=json.dumps(data),headers=headers)
-        rNoJsoned = json.loads(r.content)
+        rNoJsoned = r.json()
         print(rNoJsoned)
         phraseTraduites[i] = rNoJsoned
 
