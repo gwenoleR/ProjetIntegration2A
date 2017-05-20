@@ -29,11 +29,11 @@ def getNationalite():
     cursor = natioCollection.find({})
     for document in cursor:
           print(document['_id'])
-          listType.append(document['_id'])
+          listNatio.append(document['_id'])
 
 @app.route('/')
 def pageBeacon():
-    return render_template('index.html', typePerson = listType)
+    return render_template('index.html', typePerson = listType,typeNatio= listNatio)
 
 
 @app.route('/addUsers', methods=['POST'])
