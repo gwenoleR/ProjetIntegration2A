@@ -25,7 +25,7 @@ def getType():
           listType.append(document['_id'])
 
 def getNationalite():
-    natioCollection = initDatabase().natio
+    natioCollection = initDatabase().nationalites
     cursor = natioCollection.find({})
     for document in cursor:
           print(document['_id'])
