@@ -1,8 +1,10 @@
 import json
 from flask import Flask, request, make_response
 from watson_developer_cloud import LanguageTranslatorV2
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+CORS(app)
 
 language_translator = LanguageTranslatorV2(
     username='cb384893-5d32-44e7-83ea-85dfb79bf5b9',
