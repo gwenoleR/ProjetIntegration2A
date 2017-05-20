@@ -123,7 +123,7 @@ app.post('/updateTagWeight', function (req, res) {
                 db.collection('user').findOneAndUpdate(
                     {
                         _id: post._id,
-                        tags: {"$elemMatch": {"name": post.tag}}
+                        "tags.name": post.name
                     }, {
                         $set: {"tags.$.weight": post.weight}
                     }, {
