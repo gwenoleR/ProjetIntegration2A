@@ -1,5 +1,4 @@
 from flask import Flask, request, make_response, render_template
-from flask_cors import CORS, cross_origin
 import requests
 import json
 
