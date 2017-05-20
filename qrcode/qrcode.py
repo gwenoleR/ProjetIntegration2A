@@ -19,16 +19,19 @@ def initDatabase():
 def genererQrCode():
     data = json.loads(request.data)
     uid = str(data['user_id'])
-    exist = qrCodeExist(uid)
-    if exist == True:
-        print("Le qrcode existe deja en base de donnee pour cet utilisateur")
-        resp = make_response("Le qrcode existe deja en base de donnee pour cet utilisateur",400)
+    if uid == None:
+        resp = make_response("Mauvais formatage du JSON",400)
     else:
-        newqrcode = pyqrcode.create(uid)
-        imageB64 = newqrcode.png_as_base64_str(scale=5)
-        print("imageB64 = " , imageB64)
-        insertQrCodeInDb(uid,imageB64)
-        resp = make_response("qrcode created and inserted in database ! ",200)
+        exist = qrCodeExist(uid)
+        if exist == True:
+            print("Le qrcode existe deja en base de donnee pour cet utilisateur")
+            resp = make_response("Le qrcode existe deja en base de donnee pour cet utilisateur",400)
+        else:
+            newqrcode = pyqrcode.create(uid)
+            imageB64 = newqrcode.png_as_base64_str(scale=5)
+            print("imageB64 = " , imageB64)
+            insertQrCodeInDb(uid,imageB64)
+            resp = make_response("Qrcode cree et insere dans la base de donnee ! ",200)
     print(resp)
     return resp
 
@@ -36,31 +39,37 @@ def genererQrCode():
 def checkQrCode():
     data = json.loads(request.data)
     uid = str(data['user_id'])
-    exist = qrCodeExist(uid)
-    if exist == True:
-        o_uid = ObjectId(uid)
-        user_information = getUserInformation(o_uid)
-        user_information["_id"] = uid
-        resp = make_response(json.dumps(user_information),200)
-        resp.headers['Content-Type'] = 'application/json'
+    if uid == None:
+        resp = make_response("Mauvais formatage du JSON",400)
     else:
-        resp = make_response("Le qrcode n'existe pas en base de donnee, entree invalide !",400)
+        exist = qrCodeExist(uid)
+        if exist == True:
+            o_uid = ObjectId(uid)
+            user_information = getUserInformation(o_uid)
+            user_information["_id"] = uid
+            resp = make_response(json.dumps(user_information),200)
+            resp.headers['Content-Type'] = 'application/json'
+        else:
+            resp = make_response("Le qrcode n'existe pas en base de donnee, entree invalide !",400)
     return resp
 
 @app.route("/getQrCode",methods=['POST'])
 def getQrCode():
     data = json.loads(request.data)
     uid = str(data['user_id'])
-    exist = qrCodeExist(uid)
-    if exist == True:
-        qrcodeCollection = initDatabase().qrcode
-        qrcode_png64 = qrcodeCollection.find_one({"user_id":uid})["image_b64"]
-        htmlPng= '<img src="data:image/png;base64,' + qrcode_png64 + '">'
-        print(htmlPng)
-        resp = make_response(htmlPng,200)
-        resp.headers['Content-Type'] = 'text/html'
+    if uid == None:
+        resp = make_response("Mauvais formatage du JSON",400)
     else:
-        resp = make_response("Le qrcode n'existe pas en base de donnee, entree invalide !",400)
+        exist = qrCodeExist(uid)
+        if exist == True:
+            qrcodeCollection = initDatabase().qrcode
+            qrcode_png64 = qrcodeCollection.find_one({"user_id":uid})["image_b64"]
+            htmlPng= '<img src="data:image/png;base64,' + qrcode_png64 + '">'
+            print(htmlPng)
+            resp = make_response(htmlPng,200)
+            resp.headers['Content-Type'] = 'text/html'
+        else:
+            resp = make_response("Le qrcode n'existe pas en base de donnee, entree invalide !",400)
     return resp
 
 def insertQrCodeInDb(uid,imageB64):
