@@ -65,9 +65,9 @@ app.get('/getTags', function (req, res) {
     }
 });
 
+
 app.post('/checkQrCode', function (req, res) {
     response = null
-
 });
 
 
@@ -92,6 +92,7 @@ app.get('/getLastPost', function (req, res) {
     }
 });
 
+
 app.get('/tag', function (req, res) {
     post = {
         'title': 'tagTitle',
@@ -100,6 +101,49 @@ app.get('/tag', function (req, res) {
     };
     res.send(post)
 });
+
+app.post('/updateTagWeight', function (req, res) {
+    //_id tag weight
+    //returns 201 | 401 si id faux | 400
+
+    body = '';
+    post = null;
+    req.on('data', function (data) {
+        body += data;
+    });
+    //We'll wait the end signal of the request to treat it's content.
+    req.on('end', function () {
+        post = qs.parse(body);
+        console.log(post);
+        try {
+            MongoClient.connect(url, function (err, db) {
+                assert.equal(null, err);
+
+                console.log("Connected correctly to server");
+                db.collection('user').findOneAndUpdate(
+                    {
+                        _id: post._id,
+                        tags: {"$elemMatch": {"name": post.tag}}
+                    }, {
+                        $set: {"tags.$.weight": post.weight}
+                    }, {
+                        returnOriginal: true
+                        , upsert: true
+                    }, function (err, r) {
+                        assert.equal(null, err);
+                        db.close();
+                    })
+            });
+            console.log("Tag added !");
+            res.sendStatus(201)
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(400)
+        }
+    });
+
+
+})
 
 
 app.get('/getLast10Post', function (req, res) {
@@ -173,7 +217,7 @@ function getNextSequenceValue(post) {
             assert.equal(err, null);
             //console.log("Found the following records");
             let sequence = results[0].sequence_value + 1
-            insertUser(post, sequence)
+            insertNewPost(post, sequence)
             seq.findOneAndUpdate({name: "postid"}, {$set: {sequence_value: sequence}}, {
                 returnOriginal: true
                 , upsert: true
@@ -187,7 +231,7 @@ function getNextSequenceValue(post) {
 }
 
 
-function insertUser(post, sequence) {
+function insertNewPost(post, sequence) {
     MongoClient.connect(url, function (err, db) {
         assert.equal(null, err);
         console.log("Connected correctly to server");
@@ -218,24 +262,23 @@ app.post('/post_new', function (req, res) {
     //We'll wait the end signal of the request to treat it's content.
     req.on('end', function () {
         //lets clean this body because of the type coecition caused by querystring
-        body = body.replace(/%5B%5D/g, "")
+        body = body.replace(/%5B%5D/g, "");
         post = qs.parse(body);
         try {
-            getNextSequenceValue(post)
+            getNextSequenceValue(post);
             res.sendStatus(200);
         } catch (e) {
             console.log(e);
             res.sendStatus(500);
         }
     });
-
 });
 
 
 app.post('/saveDest', function (req, res) {
     console.log("saveDest received")
     res.sendStatus(200);
-})
+});
 
 
 app.listen(3000, function () {
