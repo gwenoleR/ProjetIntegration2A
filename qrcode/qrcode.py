@@ -28,11 +28,15 @@ def genererQrCode():
         print("Le qrcode existe deja en base de donnee pour cet utilisateur")
         resp = make_response("Le qrcode existe deja en base de donnee pour cet utilisateur",400)
     else:
-        newqrcode = pyqrcode.create(uid)
-        imageB64 = newqrcode.png_as_base64_str(scale=5)
-        print("imageB64 = " , imageB64)
-        insertQrCodeInDb(uid,imageB64)
-        resp = make_response("Qrcode cree et insere dans la base de donnee ! ",200)
+        exist = userExist(uid)
+        if(exist == True):
+            newqrcode = pyqrcode.create(uid)
+            imageB64 = newqrcode.png_as_base64_str(scale=5)
+            print("imageB64 = " , imageB64)
+            insertQrCodeInDb(uid,imageB64)
+            resp = make_response("Qrcode cree et insere dans la base de donnee ! ",200)
+        else:
+            resp = make_response("L'uid fourni n'existe pas en base de donnee. FRAUDE !",400)      
     print(resp)
     return resp
 
@@ -84,6 +88,12 @@ def insertQrCodeInDb(uid,imageB64):
 def qrCodeExist(uid):
     qrcodeCollection = initDatabase().qrcode
     result = qrcodeCollection.find_one({"user_id":uid})
+    return result != None
+
+def userExist(uid):
+    userCollection = initDatabase().user
+    oid = ObjectId(uid)
+    result = userCollection.find_one({"_id":oid})
     return result != None
     
 def getUserInformation(object_id):
