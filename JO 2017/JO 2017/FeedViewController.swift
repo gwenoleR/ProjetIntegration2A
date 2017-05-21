@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class Feed{
     let Titre: String
@@ -23,31 +24,39 @@ class Feed{
 }
 
 class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     var feeds : [Feed] = []
     var json : JSON = JSON.null
     
+    var tag : String = ""
+    
     var selectedFeed : Feed!
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let requestURL: NSURL = NSURL(string: "http://172.30.0.221:3000/getLast10Post")!
-        let urlRequest: NSMutableURLRequest = NSMutableURLRequest(url: requestURL as URL)
-        let session = URLSession.shared
-        let task = session.dataTask(with: urlRequest as URLRequest) {
-            (data, response, error) -> Void in
-            
-            let httpResponse = response as! HTTPURLResponse
-            let statusCode = httpResponse.statusCode
-            
-            if (statusCode == 200) {
-                print("Everyone is fine, file downloaded successfully.")
-                
-                do{
-                    self.json = try JSON(data: data!)
+        
+        let headers: HTTPHeaders = [
+            "Host": "feeder.soc.docker",
+            ]
+        
+        var url = ""
+        if tag == "" {
+            url = "http://soc.catala.ovh/getLast10Post"
+        }
+        else{
+            url = "http://soc.catala.ovh/getPostAbout/\(tag)"
+        }
+        
+        //GET: /GetLast10Post
+        Alamofire.request(url,headers: headers).validate().responseJSON { response in
+            switch response.result {
+            case .success:
+                print("Validation Successful")
+                if let result = response.result.value {
+                    
+                    self.json = JSON(result)
                     
                     for f in self.json{
                         
@@ -61,25 +70,21 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         for t in tagsArray{
                             tags.append(t.stringValue)
                         }
-
-                        let feed = Feed(titre: title, content: content, tags: tags)
                         
+                        let feed = Feed(titre: title, content: content, tags: tags)
                         self.feeds.append(feed)
+                        
                     }
-                    
+                    DispatchQueue.main.async { self.tableView.reloadData() }
                 }
-                catch{
-                    print("Error json")
-                }
-
-                DispatchQueue.main.async { self.tableView.reloadData() }
-                
+            case .failure(let error):
+                print(error)
             }
         }
         
-        task.resume()
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -99,7 +104,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
         return cell
-    
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -112,7 +117,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail"{
-
+            
             print(selectedFeed)
             
             guard let detailViewController = segue.destination as? DetailFeedViewController else {
@@ -120,11 +125,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
             detailViewController.feed = selectedFeed
+            
+        }
         
-        }
-        else{
-            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
-        }
         
         
         

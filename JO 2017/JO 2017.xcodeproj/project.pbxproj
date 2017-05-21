@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8712A03A5B9205C755955E84 /* Pods_JO_2017.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8B37592ED661E0454E39F5 /* Pods_JO_2017.framework */; };
+		A57CC9581ED04B3500913FF5 /* SearchTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CC9571ED04B3500913FF5 /* SearchTagViewController.swift */; };
 		A5BDEA1B1ECAFFF700E41639 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BDEA1A1ECAFFF700E41639 /* AppDelegate.swift */; };
 		A5BDEA201ECAFFF700E41639 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5BDEA1E1ECAFFF700E41639 /* Main.storyboard */; };
 		A5BDEA221ECAFFF700E41639 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5BDEA211ECAFFF700E41639 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		6142E2AF17D05B99E46C6BB1 /* Pods-JO 2017.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JO 2017.release.xcconfig"; path = "Pods/Target Support Files/Pods-JO 2017/Pods-JO 2017.release.xcconfig"; sourceTree = "<group>"; };
+		A57CC9571ED04B3500913FF5 /* SearchTagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTagViewController.swift; sourceTree = "<group>"; };
 		A5BDEA171ECAFFF700E41639 /* JO 2017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JO 2017.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5BDEA1A1ECAFFF700E41639 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5BDEA1F1ECAFFF700E41639 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,7 +58,7 @@
 		A5BDEA361ECAFFF700E41639 /* JO 2017UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JO 2017UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5BDEA481ECB02D700E41639 /* Geotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geotification.swift; sourceTree = "<group>"; };
 		A5BDEA4A1ECB02F800E41639 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		A5BDEA4C1ECB034400E41639 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		A5BDEA4C1ECB034400E41639 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = "JO 2017/SwiftyJSON.swift"; sourceTree = "<group>"; };
 		A5BDEA511ECB03A200E41639 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A5BDEA531ECB05D200E41639 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A5BDEA561ECB22F600E41639 /* TestLocations.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = TestLocations.gpx; path = "JO 2017/TestLocations.gpx"; sourceTree = "<group>"; };
@@ -140,12 +142,12 @@
 				A5BDEA261ECAFFF700E41639 /* Info.plist */,
 				A5BDEA481ECB02D700E41639 /* Geotification.swift */,
 				A5BDEA4A1ECB02F800E41639 /* Utilities.swift */,
-				A5BDEA4C1ECB034400E41639 /* SwiftyJSON.swift */,
 				A5E237531ECB472300C59DD8 /* FeedViewController.swift */,
 				A5E237551ECC46EB00C59DD8 /* DetailFeedViewController.swift */,
 				A5E237571ECC837700C59DD8 /* LocationSearchTable.swift */,
 				A5E2375B1ECD8EAA00C59DD8 /* SearchAnnotation.swift */,
 				A5E2375D1ECDA6CA00C59DD8 /* ScanQRCodeViewController.swift */,
+				A57CC9571ED04B3500913FF5 /* SearchTagViewController.swift */,
 			);
 			path = "JO 2017";
 			sourceTree = "<group>";
@@ -163,6 +165,7 @@
 		A5BDEA551ECB22B300E41639 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A5BDEA4C1ECB034400E41639 /* SwiftyJSON.swift */,
 				A5BDEA561ECB22F600E41639 /* TestLocations.gpx */,
 				A5BDEA571ECB22F600E41639 /* poi.json */,
 			);
@@ -369,6 +372,7 @@
 				A5E237561ECC46EB00C59DD8 /* DetailFeedViewController.swift in Sources */,
 				A5BDEA491ECB02D700E41639 /* Geotification.swift in Sources */,
 				A5BDEA541ECB05D200E41639 /* MapViewController.swift in Sources */,
+				A57CC9581ED04B3500913FF5 /* SearchTagViewController.swift in Sources */,
 				A5E237581ECC837700C59DD8 /* LocationSearchTable.swift in Sources */,
 				A5BDEA4B1ECB02F800E41639 /* Utilities.swift in Sources */,
 				A5BDEA4D1ECB034400E41639 /* SwiftyJSON.swift in Sources */,

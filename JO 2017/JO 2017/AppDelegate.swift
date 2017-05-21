@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
         UIApplication.shared.cancelAllLocalNotifications()
         
+        if let _ = UserDefaults.standard.value(forKey: "user_id"){
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "TabController")
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+            
+        }
         //MARK : Debug
         //print(locationManager.location?.coordinate)
         return true
@@ -53,13 +63,52 @@ extension AppDelegate: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if region is CLCircularRegion {
+            let circular : CLCircularRegion = region as! CLCircularRegion
             handleEvent(forRegion: region)
+            
+            let parameters : Parameters = [
+                "_id" : UserDefaults.standard.value(forKey: "user_id")!,
+                "coord": ["long" : circular.center.longitude, "lat" : circular.center.latitude],
+                "note": note(fromRegionIdentifier: circular.identifier)!
+            ]
+            
+            
+            
+            let headers: HTTPHeaders = [
+                "Host": "feeder.soc.docker"
+            ]
+            
+            
+            //Alamofire.request("http://soc.catala.ovh/addUserOnLocation", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            //    .validate().responseJSON{ response in
+            //        //TODO:
+            //}
         }
     }
     
+    
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         if region is CLCircularRegion {
+            let circular : CLCircularRegion = region as! CLCircularRegion
             handleEvent(forRegion: region)
+            
+            let parameters : Parameters = [
+                "_id" : UserDefaults.standard.value(forKey: "user_id")!,
+                "coord": ["long" : circular.center.longitude, "lat" : circular.center.latitude],
+                "note": note(fromRegionIdentifier: circular.identifier)!
+            ]
+            
+            
+            
+            let headers: HTTPHeaders = [
+                "Host": "feeder.soc.docker"
+            ]
+            
+            
+            //Alamofire.request("http://soc.catala.ovh/removeUserOnLocation", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            //    .validate().responseJSON{ response in
+            //        //TODO:
+            //}
         }
     }
 }

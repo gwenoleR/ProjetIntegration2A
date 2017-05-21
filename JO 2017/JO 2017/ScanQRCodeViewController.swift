@@ -109,19 +109,41 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
                 
                 //Send POST /checkQrCode
                 let parameters: Parameters = [
-                    "read": metadataObj.stringValue
+                    "user_id": metadataObj.stringValue
                     ]
+                let headers: HTTPHeaders = [
+                    "Host": "qrcode.soc.docker",
+                ]
                 
-                Alamofire.request("http://soc.catala.ovh:5000/checkQrCode", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON{ response in
-                    
+                Alamofire.request("http://soc.catala.ovh/checkQrCode", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+.validate().responseJSON{ response in
+    
+                    print(response.request!.allHTTPHeaderFields!)
                     print(response.description)
                     
                     
                     switch response.result {
                     case .success:
                         print("QRCode find")
-                        if let JSON = response.result.value {
-                            print("JSON: \(JSON)")
+                        if let result = response.result.value {
+                            print("JSON: \(result)")
+                            
+                            let json = JSON(result)
+                            
+                            let id = json["_id"].stringValue
+                            let nom = json["perso"]["nom"].stringValue
+                            let prenom = json["perso"]["prenom"].stringValue
+                            let type = json["perso"]["type"].stringValue
+                            let tags = json["tags"].arrayValue
+                            
+                            UserDefaults.standard.set(id, forKey: "user_id")
+                            UserDefaults.standard.set(nom, forKey: "user_nom")
+                            UserDefaults.standard.set(prenom, forKey: "user_prenom")
+                            UserDefaults.standard.set(type, forKey: "user_type")
+                            //UserDefaults.standard.set(tags, forKey: "tags")
+                            
+                            print(UserDefaults.standard.value(forKey: "user_id")!)
+   
                         }
                         self.performSegue(withIdentifier: "auth", sender: self);
 
@@ -132,6 +154,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
                     }
                     
                 }
+                
                 
                 
                 let when = DispatchTime.now() + 3 // change 2 to desired number of seconds

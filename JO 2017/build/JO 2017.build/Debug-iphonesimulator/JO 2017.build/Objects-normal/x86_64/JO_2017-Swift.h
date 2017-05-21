@@ -137,6 +137,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import Foundation;
 @import ObjectiveC;
 @import MapKit;
+@import AVFoundation;
+@import Alamofire;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -171,6 +173,7 @@ SWIFT_CLASS("_TtC7JO_201724DetailFeedViewController")
 @interface DetailFeedViewController : UIViewController
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified t;
 @property (nonatomic, weak) IBOutlet UITextView * _Null_unspecified content;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified tags;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
@@ -183,6 +186,7 @@ SWIFT_CLASS("_TtC7JO_201724DetailFeedViewController")
 
 SWIFT_CLASS("_TtC7JO_201718FeedViewController")
 @interface FeedViewController : UIViewController <UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, copy) NSString * _Nonnull tag;
 @property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified tableView;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
@@ -300,6 +304,27 @@ SWIFT_CLASS("_TtC7JO_201717MapViewController")
 @property (nonatomic, readonly) BOOL isBool;
 @end
 
+@class UIView;
+@class AVCaptureSession;
+@class AVCaptureVideoPreviewLayer;
+@class AVCaptureOutput;
+@class AVCaptureConnection;
+
+SWIFT_CLASS("_TtC7JO_201724ScanQRCodeViewController")
+@interface ScanQRCodeViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate>
+@property (nonatomic, strong) IBOutlet UILabel * _Null_unspecified messageLabel;
+@property (nonatomic, strong) IBOutlet UIView * _Null_unspecified topbar;
+@property (nonatomic, strong) AVCaptureSession * _Nullable captureSession;
+@property (nonatomic, strong) AVCaptureVideoPreviewLayer * _Nullable videoPreviewLayer;
+@property (nonatomic, strong) UIView * _Nullable qrCodeFrameView;
+@property (nonatomic) BOOL readed;
+- (void)viewDidLoad;
+- (void)captureOutput:(AVCaptureOutput * _Null_unspecified)captureOutput didOutputMetadataObjects:(NSArray * _Null_unspecified)metadataObjects fromConnection:(AVCaptureConnection * _Null_unspecified)connection;
+- (void)didReceiveMemoryWarning;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 SWIFT_CLASS("_TtC7JO_201716SearchAnnotation")
 @interface SearchAnnotation : NSObject <MKAnnotation>
@@ -309,6 +334,23 @@ SWIFT_CLASS("_TtC7JO_201716SearchAnnotation")
 @property (nonatomic, copy) NSString * _Null_unspecified subtitle;
 - (nonnull instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate name:(NSString * _Nonnull)name OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
+@end
+
+
+SWIFT_CLASS("_TtC7JO_201723SearchTagViewController")
+@interface SearchTagViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull tags;
+@property (nonatomic, copy) NSString * _Nonnull selectedTag;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nonnull headers;
+@property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified tableView;
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
