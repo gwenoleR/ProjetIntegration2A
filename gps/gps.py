@@ -13,7 +13,6 @@ def initDatabase():
     db = client['jo']
     return db
 
-
 @app.route("/getAllPoi",methods=['GET'])
 def getAllPoi():
     poiCollection = initDatabase().poi
@@ -28,38 +27,87 @@ def getAllPoi():
     resp.headers['Content-Type'] = 'application/json'
     return resp
 
-@app.route("/userInPoi",methods=['POST'])
-def userInPoi():
+@app.route("/userPoi",methods=['POST'])
+def userPoi():
     data = json.loads(request.data)
-    try:
-        u_id = str(data["_id"])
-        poi_id = str(data["poi_id"])
-    except KeyError:
+    jsonFields = checkRequest(data,["_id","poi_id","inOut"])
+    if jsonFields == None:
         resp = make_response("Mauvais formatage du JSON",400)
         return resp
-    db = initDatabase()
-    userCollection = db.user
-    user_oid = ObjectId(u_id)
-    isUser = userCollection.find_one({"_id":user_oid})
-    if isUser == None:
+    else:
+        u_id = jsonFields[0]
+        poi_id = jsonFields[1]
+        inOut = jsonFields[2]
+    if userExist(u_id) == False:
         resp = make_response("L'utilisateur n'existe pas !",400)
         return resp
-    else:
-        poiCollection = db.poi
-        poi_oid = ObjectId(poi_id)
-        isPoi = poiCollection.find_one({"_id":poi_oid})
-        if isPoi == None:
+    elif poiExist(poi_id) == False:
             resp = make_response("Le poi n'existe pas !",400)
             return resp
-    isUserInPoi = poiCollection.find_one({"users":u_id})
-    print u_id
-    print(isUserInPoi != None)
+    if inOut not in ["in","out"]:
+        resp = make_response("Mauvaise instruction in/out",400)
+        return resp
+
+    poiCollection = initDatabase().poi
+    isUserInPoi = poiCollection.find_one({"users":u_id,"_id":ObjectId(poi_id)})
     if isUserInPoi == None:
-        poiCollection.update({'_id': poi_oid}, {'$push': {'users': u_id}})
-        resp = make_response("Modification bien prise en compte",200)
+        if inOut == "in":
+            oldPoi = poiCollection.find_one({"users":u_id})
+            if oldPoi != None:
+                poiCollection.update({'_id': oldPoi["_id"]}, {'$pull': {'users': u_id}})
+            poiCollection.update({'_id': ObjectId(poi_id)}, {'$push': {'users': u_id}})
+            resp = make_response("Modification d'entree en zone bien prise en compte",200)
+        else:
+            resp = make_response("L'utilisateur n'etait pas dans la zone !",400)
+            return resp
     else:
-        resp = make_response("L'utilisateur est deja dans la zone !",400)
+        if inOut == "out":
+            poiCollection.update({'_id': ObjectId(poi_id)}, {'$pull': {'users': u_id}})
+            resp = make_response("Modification de sortie de zone bien prise en compte",200)
+        else:
+            resp = make_response("L'utilisateur est deja dans la zone !",400)
     return resp
+
+@app.route("/getUsersInPoi",methods=["POST"])
+def getUsersInPoi():
+    data = json.loads(request.data)
+    jsonFields = checkRequest(data,["poi_id"])
+    if jsonFields == None:
+        resp = make_response("Mauvais formatage du JSON",400)
+        return resp
+    else:
+        poi_id = jsonFields[0]
+    poiCollection = initDatabase().poi
+    result = poiCollection.find_one({"_id":ObjectId(poi_id)})
+    if result == None:
+        resp = make_response("Le poi demande n'existe pas !",400)
+        return resp
+    else:
+        users = result["users"]
+        resp = make_response(json.dumps(users),200)
+        resp.headers['Content-Type'] = 'application/json'
+    return resp
+
+def checkRequest(data,required):
+    try:
+        d = []
+        for r in required:
+            d.append(str(data[r]))
+    except KeyError:
+        return None
+    return d
+
+def userExist(uid):
+    userCollection = initDatabase().user
+    oid = ObjectId(uid)
+    result = userCollection.find_one({"_id":oid})
+    return result != None
+
+def poiExist(poiid):
+    poiCollection = initDatabase().poi
+    oid = ObjectId(poiid)
+    result = poiCollection.find_one({"_id":oid})
+    return result != None
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
