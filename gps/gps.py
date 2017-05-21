@@ -83,7 +83,7 @@ def getUsersInPoi():
         resp = make_response("Le poi demande n'existe pas !",400)
         return resp
     else:
-        users = result["users"]
+        users = { "users" : result["users"] }
         resp = make_response(json.dumps(users),200)
         resp.headers['Content-Type'] = 'application/json'
     return resp
