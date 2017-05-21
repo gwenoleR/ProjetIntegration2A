@@ -18,10 +18,12 @@ def initDatabase():
 def getAllPoi():
     poiCollection = initDatabase().poi
     pois = poiCollection.find({})
-    toSend = []
+    lesPoi = []
     for p in pois:
         p["_id"] = str(p["_id"])
-        toSend.append(p)
+        lesPoi.append(p)
+    toSend = {"poi" : lesPoi}
+    print(toSend)
     resp = make_response(json.dumps(toSend),200)
     resp.headers['Content-Type'] = 'application/json'
     return resp
