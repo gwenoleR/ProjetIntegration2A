@@ -32,3 +32,4 @@ Routes :
                           { "users" : [ USER_ID_1 , USER_ID_2 , ... ] }             200 OK
                           "Le poi n'existe pas"                                     400 BAD REQUEST
                           "Mauvais formatage du JSON"                               400 BAD REQUEST
+        Renvoie l'ensemble des utilisateurs présent dans une zone
