@@ -1,6 +1,12 @@
 from flask import Flask, request, make_response, render_template
 import requests
 import json
+from OpenSSL import SSL 
+import os
+
+context = SSL.Context(SSL.SSLv23_METHOD)
+cer = os.path.join(os.path.dirname(__file__), 'resources/udara.com.crt')
+key = os.path.join(os.path.dirname(__file__), 'resources/udara.com.key')
 
 url = "http://soc.catala.ovh/v2/translate"
 drapeauxPays = ["🇺🇸", "🇪🇸", "🇫🇷", "🇩🇪", "🇮🇹", "🇧🇷"]
@@ -38,4 +44,5 @@ def pageBeacon():
 if __name__ == '__main__':    
     
     getTraduction()
-    app.run(host = "0.0.0.0")
+    context = (cer, key)
+    app.run( host='0.0.0.0', ssl_context=context)
