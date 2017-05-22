@@ -35,9 +35,6 @@ class StdOutListener(StreamListener):
     def on_error(self, status):
         print (status)
 
-
-
-
 r = redis.StrictRedis(host='localhost', port=6379, db=0)
 
 test = tweepy.Cursor(api.search, q='JOIMERIR').items(10)
@@ -57,6 +54,6 @@ for tweet in test:
     r.publish('JO_Soc', json.dumps(infoToSend))
 listener = StdOutListener()
 stream = Stream(auth, listener)
-stream.filter(track=['JOIMERIR'])
+stream.filter(track=['JOIMERIR', 'JO'])
 
    
