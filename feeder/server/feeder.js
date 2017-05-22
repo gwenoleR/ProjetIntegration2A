@@ -11,7 +11,7 @@ let MongoClient = require('mongodb').MongoClient
     , assert = require('assert');
 
 
-let parameters = require('../JSON/params.json')
+let parameters = require('../JSON/params.json');
 
 
 // Connection URL
@@ -32,8 +32,6 @@ app.post("/initUserTags", function (req, res) {
 
 app.get("/getPostAbout/:tag", function (req, res) {
     console.log(req.params)
-
-
     response = null;
     try {
         MongoClient.connect(url, function (err, db) {
