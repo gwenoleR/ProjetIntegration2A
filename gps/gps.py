@@ -35,7 +35,7 @@ def userPoi():
         response = {"resp":"Mauvais formatage du JSON"}
         resp = make_response(json.dumps(response),400)
         resp.headers['Content-Type'] = 'application/json'
-        print (resp)
+        print (response)
         return resp
     else:
         u_id = jsonFields[0]
@@ -45,19 +45,19 @@ def userPoi():
         response = {"resp":"L'utilisateur n'existe pas !"}
         resp = make_response(json.dumps(response),400)
         resp.headers['Content-Type'] = 'application/json'
-        print (resp)
+        print (response)
         return resp
     elif poiExist(poi_id) == False:
             response = {"resp":"Le poi n'existe pas !"}
             resp = make_response(json.dumps(response),400)
             resp.headers['Content-Type'] = 'application/json'
-            print (resp)
+            print (response)
             return resp
     if inOut not in ["in","out"]:
         response = {"resp":"Mauvaise instruction in/out"}
         resp = make_response(json.dumps(response),400)
         resp.headers['Content-Type'] = 'application/json'
-        print (resp)
+        print (response)
         return resp
 
     poiCollection = initDatabase().poi
@@ -71,13 +71,13 @@ def userPoi():
             response = {"resp":"Modification d'entree en zone bien prise en compte"}
             resp = make_response(json.dumps(response),200)
             resp.headers['Content-Type'] = 'application/json'
-            print(resp)
+            print(response)
             return resp
         else:
             response = {"resp":"L'utilisateur n'etait pas dans la zone !"}
             resp = make_response(json.dumps(response),400)
             resp.headers['Content-Type'] = 'application/json'
-            print(resp)
+            print(response)
             return resp
     else:
         if inOut == "out":
@@ -85,12 +85,12 @@ def userPoi():
             response = {"resp":"Modification de sortie de zone bien prise en compte"}
             resp = make_response(json.dumps(response),200)
             resp.headers['Content-Type'] = 'application/json'
-            print(resp)
+            print(response)
         else:
             response = {"resp":"L'utilisateur est deja dans la zone !"}
             resp = make_response(json.dumps(response),400)
             resp.headers['Content-Type'] = 'application/json'
-            print(resp)
+            print(response)
     return resp
 
 @app.route("/getUsersInPoi",methods=["POST"])
