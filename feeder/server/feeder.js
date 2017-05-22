@@ -135,8 +135,12 @@ app.post('/updateTagWeight', function (req, res) {
     //We'll wait the end signal of the request to treat it's content.
     req.on('end', function () {
         post = qs.parse(body);
+
+
         //let idUser = new ObjectID(post._id);
         console.log("post request :", post);
+        let idToFind = ObjectID(post._id);
+        console.log("id : ", idToFind)
         try {
             MongoClient.connect(url, function (err, db) {
                 assert.equal(null, err);
@@ -144,10 +148,10 @@ app.post('/updateTagWeight', function (req, res) {
                 console.log("Connected correctly to server");
                 db.collection('user').findOneAndUpdate(
                     {
-                        _id: post._id,
+                        _id: idToFind,
                         "tags.name": post.tag
                     }, {
-                        $set: {"tags.weight": post.weight}
+                        $set: {"tags.$.weight": post.weight}
                     }, {
                         returnOriginal: true
                         , upsert: true
