@@ -24,8 +24,34 @@ MongoClient.connect(url, function (err, db) {
 });
 
 
+app.post("/initUserTags", function (res, req) {
+    res.sendStatus(201)
+})
+
+
 app.get("/getPostAbout/:tag", function (req, res) {
     console.log(req.params)
+
+
+    response = null;
+    try {
+        MongoClient.connect(url, function (err, db) {
+            assert.equal(null, err);
+            console.log("Fetching result about", req.params.tag);
+            db.collection('tags').find({}).toArray(function (err, results) {
+                assert.equal(err, null);
+                response = results;
+                console.log(response);
+                res.send(response);
+            });
+            db.close();
+        });
+
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(500)
+    }
+
     if (req.params.tag == 'sport') {
         res.send([{
             "title": "John is dead :(",
