@@ -66,11 +66,6 @@ app.get('/getTags', function (req, res) {
 });
 
 
-app.post('/checkQrCode', function (req, res) {
-    response = null
-});
-
-
 app.get('/getLastPost', function (req, res) {
     response = null;
     try {
@@ -135,8 +130,6 @@ app.post('/updateTagWeight', function (req, res) {
     //We'll wait the end signal of the request to treat it's content.
     req.on('end', function () {
         post = qs.parse(body);
-
-
         //let idUser = new ObjectID(post._id);
         console.log("post request :", post);
         let idToFind = ObjectID(post._id);
@@ -151,7 +144,7 @@ app.post('/updateTagWeight', function (req, res) {
                         _id: idToFind,
                         "tags.name": post.tag
                     }, {
-                        $set: {"tags.$.weight": post.weight}
+                        $set: {"tags.$.weight": parseInt(post.weight)}
                     }, {
                         returnOriginal: true
                         , upsert: true
@@ -274,8 +267,6 @@ function getNextSequenceValue(post) {
             })
         });
     })
-
-
 }
 
 
@@ -324,8 +315,57 @@ app.post('/post_new', function (req, res) {
 
 
 app.post('/saveDest', function (req, res) {
-    console.log("saveDest received")
-    res.sendStatus(200);
+
+
+    body = '';
+    post = null;
+    req.on('data', function (data) {
+        body += data;
+    });
+
+    req.on('end', function () {
+        post = qs.parse(body);
+        //let idUser = new ObjectID(post._id);
+        console.log("post request :", post);
+        let idToFind = ObjectID(post._id);
+        console.log("id : ", idToFind)
+        try {
+            MongoClient.connect(url, function (err, db) {
+                assert.equal(null, err);
+                console.log("Connected correctly to server");
+
+                try {
+                    db.collection('user').findOneAndUpdate(
+                        {
+                            _id: idToFind,
+                            "dest.label": post.label
+                        }, {
+                            $set: {
+                                "dest.$.coord.lat": post.lat,
+                                "dest.$.coord.long": post.lat,
+                                "dest.$.label": post.label,
+                                "dest.$.weight": 100
+                            }
+                        }, {
+                            returnOriginal: true
+                            , upsert: false
+                        }, function (err, r) {
+                            assert.equal(null, err);
+
+                            db.close();
+                        })
+
+                } catch (e) {
+                    console.log(e)
+                }
+            });
+
+            res.sendStatus(201)
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(400)
+        }
+    });
 });
 
 
