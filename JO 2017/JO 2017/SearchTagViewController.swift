@@ -14,11 +14,6 @@ class SearchTagViewController: UIViewController, UITableViewDelegate, UITableVie
     var tags : [String] = []
     var selectedTag : String = ""
     
-    let headers: HTTPHeaders = [
-        "Host": "feeder.soc.docker",
-        ]
-
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -27,7 +22,7 @@ class SearchTagViewController: UIViewController, UITableViewDelegate, UITableVie
         self.title = "Tags"
                 
         //GET: /getTags
-        Alamofire.request("http://soc.catala.ovh/getTags",headers:headers).validate().responseJSON { response in
+        Alamofire.request("http://feeder.soc.catala.ovh/getTags").validate().responseJSON { response in
             switch response.result {
             case .success:
                 //print(response.result.value ?? "")
@@ -70,21 +65,23 @@ class SearchTagViewController: UIViewController, UITableViewDelegate, UITableVie
         selectedTag = tags[indexPath.row]
         
         let parameters: Parameters = [
-            "_id": UserDefaults.standard.value(forKey: "user_id")!,
+            "_id": UserDefaults.standard.string(forKey: "user_id")!,
             "tag": selectedTag,
-            "weight": 10
+            "weight": 5
             
         ]
-        Alamofire.request("http://soc.catala.ovh/updateTagWeight", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers:headers).validate().responseJSON{ response in
-            switch response.result {
-            case .success:
-                print("Success")
-                //print(UserDefaults.standard.value(forKey: "tags")!)
-                
-                
-            case .failure(let error):
-                print("error : \(error)")
+        
+        print(parameters)
+        
+        
+        Alamofire.request("http://feeder.soc.catala.ovh/updateTagWeight", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseData{ response in
+            
+            debugPrint("All Response Info: \(response)")
+            
+            if let data = response.result.value, let utf8Text = String(data: data, encoding: .utf8) {
+                print("Data: \(utf8Text)")
             }
+            
         }
         
         self.performSegue(withIdentifier: "getPost", sender: indexPath);

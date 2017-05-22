@@ -181,6 +181,7 @@ SWIFT_CLASS("_TtC7JO_201724DetailFeedViewController")
 @end
 
 @class UITableView;
+@class UIRefreshControl;
 @class UITableViewCell;
 @class UIStoryboardSegue;
 
@@ -188,6 +189,9 @@ SWIFT_CLASS("_TtC7JO_201718FeedViewController")
 @interface FeedViewController : UIViewController <UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, copy) NSString * _Nonnull tag;
 @property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified tableView;
+@property (nonatomic, strong) UIRefreshControl * _Nonnull refreshControl;
+- (void)handleRefreshWithRefreshControl:(UIRefreshControl * _Nonnull)refreshControl;
+- (void)getPost;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
@@ -211,6 +215,25 @@ SWIFT_CLASS("_TtC7JO_201713Geotification")
 - (void)encodeWithCoder:(NSCoder * _Nonnull)coder;
 - (BOOL)isEqualAt:(Geotification * _Nonnull)geotification SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
+@end
+
+@class UITextField;
+
+SWIFT_CLASS("_TtC7JO_201720LaunchViewController")
+@interface LaunchViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull tags;
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull interestTag;
+@property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified interets;
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified twitterAccount;
+- (IBAction)go:(id _Nonnull)sender;
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)tableView:(UITableView * _Nonnull)tableView didDeselectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class MKMapItem;
@@ -281,6 +304,13 @@ SWIFT_CLASS("_TtC7JO_201717MapViewController")
 - (void)dropPinZoomInPlacemark:(MKPlacemark * _Nonnull)placemark;
 @end
 
+
+@interface MapViewController (SWIFT_EXTENSION(JO_2017)) <CLLocationManagerDelegate>
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager monitoringDidFailForRegion:(CLRegion * _Nullable)region withError:(NSError * _Nonnull)error;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
+@end
+
 @class MKAnnotationView;
 @protocol MKOverlay;
 @class MKOverlayRenderer;
@@ -290,13 +320,6 @@ SWIFT_CLASS("_TtC7JO_201717MapViewController")
 - (MKAnnotationView * _Nullable)mapView:(MKMapView * _Nonnull)mapView viewForAnnotation:(id <MKAnnotation> _Nonnull)annotation SWIFT_WARN_UNUSED_RESULT;
 - (MKOverlayRenderer * _Nonnull)mapView:(MKMapView * _Nonnull)mapView rendererForOverlay:(id <MKOverlay> _Nonnull)overlay SWIFT_WARN_UNUSED_RESULT;
 - (void)mapView:(MKMapView * _Nonnull)mapView annotationView:(MKAnnotationView * _Nonnull)view calloutAccessoryControlTapped:(UIControl * _Nonnull)control;
-@end
-
-
-@interface MapViewController (SWIFT_EXTENSION(JO_2017)) <CLLocationManagerDelegate>
-- (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
-- (void)locationManager:(CLLocationManager * _Nonnull)manager monitoringDidFailForRegion:(CLRegion * _Nullable)region withError:(NSError * _Nonnull)error;
-- (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
 @end
 
 

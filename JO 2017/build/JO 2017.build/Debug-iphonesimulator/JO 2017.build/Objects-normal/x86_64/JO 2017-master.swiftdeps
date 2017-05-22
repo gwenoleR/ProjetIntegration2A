@@ -1,15 +1,16 @@
 version: "Apple Swift version 3.1 (swiftlang-802.0.53 clang-802.0.42)"
 options: "cad142d45c515b92536bf127152903a3"
-build_time: [548675965, 137351000]
+build_time: [548778716, 123392000]
 inputs:
   "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/SearchAnnotation.swift": [548410714, 0]
   "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/ScanQRCodeViewController.swift": [548615940, 0]
   "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/DetailFeedViewController.swift": [548432549, 0]
   "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/Geotification.swift": [548252588, 0]
-  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/MapViewController.swift": [548412711, 0]
-  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/SearchTagViewController.swift": [548609919, 0]
-  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/LocationSearchTable.swift": [548415272, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/MapViewController.swift": [548721714, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/SearchTagViewController.swift": [548761663, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/LocationSearchTable.swift": [548753383, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/LaunchViewController.swift": [548778714, 0]
   "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/Utilities.swift": [548252588, 0]
   "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/SwiftyJSON.swift": [548613435, 0]
-  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/FeedViewController.swift": [548596268, 0]
-  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/AppDelegate.swift": [548675908, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/FeedViewController.swift": [548769802, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/AppDelegate.swift": [548761450, 0]

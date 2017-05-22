@@ -14,6 +14,7 @@ provides-dynamic-lookup:
 depends-top-level:
 - !private "!="
 - !private "=="
+- !private "Alamofire"
 - "AppDelegate"
 - !private "Array"
 - "AssignmentPrecedence"
@@ -26,8 +27,10 @@ depends-top-level:
 - "CastingPrecedence"
 - !private "Data"
 - !private "Geotification"
+- !private "JSONEncoding"
 - !private "NSData"
 - !private "NSKeyedUnarchiver"
+- !private "Parameters"
 - !private "PreferencesKeys"
 - "String"
 - !private "StringLiteralType"
@@ -43,7 +46,9 @@ depends-top-level:
 - !private "UserDefaults"
 - !private "print"
 depends-member:
+- !private ["Ps9AnyObject", "Alamofire"]
 - ["Ps9AnyObject", "CLLocationManager"]
+- !private ["Ps9AnyObject", "JSONEncoding"]
 - !private ["Ps9AnyObject", "NSKeyedUnarchiver"]
 - !private ["Ps9AnyObject", "PreferencesKeys"]
 - !private ["Ps9AnyObject", "UIApplication"]
@@ -67,7 +72,6 @@ depends-member:
 - ["Ps9AnyObject", "applicationWillTerminate"]
 - !private ["Ps9AnyObject", "array"]
 - !private ["Ps9AnyObject", "cancelAllLocalNotifications"]
-- !private ["Ps9AnyObject", "center"]
 - !private ["Ps9AnyObject", "delegate"]
 - !private ["Ps9AnyObject", "handleEvent"]
 - !private ["Ps9AnyObject", "identifier"]
@@ -83,23 +87,28 @@ depends-member:
 - !private ["Ps9AnyObject", "print"]
 - !private ["Ps9AnyObject", "registerUserNotificationSettings"]
 - !private ["Ps9AnyObject", "requestAlwaysAuthorization"]
+- !private ["Ps9AnyObject", "responseJSON"]
 - !private ["Ps9AnyObject", "rootViewController"]
 - !private ["Ps9AnyObject", "shared"]
 - !private ["Ps9AnyObject", "showAlert"]
 - !private ["Ps9AnyObject", "soundName"]
 - !private ["Ps9AnyObject", "standard"]
 - !private ["Ps9AnyObject", "unarchiveObject"]
+- !private ["Ps9AnyObject", "validate"]
 - !private ["Ps9AnyObject", "value"]
 - ["Ps9AnyObject", "window"]
 - ["Ps9AnyObject", ""]
+- !private ["C7JO_201711AppDelegate", "Alamofire"]
 - ["C7JO_201711AppDelegate", "Bool"]
 - !private ["C7JO_201711AppDelegate", "CLCircularRegion"]
 - ["C7JO_201711AppDelegate", "CLLocationManager"]
 - ["C7JO_201711AppDelegate", "CLRegion"]
 - !private ["C7JO_201711AppDelegate", "Data"]
 - !private ["C7JO_201711AppDelegate", "Geotification"]
+- !private ["C7JO_201711AppDelegate", "JSONEncoding"]
 - !private ["C7JO_201711AppDelegate", "NSData"]
 - !private ["C7JO_201711AppDelegate", "NSKeyedUnarchiver"]
+- !private ["C7JO_201711AppDelegate", "Parameters"]
 - !private ["C7JO_201711AppDelegate", "PreferencesKeys"]
 - ["C7JO_201711AppDelegate", "String"]
 - ["C7JO_201711AppDelegate", "UIApplication"]
@@ -140,14 +149,13 @@ depends-member:
 - !private ["Sb", "_getBuiltinLogicValue"]
 - !private ["PSo15CALayerDelegate", "makeKeyAndVisible"]
 - !private ["PSo15CALayerDelegate", "rootViewController"]
-- !private ["CSo16CLCircularRegion", "center"]
 - !private ["CSo16CLCircularRegion", "identifier"]
-- !private ["VSC22CLLocationCoordinate2D", "latitude"]
-- !private ["VSC22CLLocationCoordinate2D", "longitude"]
 - !private ["CSo17CLLocationManager", "delegate"]
 - ["CSo17CLLocationManager", "init"]
 - !private ["CSo17CLLocationManager", "requestAlwaysAuthorization"]
+- !private ["PSo25CLLocationManagerDelegate", "Alamofire"]
 - ["PSo25CLLocationManagerDelegate", "CLLocationManager"]
+- !private ["PSo25CLLocationManagerDelegate", "JSONEncoding"]
 - !private ["PSo25CLLocationManagerDelegate", "NSKeyedUnarchiver"]
 - !private ["PSo25CLLocationManagerDelegate", "PreferencesKeys"]
 - !private ["PSo25CLLocationManagerDelegate", "UIApplication"]
@@ -176,9 +184,10 @@ depends-member:
 - !private ["PSo25CLLocationManagerDelegate", "print"]
 - ["PSo25CLLocationManagerDelegate", "window"]
 - ["PSo25CLLocationManagerDelegate", ""]
-- !private ["CSo8CLRegion", "center"]
 - !private ["CSo8CLRegion", "identifier"]
+- !private ["Ps7CVarArg", "Alamofire"]
 - ["Ps7CVarArg", "CLLocationManager"]
+- !private ["Ps7CVarArg", "JSONEncoding"]
 - !private ["Ps7CVarArg", "NSKeyedUnarchiver"]
 - !private ["Ps7CVarArg", "PreferencesKeys"]
 - !private ["Ps7CVarArg", "UIApplication"]
@@ -202,7 +211,6 @@ depends-member:
 - ["Ps7CVarArg", "applicationWillTerminate"]
 - !private ["Ps7CVarArg", "array"]
 - !private ["Ps7CVarArg", "cancelAllLocalNotifications"]
-- !private ["Ps7CVarArg", "center"]
 - !private ["Ps7CVarArg", "delegate"]
 - !private ["Ps7CVarArg", "handleEvent"]
 - !private ["Ps7CVarArg", "identifier"]
@@ -234,7 +242,9 @@ depends-member:
 - !private ["Ps10Collection", "map"]
 - !private ["Ps10Collection", "subscript"]
 - !private ["Ps10Comparable", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "Alamofire"]
 - ["Ps28CustomDebugStringConvertible", "CLLocationManager"]
+- !private ["Ps28CustomDebugStringConvertible", "JSONEncoding"]
 - !private ["Ps28CustomDebugStringConvertible", "NSKeyedUnarchiver"]
 - !private ["Ps28CustomDebugStringConvertible", "PreferencesKeys"]
 - !private ["Ps28CustomDebugStringConvertible", "UIApplication"]
@@ -258,8 +268,8 @@ depends-member:
 - ["Ps28CustomDebugStringConvertible", "applicationWillTerminate"]
 - !private ["Ps28CustomDebugStringConvertible", "array"]
 - !private ["Ps28CustomDebugStringConvertible", "cancelAllLocalNotifications"]
-- !private ["Ps28CustomDebugStringConvertible", "center"]
 - !private ["Ps28CustomDebugStringConvertible", "delegate"]
+- !private ["Ps28CustomDebugStringConvertible", "failure"]
 - !private ["Ps28CustomDebugStringConvertible", "handleEvent"]
 - !private ["Ps28CustomDebugStringConvertible", "identifier"]
 - !private ["Ps28CustomDebugStringConvertible", "index"]
@@ -276,13 +286,17 @@ depends-member:
 - !private ["Ps28CustomDebugStringConvertible", "print"]
 - !private ["Ps28CustomDebugStringConvertible", "registerUserNotificationSettings"]
 - !private ["Ps28CustomDebugStringConvertible", "requestAlwaysAuthorization"]
+- !private ["Ps28CustomDebugStringConvertible", "responseJSON"]
+- !private ["Ps28CustomDebugStringConvertible", "result"]
 - !private ["Ps28CustomDebugStringConvertible", "rootViewController"]
 - !private ["Ps28CustomDebugStringConvertible", "shared"]
 - !private ["Ps28CustomDebugStringConvertible", "showAlert"]
 - !private ["Ps28CustomDebugStringConvertible", "soundName"]
 - !private ["Ps28CustomDebugStringConvertible", "standard"]
 - !private ["Ps28CustomDebugStringConvertible", "subscript"]
+- !private ["Ps28CustomDebugStringConvertible", "success"]
 - !private ["Ps28CustomDebugStringConvertible", "unarchiveObject"]
+- !private ["Ps28CustomDebugStringConvertible", "validate"]
 - !private ["Ps28CustomDebugStringConvertible", "value"]
 - ["Ps28CustomDebugStringConvertible", "window"]
 - ["Ps28CustomDebugStringConvertible", ""]
@@ -293,7 +307,9 @@ depends-member:
 - !private ["Ps17CustomReflectable", "init"]
 - !private ["Ps17CustomReflectable", "map"]
 - !private ["Ps17CustomReflectable", "subscript"]
+- !private ["Ps23CustomStringConvertible", "Alamofire"]
 - ["Ps23CustomStringConvertible", "CLLocationManager"]
+- !private ["Ps23CustomStringConvertible", "JSONEncoding"]
 - !private ["Ps23CustomStringConvertible", "NSKeyedUnarchiver"]
 - !private ["Ps23CustomStringConvertible", "PreferencesKeys"]
 - !private ["Ps23CustomStringConvertible", "UIApplication"]
@@ -318,8 +334,8 @@ depends-member:
 - ["Ps23CustomStringConvertible", "applicationWillTerminate"]
 - !private ["Ps23CustomStringConvertible", "array"]
 - !private ["Ps23CustomStringConvertible", "cancelAllLocalNotifications"]
-- !private ["Ps23CustomStringConvertible", "center"]
 - !private ["Ps23CustomStringConvertible", "delegate"]
+- !private ["Ps23CustomStringConvertible", "failure"]
 - !private ["Ps23CustomStringConvertible", "handleEvent"]
 - !private ["Ps23CustomStringConvertible", "identifier"]
 - !private ["Ps23CustomStringConvertible", "index"]
@@ -336,17 +352,26 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "print"]
 - !private ["Ps23CustomStringConvertible", "registerUserNotificationSettings"]
 - !private ["Ps23CustomStringConvertible", "requestAlwaysAuthorization"]
+- !private ["Ps23CustomStringConvertible", "responseJSON"]
+- !private ["Ps23CustomStringConvertible", "result"]
 - !private ["Ps23CustomStringConvertible", "rootViewController"]
 - !private ["Ps23CustomStringConvertible", "shared"]
 - !private ["Ps23CustomStringConvertible", "showAlert"]
 - !private ["Ps23CustomStringConvertible", "soundName"]
 - !private ["Ps23CustomStringConvertible", "standard"]
 - !private ["Ps23CustomStringConvertible", "subscript"]
+- !private ["Ps23CustomStringConvertible", "success"]
 - !private ["Ps23CustomStringConvertible", "unarchiveObject"]
+- !private ["Ps23CustomStringConvertible", "validate"]
 - !private ["Ps23CustomStringConvertible", "value"]
 - ["Ps23CustomStringConvertible", "window"]
 - ["Ps23CustomStringConvertible", ""]
+- !private ["C9Alamofire11DataRequest", "responseJSON"]
+- !private ["C9Alamofire11DataRequest", "validate"]
+- !private ["V9Alamofire12DataResponse", "result"]
+- !private ["Ps9Equatable", "Alamofire"]
 - ["Ps9Equatable", "CLLocationManager"]
+- !private ["Ps9Equatable", "JSONEncoding"]
 - !private ["Ps9Equatable", "NSKeyedUnarchiver"]
 - !private ["Ps9Equatable", "PreferencesKeys"]
 - !private ["Ps9Equatable", "UIApplication"]
@@ -374,7 +399,6 @@ depends-member:
 - !private ["Ps9Equatable", "array"]
 - !private ["Ps9Equatable", "badge"]
 - !private ["Ps9Equatable", "cancelAllLocalNotifications"]
-- !private ["Ps9Equatable", "center"]
 - !private ["Ps9Equatable", "delegate"]
 - !private ["Ps9Equatable", "handleEvent"]
 - !private ["Ps9Equatable", "identifier"]
@@ -386,6 +410,7 @@ depends-member:
 - ["Ps9Equatable", "locationManagerShouldDisplayHeadingCalibration"]
 - !private ["Ps9Equatable", "makeKeyAndVisible"]
 - !private ["Ps9Equatable", "note"]
+- !private ["Ps9Equatable", "post"]
 - !private ["Ps9Equatable", "presentLocalNotificationNow"]
 - !private ["Ps9Equatable", "print"]
 - !private ["Ps9Equatable", "registerUserNotificationSettings"]
@@ -412,7 +437,10 @@ depends-member:
 - !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
 - !private ["C7JO_201713Geotification", "identifier"]
 - !private ["C7JO_201713Geotification", "note"]
+- !private ["O9Alamofire10HTTPMethod", "post"]
+- !private ["Ps8Hashable", "Alamofire"]
 - ["Ps8Hashable", "CLLocationManager"]
+- !private ["Ps8Hashable", "JSONEncoding"]
 - !private ["Ps8Hashable", "NSKeyedUnarchiver"]
 - !private ["Ps8Hashable", "PreferencesKeys"]
 - !private ["Ps8Hashable", "UIApplication"]
@@ -438,7 +466,6 @@ depends-member:
 - ["Ps8Hashable", "applicationWillTerminate"]
 - !private ["Ps8Hashable", "array"]
 - !private ["Ps8Hashable", "cancelAllLocalNotifications"]
-- !private ["Ps8Hashable", "center"]
 - !private ["Ps8Hashable", "delegate"]
 - !private ["Ps8Hashable", "handleEvent"]
 - !private ["Ps8Hashable", "identifier"]
@@ -450,6 +477,7 @@ depends-member:
 - ["Ps8Hashable", "locationManagerShouldDisplayHeadingCalibration"]
 - !private ["Ps8Hashable", "makeKeyAndVisible"]
 - !private ["Ps8Hashable", "note"]
+- !private ["Ps8Hashable", "post"]
 - !private ["Ps8Hashable", "presentLocalNotificationNow"]
 - !private ["Ps8Hashable", "print"]
 - !private ["Ps8Hashable", "registerUserNotificationSettings"]
@@ -463,6 +491,7 @@ depends-member:
 - !private ["Ps8Hashable", "value"]
 - ["Ps8Hashable", "window"]
 - ["Ps8Hashable", ""]
+- !private ["V9Alamofire12JSONEncoding", "default"]
 - !private ["P7JO_201717JSONSubscriptType", "init"]
 - !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
 - !private ["Ps25LosslessStringConvertible", "init"]
@@ -474,7 +503,6 @@ depends-member:
 - !private ["Ps17MutableCollection", "subscript"]
 - !private ["CSo7NSCoder", "unarchiveObject"]
 - !private ["PSo8NSCoding", "alertBody"]
-- !private ["PSo8NSCoding", "center"]
 - !private ["PSo8NSCoding", "identifier"]
 - !private ["PSo8NSCoding", "init"]
 - !private ["PSo8NSCoding", "makeKeyAndVisible"]
@@ -483,21 +511,23 @@ depends-member:
 - !private ["PSo8NSCoding", "showAlert"]
 - !private ["PSo8NSCoding", "soundName"]
 - !private ["PSo9NSCopying", "alertBody"]
-- !private ["PSo9NSCopying", "center"]
 - !private ["PSo9NSCopying", "identifier"]
 - !private ["PSo9NSCopying", "init"]
 - !private ["PSo9NSCopying", "soundName"]
 - !private ["PSo26NSExtensionRequestHandling", "showAlert"]
 - !private ["CSo17NSKeyedUnarchiver", "unarchiveObject"]
 - !private ["PSo16NSMutableCopying", "init"]
+- !private ["CSo8NSObject", "Alamofire"]
 - ["CSo8NSObject", "Bool"]
 - !private ["CSo8NSObject", "CLCircularRegion"]
 - ["CSo8NSObject", "CLLocationManager"]
 - ["CSo8NSObject", "CLRegion"]
 - !private ["CSo8NSObject", "Data"]
 - !private ["CSo8NSObject", "Geotification"]
+- !private ["CSo8NSObject", "JSONEncoding"]
 - !private ["CSo8NSObject", "NSData"]
 - !private ["CSo8NSObject", "NSKeyedUnarchiver"]
+- !private ["CSo8NSObject", "Parameters"]
 - !private ["CSo8NSObject", "PreferencesKeys"]
 - ["CSo8NSObject", "String"]
 - ["CSo8NSObject", "UIApplication"]
@@ -523,7 +553,6 @@ depends-member:
 - ["CSo8NSObject", "applicationWillTerminate"]
 - !private ["CSo8NSObject", "array"]
 - !private ["CSo8NSObject", "cancelAllLocalNotifications"]
-- !private ["CSo8NSObject", "center"]
 - !private ["CSo8NSObject", "delegate"]
 - ["CSo8NSObject", "handleEvent"]
 - !private ["CSo8NSObject", "identifier"]
@@ -547,7 +576,9 @@ depends-member:
 - !private ["CSo8NSObject", "unarchiveObject"]
 - !private ["CSo8NSObject", "value"]
 - ["CSo8NSObject", "window"]
+- !private ["PSo16NSObjectProtocol", "Alamofire"]
 - ["PSo16NSObjectProtocol", "CLLocationManager"]
+- !private ["PSo16NSObjectProtocol", "JSONEncoding"]
 - !private ["PSo16NSObjectProtocol", "NSKeyedUnarchiver"]
 - !private ["PSo16NSObjectProtocol", "PreferencesKeys"]
 - !private ["PSo16NSObjectProtocol", "UIApplication"]
@@ -571,7 +602,6 @@ depends-member:
 - ["PSo16NSObjectProtocol", "applicationWillTerminate"]
 - !private ["PSo16NSObjectProtocol", "array"]
 - !private ["PSo16NSObjectProtocol", "cancelAllLocalNotifications"]
-- !private ["PSo16NSObjectProtocol", "center"]
 - !private ["PSo16NSObjectProtocol", "delegate"]
 - !private ["PSo16NSObjectProtocol", "handleEvent"]
 - !private ["PSo16NSObjectProtocol", "identifier"]
@@ -596,13 +626,13 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "value"]
 - ["PSo16NSObjectProtocol", "window"]
 - ["PSo16NSObjectProtocol", ""]
-- !private ["PSo14NSSecureCoding", "center"]
 - !private ["PSo14NSSecureCoding", "identifier"]
 - !private ["PSo14NSSecureCoding", "init"]
 - !private ["CSo8NSString", "init"]
 - !private ["Ps9OptionSet", "alert"]
 - !private ["Ps9OptionSet", "badge"]
 - !private ["Ps9OptionSet", "sound"]
+- !private ["P9Alamofire17ParameterEncoding", "default"]
 - !private ["V7JO_201715PreferencesKeys", "savedItems"]
 - !private ["Ps22RandomAccessCollection", "index"]
 - !private ["Ps22RandomAccessCollection", "map"]
@@ -613,7 +643,14 @@ depends-member:
 - !private ["Ps16RawRepresentable", "active"]
 - !private ["Ps16RawRepresentable", "alert"]
 - !private ["Ps16RawRepresentable", "badge"]
+- !private ["Ps16RawRepresentable", "post"]
 - !private ["Ps16RawRepresentable", "sound"]
+- !private ["C9Alamofire7Request", "responseJSON"]
+- !private ["C9Alamofire7Request", "validate"]
+- !private ["P9Alamofire8Response", "result"]
+- !private ["O9Alamofire6Result", "failure"]
+- !private ["O9Alamofire6Result", "success"]
+- !private ["O9Alamofire6Result", "value"]
 - !private ["Ps8Sequence", "index"]
 - !private ["Ps8Sequence", "map"]
 - !private ["Ps8Sequence", "subscript"]
@@ -635,7 +672,9 @@ depends-member:
 - !private ["CSo13UIApplication", "presentLocalNotificationNow"]
 - !private ["CSo13UIApplication", "registerUserNotificationSettings"]
 - !private ["CSo13UIApplication", "shared"]
+- !private ["PSo21UIApplicationDelegate", "Alamofire"]
 - ["PSo21UIApplicationDelegate", "CLLocationManager"]
+- !private ["PSo21UIApplicationDelegate", "JSONEncoding"]
 - !private ["PSo21UIApplicationDelegate", "NSKeyedUnarchiver"]
 - !private ["PSo21UIApplicationDelegate", "PreferencesKeys"]
 - !private ["PSo21UIApplicationDelegate", "UIApplication"]
@@ -678,14 +717,17 @@ depends-member:
 - !private ["CSo19UILocalNotification", "alertBody"]
 - !private ["CSo19UILocalNotification", "init"]
 - !private ["CSo19UILocalNotification", "soundName"]
+- !private ["CSo11UIResponder", "Alamofire"]
 - ["CSo11UIResponder", "Bool"]
 - !private ["CSo11UIResponder", "CLCircularRegion"]
 - ["CSo11UIResponder", "CLLocationManager"]
 - ["CSo11UIResponder", "CLRegion"]
 - !private ["CSo11UIResponder", "Data"]
 - !private ["CSo11UIResponder", "Geotification"]
+- !private ["CSo11UIResponder", "JSONEncoding"]
 - !private ["CSo11UIResponder", "NSData"]
 - !private ["CSo11UIResponder", "NSKeyedUnarchiver"]
+- !private ["CSo11UIResponder", "Parameters"]
 - !private ["CSo11UIResponder", "PreferencesKeys"]
 - ["CSo11UIResponder", "String"]
 - ["CSo11UIResponder", "UIApplication"]
@@ -725,7 +767,9 @@ depends-member:
 - !private ["CSo11UIResponder", "showAlert"]
 - ["CSo11UIResponder", "window"]
 - ["CSo11UIResponder", ""]
+- !private ["PSo30UIResponderStandardEditActions", "Alamofire"]
 - ["PSo30UIResponderStandardEditActions", "CLLocationManager"]
+- !private ["PSo30UIResponderStandardEditActions", "JSONEncoding"]
 - !private ["PSo30UIResponderStandardEditActions", "NSKeyedUnarchiver"]
 - !private ["PSo30UIResponderStandardEditActions", "PreferencesKeys"]
 - !private ["PSo30UIResponderStandardEditActions", "UIApplication"]
@@ -800,7 +844,9 @@ depends-member:
 - !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
 - !private ["Ps33_ExpressibleByStringInterpolation", "init"]
 - !private ["Ps35_HasCustomAnyHashableRepresentation", "init"]
+- !private ["Ps9_Hashable", "Alamofire"]
 - ["Ps9_Hashable", "CLLocationManager"]
+- !private ["Ps9_Hashable", "JSONEncoding"]
 - !private ["Ps9_Hashable", "NSKeyedUnarchiver"]
 - !private ["Ps9_Hashable", "PreferencesKeys"]
 - !private ["Ps9_Hashable", "UIApplication"]
@@ -826,7 +872,6 @@ depends-member:
 - ["Ps9_Hashable", "applicationWillTerminate"]
 - !private ["Ps9_Hashable", "array"]
 - !private ["Ps9_Hashable", "cancelAllLocalNotifications"]
-- !private ["Ps9_Hashable", "center"]
 - !private ["Ps9_Hashable", "delegate"]
 - !private ["Ps9_Hashable", "handleEvent"]
 - !private ["Ps9_Hashable", "identifier"]
@@ -838,6 +883,7 @@ depends-member:
 - ["Ps9_Hashable", "locationManagerShouldDisplayHeadingCalibration"]
 - !private ["Ps9_Hashable", "makeKeyAndVisible"]
 - !private ["Ps9_Hashable", "note"]
+- !private ["Ps9_Hashable", "post"]
 - !private ["Ps9_Hashable", "presentLocalNotificationNow"]
 - !private ["Ps9_Hashable", "print"]
 - !private ["Ps9_Hashable", "registerUserNotificationSettings"]
@@ -863,8 +909,6 @@ depends-member:
 - !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
 - !private ["Ps21_ObjectiveCBridgeable", "index"]
 - !private ["Ps21_ObjectiveCBridgeable", "init"]
-- !private ["Ps21_ObjectiveCBridgeable", "latitude"]
-- !private ["Ps21_ObjectiveCBridgeable", "longitude"]
 - !private ["Ps21_ObjectiveCBridgeable", "map"]
 - !private ["Ps21_ObjectiveCBridgeable", "subscript"]
 - !private ["Ps22_RandomAccessIndexable", "index"]
@@ -881,7 +925,6 @@ depends-nominal:
 - !private "Sb"
 - !private "PSo15CALayerDelegate"
 - !private "CSo16CLCircularRegion"
-- !private "VSC22CLLocationCoordinate2D"
 - "CSo17CLLocationManager"
 - "PSo25CLLocationManagerDelegate"
 - !private "CSo8CLRegion"
@@ -892,6 +935,8 @@ depends-nominal:
 - !private "Ps29CustomPlaygroundQuickLookable"
 - !private "Ps17CustomReflectable"
 - "Ps23CustomStringConvertible"
+- !private "C9Alamofire11DataRequest"
+- !private "V9Alamofire12DataResponse"
 - "Ps9Equatable"
 - !private "Ps25ExpressibleByArrayLiteral"
 - !private "Ps27ExpressibleByBooleanLiteral"
@@ -899,7 +944,9 @@ depends-nominal:
 - !private "Ps26ExpressibleByStringLiteral"
 - !private "Ps33ExpressibleByUnicodeScalarLiteral"
 - !private "C7JO_201713Geotification"
+- !private "O9Alamofire10HTTPMethod"
 - "Ps8Hashable"
+- !private "V9Alamofire12JSONEncoding"
 - !private "P7JO_201717JSONSubscriptType"
 - !private "Ps25LosslessStringConvertible"
 - !private "PSo12MKAnnotation"
@@ -916,10 +963,14 @@ depends-nominal:
 - !private "PSo14NSSecureCoding"
 - !private "CSo8NSString"
 - !private "Ps9OptionSet"
+- !private "P9Alamofire17ParameterEncoding"
 - !private "V7JO_201715PreferencesKeys"
 - !private "Ps22RandomAccessCollection"
 - !private "Ps26RangeReplaceableCollection"
 - !private "Ps16RawRepresentable"
+- !private "C9Alamofire7Request"
+- !private "P9Alamofire8Response"
+- !private "O9Alamofire6Result"
 - !private "Ps8Sequence"
 - !private "Ps10SetAlgebra"
 - !private "SS"

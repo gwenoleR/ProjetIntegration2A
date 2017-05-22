@@ -25,10 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let _ = UserDefaults.standard.value(forKey: "user_id"){
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "TabController")
             
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
+            if let _ = UserDefaults.standard.value(forKey: "first"){
+                let initialViewController = storyboard.instantiateViewController(withIdentifier: "TabController")
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+            }
+            
             
         }
         //MARK : Debug
@@ -68,21 +71,20 @@ extension AppDelegate: CLLocationManagerDelegate {
             
             let parameters : Parameters = [
                 "_id" : UserDefaults.standard.value(forKey: "user_id")!,
-                "coord": ["long" : circular.center.longitude, "lat" : circular.center.latitude],
-                "note": note(fromRegionIdentifier: circular.identifier)!
+                "poi_id": circular.identifier,
+                "inOut": "in"
             ]
             
-            
-            
-            let headers: HTTPHeaders = [
-                "Host": "feeder.soc.docker"
-            ]
-            
-            
-            //Alamofire.request("http://soc.catala.ovh/addUserOnLocation", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
-            //    .validate().responseJSON{ response in
-            //        //TODO:
-            //}
+            Alamofire.request("http://gps.soc.catala.ovh/userPoi", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+                .validate().responseJSON{ response in
+                                        
+                    switch response.result {
+                    case .success:
+                        print("succcess add user on POI")
+                    case .failure:
+                        print("error add user on POI")
+                    }
+            }
         }
     }
     
@@ -90,25 +92,29 @@ extension AppDelegate: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         if region is CLCircularRegion {
             let circular : CLCircularRegion = region as! CLCircularRegion
-            handleEvent(forRegion: region)
+            //handleEvent(forRegion: region)
             
             let parameters : Parameters = [
                 "_id" : UserDefaults.standard.value(forKey: "user_id")!,
-                "coord": ["long" : circular.center.longitude, "lat" : circular.center.latitude],
-                "note": note(fromRegionIdentifier: circular.identifier)!
+                "poi_id": circular.identifier,
+                "inOut": "out"
             ]
-            
-            
-            
-            let headers: HTTPHeaders = [
-                "Host": "feeder.soc.docker"
-            ]
-            
-            
-            //Alamofire.request("http://soc.catala.ovh/removeUserOnLocation", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
-            //    .validate().responseJSON{ response in
-            //        //TODO:
-            //}
+
+            Alamofire.request("http://gps.soc.catala.ovh/userPoi", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+                .validate().responseJSON{ response in
+                    
+                    if let result = response.result.value {
+                        print(parameters)
+                        print(result)
+                    }
+                    
+                    switch response.result {
+                    case .success:
+                        print("succcess rm user on POI")
+                    case .failure:
+                        print("error rm user on POI")
+                    }
+            }
         }
     }
 }

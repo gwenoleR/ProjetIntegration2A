@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Alamofire
 
 
 struct PreferencesKeys {
@@ -57,57 +58,51 @@ class MapViewController: UIViewController {
         loadAllGeotifications()
         
         mapView.zoomToUserLocation()
+
         
-        do {
-            if let file = Bundle.main.url(forResource: "poi", withExtension: "json") {
-                let data = try Data(contentsOf: file)
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                if let object = json as? [String: Any] {
-                    
-                    let json = JSON(object)
-                    
-                    let points = json["poi"]
-                    
-                    
-                    for point in points{
+        Alamofire.request("http://gps.soc.catala.ovh/getAllPoi", method: .get, encoding: JSONEncoding.default)
+            .validate().responseJSON{ response in
+                
+                switch response.result {
+                case .success:
+                    if let result = response.result.value {
+                        print("JSON: \(result)")
                         
-                        let coordinateFromData = point.1["coordinate"].arrayValue
-                        let lat = coordinateFromData.map({$0["latitude"].doubleValue})[0]
-                        let long = coordinateFromData.map({$0["longitude"].doubleValue})[1]
+                        let json = JSON(result)
+                        
+                        let points = json["poi"]
                         
                         
-                        let coord = CLLocationCoordinate2D(latitude:CLLocationDegrees(lat), longitude:CLLocationDegrees(long))
-                        
-                        let radius =  CLLocationDistance(point.1["radius"].doubleValue)
-                        
-                        let id = NSUUID().uuidString
-                        
-                        let note = point.1["note"].stringValue
-                        
-                        let event = point.1["eventType"].stringValue
-                        
-                        
-                        let geo = Geotification(coordinate: coord, radius: radius, identifier: id, note: note, eventType: EventType(rawValue: event)!)
-                        add(geotification: geo)
-                        startMonitoring(geotification: geo)
-                        saveAllGeotifications()
-                        
+                        for point in points{
+                            
+                            let coordinateFromData = point.1["coordinate"].arrayValue
+                            let lat = coordinateFromData.map({$0["latitude"].doubleValue})[0]
+                            let long = coordinateFromData.map({$0["longitude"].doubleValue})[1]
+                            
+                            
+                            let coord = CLLocationCoordinate2D(latitude:CLLocationDegrees(lat), longitude:CLLocationDegrees(long))
+                            
+                            let radius =  CLLocationDistance(point.1["radius"].doubleValue)
+                            
+                            let id = point.1["_id"].stringValue//NSUUID().uuidString
+                            
+                            let note = point.1["note"].stringValue
+                            
+                            let event = point.1["eventType"].stringValue
+                            
+                            
+                            let geo = Geotification(coordinate: coord, radius: radius, identifier: id, note: note, eventType: EventType(rawValue: event)!)
+                            self.add(geotification: geo)
+                            self.startMonitoring(geotification: geo)
+                            self.saveAllGeotifications()
+                        }
                         
                     }
-                    
-                    
-                } else {
-                    print("JSON is invalid")
+                case .failure:
+                    print("Failed to get POI")
                 }
-            } else {
-                print("no file")
-            }
-        } catch {
-            print(error.localizedDescription)
         }
-        
-        
-        
+       
         
     }
     

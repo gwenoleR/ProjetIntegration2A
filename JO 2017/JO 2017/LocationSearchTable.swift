@@ -91,7 +91,7 @@ extension LocationSearchTable {
         
         //Send POST /saveDest
         let parameters: Parameters = [
-            "id": "",
+            "_id": "",
             "coord": [
                 "lat":lat,
                 "long":long
@@ -99,7 +99,7 @@ extension LocationSearchTable {
             "label":matchingItems[indexPath.row].name ?? ""
         ]
         
-        Alamofire.request("http://172.30.0.221:3000/saveDest", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate(statusCode:200..<300).responseData{ response in
+        Alamofire.request("http://feeder.soc.catala.ovh/saveDest", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate(statusCode:200..<300).responseData{ response in
             
             print(response.description)
             

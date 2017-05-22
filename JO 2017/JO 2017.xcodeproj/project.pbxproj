@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8712A03A5B9205C755955E84 /* Pods_JO_2017.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8B37592ED661E0454E39F5 /* Pods_JO_2017.framework */; };
+		A54AFBEA1ED31DCB0056C9B3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54AFBE91ED31DCB0056C9B3 /* LaunchViewController.swift */; };
 		A57CC9581ED04B3500913FF5 /* SearchTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CC9571ED04B3500913FF5 /* SearchTagViewController.swift */; };
 		A5BDEA1B1ECAFFF700E41639 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BDEA1A1ECAFFF700E41639 /* AppDelegate.swift */; };
 		A5BDEA201ECAFFF700E41639 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5BDEA1E1ECAFFF700E41639 /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		6142E2AF17D05B99E46C6BB1 /* Pods-JO 2017.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JO 2017.release.xcconfig"; path = "Pods/Target Support Files/Pods-JO 2017/Pods-JO 2017.release.xcconfig"; sourceTree = "<group>"; };
+		A54AFBE91ED31DCB0056C9B3 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		A57CC9571ED04B3500913FF5 /* SearchTagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTagViewController.swift; sourceTree = "<group>"; };
 		A5BDEA171ECAFFF700E41639 /* JO 2017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JO 2017.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5BDEA1A1ECAFFF700E41639 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				A5E2375B1ECD8EAA00C59DD8 /* SearchAnnotation.swift */,
 				A5E2375D1ECDA6CA00C59DD8 /* ScanQRCodeViewController.swift */,
 				A57CC9571ED04B3500913FF5 /* SearchTagViewController.swift */,
+				A54AFBE91ED31DCB0056C9B3 /* LaunchViewController.swift */,
 			);
 			path = "JO 2017";
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				A5BDEA541ECB05D200E41639 /* MapViewController.swift in Sources */,
 				A57CC9581ED04B3500913FF5 /* SearchTagViewController.swift in Sources */,
 				A5E237581ECC837700C59DD8 /* LocationSearchTable.swift in Sources */,
+				A54AFBEA1ED31DCB0056C9B3 /* LaunchViewController.swift in Sources */,
 				A5BDEA4B1ECB02F800E41639 /* Utilities.swift in Sources */,
 				A5BDEA4D1ECB034400E41639 /* SwiftyJSON.swift in Sources */,
 				A5E237541ECB472300C59DD8 /* FeedViewController.swift in Sources */,

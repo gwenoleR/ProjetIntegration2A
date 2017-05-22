@@ -13,20 +13,24 @@ class Feed{
     let Titre: String
     let Content: String
     let tags : [String]
+    let id : String
     
-    
-    
-    init(titre: String, content: String, tags: [String]) {
+    init(titre: String, content: String, tags: [String], id : String) {
         self.Titre = titre
         self.Content = content
         self.tags = tags
+        self.id = id
+    }
+    
+    func isEqual(_ at:Feed) -> Bool{
+        if(self.id == at.id) {return true}
+        return false
     }
 }
 
 class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var feeds : [Feed] = []
-    var json : JSON = JSON.null
     
     var tag : String = ""
     
@@ -34,46 +38,68 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var tableView: UITableView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
         
-        let headers: HTTPHeaders = [
-            "Host": "feeder.soc.docker",
-            ]
+        return refreshControl
+    }()
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        getPost()
+        
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
+    func getPost(){
+        print("getPostCalled tads : \(tag)")
         
         var url = ""
         if tag == "" {
-            url = "http://soc.catala.ovh/getLast10Post"
+            url = "http://feeder.soc.catala.ovh/getLast10Post"
         }
         else{
-            url = "http://soc.catala.ovh/getPostAbout/\(tag)"
+            url = "http://feeder.soc.catala.ovh/getPostAbout/\(tag)"
         }
         
         //GET: /GetLast10Post
-        Alamofire.request(url,headers: headers).validate().responseJSON { response in
+        Alamofire.request(url).validate().responseJSON { response in
             switch response.result {
             case .success:
                 print("Validation Successful")
                 if let result = response.result.value {
                     
-                    self.json = JSON(result)
+                    let json = JSON(result)
                     
-                    for f in self.json{
+                    print(json)
+                    
+                    for f in json{
                         
                         print(f)
                         
                         let content = f.1["content"].stringValue
                         let title = f.1["title"].stringValue
                         let tagsArray = f.1["tags"].arrayValue
+                        let _id = f.1["_id"].stringValue
                         
                         var tags:[String] = []
                         for t in tagsArray{
                             tags.append(t.stringValue)
                         }
                         
-                        let feed = Feed(titre: title, content: content, tags: tags)
-                        self.feeds.append(feed)
+                        let feed = Feed(titre: title, content: content, tags: tags, id: _id)
                         
+                        var add = true
+                        for f in self.feeds{
+                            if feed.isEqual(f){
+                                add = false
+                                break
+                            }
+                        }
+                        if add {
+                            self.feeds.append(feed)
+                        }
                     }
                     DispatchQueue.main.async { self.tableView.reloadData() }
                 }
@@ -81,6 +107,17 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 print(error)
             }
         }
+
+        
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tableView.addSubview(self.refreshControl)
+        
+        getPost()
         
         
     }
@@ -128,8 +165,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         }
         
-        
-        
-        
     }
+    
+    
 }

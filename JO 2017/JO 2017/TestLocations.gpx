@@ -6,10 +6,14 @@
   <wpt lat="37.331695" lon="-122.0322801">
     <name>Apple</name>
   </wpt>-->
-  <wpt lat="42.674422319074537" lon="2.8479052929588775">
+  <wpt lat="42.6744495984564" lon="2.84780717455116">
     <name>Imerir</name>
   </wpt>
-  <wpt lat="42.674422319074537" lon="3.0">
+  <wpt lat="42.6744495984564" lon="3.0">
     <name>Cabes</name>
   </wpt>
+  <wpt lat="42.6953512537341" lon="2.87508796842391">
+      <name>Maison</name>
+  </wpt>
+  
 </gpx>

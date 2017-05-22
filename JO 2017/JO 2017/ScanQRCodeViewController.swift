@@ -111,11 +111,8 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
                 let parameters: Parameters = [
                     "user_id": metadataObj.stringValue
                     ]
-                let headers: HTTPHeaders = [
-                    "Host": "qrcode.soc.docker",
-                ]
                 
-                Alamofire.request("http://soc.catala.ovh/checkQrCode", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+                Alamofire.request("http://qrcode.soc.catala.ovh/checkQrCode", method: .post, parameters: parameters, encoding: JSONEncoding.default)
 .validate().responseJSON{ response in
     
                     print(response.request!.allHTTPHeaderFields!)
