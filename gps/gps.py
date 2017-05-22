@@ -32,20 +32,28 @@ def userPoi():
     data = json.loads(request.data)
     jsonFields = checkRequest(data,["_id","poi_id","inOut"])
     if jsonFields == None:
-        resp = make_response("Mauvais formatage du JSON",400)
+        response = {"resp":"Mauvais formatage du JSON"}
+        resp = make_response(json.dumps(response),400)
+        resp.headers['Content-Type'] = 'application/json'
         return resp
     else:
         u_id = jsonFields[0]
         poi_id = jsonFields[1]
         inOut = jsonFields[2]
     if userExist(u_id) == False:
-        resp = make_response("L'utilisateur n'existe pas !",400)
+        response = {"resp":"L'utilisateur n'existe pas !"}
+        resp = make_response(json.dumps(response),400)
+        resp.headers['Content-Type'] = 'application/json'
         return resp
     elif poiExist(poi_id) == False:
-            resp = make_response("Le poi n'existe pas !",400)
+            response = {"resp":"Le poi n'existe pas !"}
+            resp = make_response(json.dumps(response),400)
+            resp.headers['Content-Type'] = 'application/json'
             return resp
     if inOut not in ["in","out"]:
-        resp = make_response("Mauvaise instruction in/out",400)
+        response = {"resp":"Mauvaise instruction in/out"}
+        resp = make_response(json.dumps(response),400)
+        resp.headers['Content-Type'] = 'application/json'
         return resp
 
     poiCollection = initDatabase().poi
@@ -56,16 +64,24 @@ def userPoi():
             if oldPoi != None:
                 poiCollection.update({'_id': oldPoi["_id"]}, {'$pull': {'users': u_id}})
             poiCollection.update({'_id': ObjectId(poi_id)}, {'$push': {'users': u_id}})
-            resp = make_response("Modification d'entree en zone bien prise en compte",200)
+            response = {"resp":"Modification d'entree en zone bien prise en compte"}
+            resp = make_response(json.dumps(response),400)
+            resp.headers['Content-Type'] = 'application/json'
         else:
-            resp = make_response("L'utilisateur n'etait pas dans la zone !",400)
+            response = {"resp":"L'utilisateur n'etait pas dans la zone !"}
+            resp = make_response(json.dumps(response),400)
+            resp.headers['Content-Type'] = 'application/json'
             return resp
     else:
         if inOut == "out":
             poiCollection.update({'_id': ObjectId(poi_id)}, {'$pull': {'users': u_id}})
-            resp = make_response("Modification de sortie de zone bien prise en compte",200)
+            response = {"resp":"Modification de sortie de zone bien prise en compte"}
+            resp = make_response(json.dumps(response),400)
+            resp.headers['Content-Type'] = 'application/json'
         else:
-            resp = make_response("L'utilisateur est deja dans la zone !",400)
+            response = {"resp":"L'utilisateur est deja dans la zone !"}
+            resp = make_response(json.dumps(response),400)
+            resp.headers['Content-Type'] = 'application/json'
     return resp
 
 @app.route("/getUsersInPoi",methods=["POST"])
@@ -73,14 +89,18 @@ def getUsersInPoi():
     data = json.loads(request.data)
     jsonFields = checkRequest(data,["poi_id"])
     if jsonFields == None:
-        resp = make_response("Mauvais formatage du JSON",400)
+        response = {"resp":"Mauvais formatage du JSON"}
+        resp = make_response(json.dumps(response),400)
+        resp.headers['Content-Type'] = 'application/json'
         return resp
     else:
         poi_id = jsonFields[0]
     poiCollection = initDatabase().poi
     result = poiCollection.find_one({"_id":ObjectId(poi_id)})
     if result == None:
-        resp = make_response("Le poi demande n'existe pas !",400)
+        response = {"resp":"Le poi demande n'existe pas !"}
+        resp = make_response(json.dumps(response),400)
+        resp.headers['Content-Type'] = 'application/json'
         return resp
     else:
         users = { "users" : result["users"] }
