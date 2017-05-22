@@ -50,7 +50,7 @@ class StdOutListener(StreamListener):
         print (status)
         return False
 
-r = redis.StrictRedis(host='localhost', port=6379, db=0)
+r = redis.StrictRedis(host='redis', port=6379, db=0)
 
 test = tweepy.Cursor(api.search, q='JOIMERIR').items(100)
 infoToSend = {'name':'', 'screen_name':'', 'text':'', 'image':''}
