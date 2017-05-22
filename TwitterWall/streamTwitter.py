@@ -34,6 +34,7 @@ class StdOutListener(StreamListener):
         infoToSend['name'] = infoTweet['user']['name']
         infoToSend['screen_name'] = infoTweet['user']['screen_name']
         infoToSend['text'] = infoTweet['text']
+        print(infoToSend)
         try:
             infoToSend['image'] = infoTweet['entities']['media'][0]['media_url']
         except KeyError:
@@ -72,6 +73,6 @@ threadTweetsCompteur = threading.Thread(None, threadCompteurTweets, None)
 threadTweetsCompteur.start()
 listener = StdOutListener()
 stream = Stream(auth, listener)
-stream.filter(track=['JOIMERIR', 'JO'])
+stream.filter(track=['#JOIMERIR', '#JO'])
 
    
