@@ -24,9 +24,10 @@ MongoClient.connect(url, function (err, db) {
 });
 
 
-app.post("/initUserTags", function (res, req) {
+app.post("/initUserTags", function (req, res) {
     res.sendStatus(201)
-})
+
+});
 
 
 app.get("/getPostAbout/:tag", function (req, res) {
@@ -38,33 +39,22 @@ app.get("/getPostAbout/:tag", function (req, res) {
         MongoClient.connect(url, function (err, db) {
             assert.equal(null, err);
             console.log("Fetching result about", req.params.tag);
-            db.collection('tags').find({}).toArray(function (err, results) {
+            db.collection('posts').find({
+                "tags": req.params.tag
+            }).toArray(function (err, results) {
                 assert.equal(err, null);
                 response = results;
                 console.log(response);
                 res.send(response);
+
             });
+
             db.close();
         });
 
     } catch (e) {
         console.log(e);
         res.sendStatus(500)
-    }
-
-    if (req.params.tag == 'sport') {
-        res.send([{
-            "title": "John is dead :(",
-            "content": "John has been found this morning, lying on his fat, greasy belly. His hands were tied to an eletric pylon. NPD director said that it could be a suicide."
-        },
-            {"title": "Sara is sexy when she runs", "content": "hey its a post about sport and sex"},
-            {"title": "laura is sexy when she fucks", "content": "hey its a post about and sport sex"},
-        ])
-    } else if (req.params.tag == 'sex') {
-        res.send([{"title": "John is fuckin", "content": "oh yeah"},
-            {"title": "Sara is sexy when she runs", "content": "hey its a post about sport and sex"},
-            {"title": "laura is sexy when she fucks", "content": "hey its a post about and sport sex"},
-        ])
     }
 });
 
