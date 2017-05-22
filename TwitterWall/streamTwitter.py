@@ -1,6 +1,9 @@
 import redis
 import tweepy
 import json
+import dweepy
+import time
+import threading
 from tweepy import Stream
 from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
@@ -14,10 +17,18 @@ auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_secret)
 
 api = tweepy.API(auth)
+compteurTweets = 0
+
+def threadCompteurTweets():
+    while(True):
+        dweepy.dweet_for("tweetDash-soc",{"tweets": compteurTweets})
+        print("COMPTEUR TWEEEEEETSSSS", compteurTweets)
+        time.sleep(2)
 
 class StdOutListener(StreamListener):
 
     def on_data(self, data):
+        global compteurTweets
         infoToSend = {'name':'', 'screen_name':'', 'text':'', 'image': ''}
         infoTweet = json.loads(data)        
         infoToSend['name'] = infoTweet['user']['name']
@@ -28,16 +39,19 @@ class StdOutListener(StreamListener):
         except KeyError:
             infoToSend['image'] = ""
             pass
+        compteurTweets += 1
         r.publish('JO_Soc', json.dumps(infoToSend))
+        print("COMPTEUR TWEEEEEETSSSS", compteurTweets)
         print (data)
         return True
 
     def on_error(self, status):
         print (status)
+        return False
 
 r = redis.StrictRedis(host='localhost', port=6379, db=0)
 
-test = tweepy.Cursor(api.search, q='JOIMERIR').items(10)
+test = tweepy.Cursor(api.search, q='JOIMERIR').items(100)
 infoToSend = {'name':'', 'screen_name':'', 'text':'', 'image':''}
     
 for tweet in test:
@@ -51,7 +65,11 @@ for tweet in test:
     except KeyError:
         infoToSend['image'] = ""
         pass
+    compteurTweets += 1
     r.publish('JO_Soc', json.dumps(infoToSend))
+
+threadTweetsCompteur = threading.Thread(None, threadCompteurTweets, None)
+threadTweetsCompteur.start()
 listener = StdOutListener()
 stream = Stream(auth, listener)
 stream.filter(track=['JOIMERIR', 'JO'])
