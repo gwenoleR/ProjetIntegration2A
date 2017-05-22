@@ -48,12 +48,12 @@ app.get('/getTags', function (req, res) {
     try {
         MongoClient.connect(url, function (err, db) {
             assert.equal(null, err);
-            console.log("Connected correctly to server");
+            console.log("Getting tgs...");
             db.collection('tags').find({}).toArray(function (err, results) {
                 assert.equal(err, null);
                 //console.log("Found the following records");
                 response = results;
-                //console.log(response);
+                console.log("done");
                 res.send(response);
             });
             db.close();
@@ -71,12 +71,12 @@ app.get('/getLastPost', function (req, res) {
     try {
         MongoClient.connect(url, function (err, db) {
             assert.equal(null, err);
-            console.log("Connected correctly to server");
+            console.log("Getting the last post...");
             db.collection('posts').find({}).limit(1).sort([['_id', -1]]).toArray(function (err, results) {
                 assert.equal(err, null);
                 console.log("Found the following records");
                 response = results;
-                console.log(response);
+                console.log("done");
                 res.send(response);
                 db.close();
             });
@@ -119,8 +119,7 @@ app.get('/tag', function (req, res) {
 });
 
 app.post('/updateTagWeight', function (req, res) {
-    //_id tag weight
-    //returns 201 | 401 si id faux | 400
+
     body = '';
     post = null;
     req.on('data', function (data) {
@@ -144,7 +143,7 @@ app.post('/updateTagWeight', function (req, res) {
                         _id: idToFind,
                         "tags.name": post.tag
                     }, {
-                        $set: {"tags.$.weight": parseInt(post.weight)}
+                        $inc: {"tags.$.weight": 10}
                     }, {
                         returnOriginal: false
                         , upsert: false
@@ -163,7 +162,7 @@ app.post('/updateTagWeight', function (req, res) {
                                     $push: {
                                         "tags": {
                                             "name": post.tag,
-                                            "weight": parseInt(post.weight)
+                                            "weight": 10
                                         }
                                     }
                                 }, {
@@ -181,8 +180,6 @@ app.post('/updateTagWeight', function (req, res) {
                                     }
                                     db.close();
                                 })
-
-
                         } else {
                             console.log(r.lastErrorObject.updatedExisting)
                             console.log("updated ");
@@ -190,9 +187,7 @@ app.post('/updateTagWeight', function (req, res) {
                         }
                         db.close();
                     })
-
             });
-
         } catch (e) {
             console.log(e);
             res.sendStatus(400)
@@ -354,14 +349,16 @@ app.post('/post_new', function (req, res) {
 
 app.post('/saveDest', function (req, res) {
 
-
     body = '';
     post = null;
     req.on('data', function (data) {
         body += data;
+        console.log(body)
     });
-
+    //We'll wait the end signal of the request to treat it's content.
     req.on('end', function () {
+
+
         post = qs.parse(body);
         //let idUser = new ObjectID(post._id);
         console.log("post request :", post);
@@ -370,35 +367,60 @@ app.post('/saveDest', function (req, res) {
         try {
             MongoClient.connect(url, function (err, db) {
                 assert.equal(null, err);
+
                 console.log("Connected correctly to server");
-
-                try {
-                    db.collection('user').findOneAndUpdate(
-                        {
-                            _id: idToFind,
-                            "dest.label": post.label
-                        }, {
-                            $set: {
-                                "dest.$.coord.lat": post.lat,
-                                "dest.$.coord.long": post.lat,
-                                "dest.$.label": post.label,
-                                "dest.$.weight": 100
-                            }
-                        }, {
-                            returnOriginal: true
-                            , upsert: false
-                        }, function (err, r) {
-                            assert.equal(null, err);
-
-                            db.close();
-                        })
-
-                } catch (e) {
-                    console.log(e)
-                }
+                db.collection('user').findOneAndUpdate(
+                    {
+                        _id: idToFind,
+                        "dests.label": post.label
+                    }, {
+                        $inc: {"dests.$.weight": 10}
+                    }, {
+                        returnOriginal: false
+                        , upsert: false
+                    }, function (err, r) {
+                        assert.equal(null, err);
+                        if (err) {
+                            console.log(err)
+                            res.sendStatus(400)
+                        }
+                        else if (!r.lastErrorObject.updatedExisting) {
+                            console.log("dest is not present... Pushing now")
+                            db.collection('user').updateOne(
+                                {
+                                    _id: idToFind
+                                }, {
+                                    $push: {
+                                        "dests": {
+                                            "label": post.label,
+                                            "coord": {
+                                                "long": post.long,
+                                                "lat": post.lat
+                                            },
+                                            "weight": 10
+                                        }
+                                    }
+                                }, {
+                                    returnOriginal: false
+                                    , upsert: false
+                                }, function (err, r) {
+                                    assert.equal(null, err);
+                                    if (err) {
+                                        console.log(err)
+                                        res.sendStatus(400)
+                                    } else {
+                                        console.log("updated ");
+                                        res.sendStatus(201)
+                                    }
+                                })
+                        } else {
+                            console.log(r.lastErrorObject.updatedExisting);
+                            console.log("updated ");
+                            res.sendStatus(201)
+                        }
+                        db.close();
+                    })
             });
-
-            res.sendStatus(201)
         } catch (e) {
             console.log(e);
             res.sendStatus(400)
