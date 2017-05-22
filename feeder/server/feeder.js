@@ -146,15 +146,53 @@ app.post('/updateTagWeight', function (req, res) {
                     }, {
                         $set: {"tags.$.weight": parseInt(post.weight)}
                     }, {
-                        returnOriginal: true
-                        , upsert: true
+                        returnOriginal: false
+                        , upsert: false
                     }, function (err, r) {
                         assert.equal(null, err);
+                        if (err) {
+                            console.log(err)
+                            res.sendStatus(400)
+                        }
+                        else if (!r.lastErrorObject.updatedExisting) {
+                            console.log("tag is not present... Pushing now")
+                            db.collection('user').updateOne(
+                                {
+                                    _id: idToFind
+                                }, {
+                                    $push: {
+                                        "tags": {
+                                            "name": post.tag,
+                                            "weight": parseInt(post.weight)
+                                        }
+                                    }
+                                }, {
+                                    returnOriginal: false
+                                    , upsert: false
+                                }, function (err, r) {
+                                    assert.equal(null, err);
+                                    if (err) {
+                                        console.log(err)
+                                        res.sendStatus(400)
+                                    } else {
+                                        console.log(r)
+                                        console.log("updated ");
+
+                                    }
+                                    db.close();
+                                })
+
+
+                        } else {
+                            console.log(r.lastErrorObject.updatedExisting)
+                            console.log("updated ");
+                            res.sendStatus(201)
+                        }
                         db.close();
                     })
+
             });
-            console.log("updated ");
-            res.sendStatus(201)
+
         } catch (e) {
             console.log(e);
             res.sendStatus(400)
