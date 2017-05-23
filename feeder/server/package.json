@@ -17,8 +17,9 @@
   },
   "homepage": "https://github.com/gwenoleR/ProjetIntegration2A#readme",
   "dependencies": {
+    "ejs": "^2.5.6",
     "express": "^4.15.2",
-    "mysql": "^2.13.0",
-    "mongodb": "^2.2.26"
+    "mongodb": "^2.2.26",
+    "mysql": "^2.13.0"
   }
 }

@@ -14,6 +14,8 @@ let MongoClient = require('mongodb').MongoClient
 let parameters = require('../JSON/params.json');
 
 
+app.set('view engine', 'ejs');
+app.set('views', __dirname + "/views/");
 // Connection URL
 let url = 'mongodb://' + parameters.mongoDB.host + ':27017/' + parameters.mongoDB.database;
 // Use connect method to connect to the Server
@@ -257,7 +259,7 @@ app.post('/updateTagWeight', function (req, res) {
     });
 
 
-})
+});
 
 
 app.get('/getLast10Post', function (req, res) {
@@ -489,6 +491,33 @@ app.post('/saveDest', function (req, res) {
         }
     });
 });
+
+
+app.get('/user/:user', function () {
+
+})
+
+app.get('/userBehaviourData/:user', function (req, res) {
+    response = null;
+    try {
+        MongoClient.connect(url, function (err, db) {
+            assert.equal(null, err);
+            console.log("Connected correctly to server");
+            db.collection('profiling').find({arobase: req.params.user}).limit(1).sort([['_id', -1]]).toArray(function (err, results) {
+                assert.equal(err, null);
+                console.log("Found the following records");
+                response = results;
+                console.log(response);
+                res.render('index', {data: response});
+                db.close();
+            });
+        });
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(500)
+    }
+})
+
 
 
 app.listen(3000, function () {
