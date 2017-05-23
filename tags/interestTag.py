@@ -109,7 +109,7 @@ def bestTagsOfUser():
     retour = []
     for i in index:
         retour.append(interestTags[i])
-    return make_response(json.dumps(retour), 200)
+    return make_response(json.dumps({poi : retour}), 200)
 
 
 def checkRequest(data,required):
