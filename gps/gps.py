@@ -69,6 +69,8 @@ def userPoi():
                 poiCollection.update({'_id': oldPoi["_id"]}, {'$pull': {'users': u_id}})
             poiCollection.update({'_id': ObjectId(poi_id)}, {'$push': {'users': u_id}})
             response = {"resp":"Modification d'entree en zone bien prise en compte"}
+            poi_note = poiCollection.find_one({"_id":ObjectId(poi_id)})["note"]
+            addLocationToUser(u_id,poi_note)
             resp = make_response(json.dumps(response),200)
             resp.headers['Content-Type'] = 'application/json'
             print(response)
@@ -131,6 +133,11 @@ def userExist(uid):
     oid = ObjectId(uid)
     result = userCollection.find_one({"_id":oid})
     return result != None
+
+def addLocationToUser(uid,poi_note):
+    userCollection = initDatabase().user
+    oid = ObjectId(uid)
+    userCollection.update({'_id': oid}, {'$push': {'poi_note': poi_note}})
 
 def poiExist(poiid):
     poiCollection = initDatabase().poi

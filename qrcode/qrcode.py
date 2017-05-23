@@ -64,6 +64,8 @@ def getQrCode():
     data = json.loads(request.data)
     try:
         uid = str(data['user_id'])
+        typeRetour = str(data['type'])
+        print("type retour  = " ,typeRetour)
     except KeyError:
         resp = make_response("Mauvais formatage du JSON",400)
         return resp
@@ -71,10 +73,16 @@ def getQrCode():
     if exist == True:
         qrcodeCollection = initDatabase().qrcode
         qrcode_png64 = qrcodeCollection.find_one({"user_id":uid})["image_b64"]
-        htmlPng= '<img src="data:image/png;base64,' + qrcode_png64 + '">'
-        print(htmlPng)
-        resp = make_response(htmlPng,200)
-        resp.headers['Content-Type'] = 'text/html'
+        if typeRetour == "b64":
+            qrCode = { "b64" : qrcode_png64 }
+            resp = make_response(json.dumps(qrCode),200)
+            resp.headers['Content-Type'] = 'application/json'
+        elif typeRetour == "html":
+            htmlPng= '<img src="data:image/png;base64,' + qrcode_png64 + '">'
+            resp = make_response(htmlPng,200)
+            resp.headers['Content-Type'] = 'text/html'
+        else:
+            resp = make_response("Type de retour attendu non specifie !",400)
     else:
         resp = make_response("Le qrcode n'existe pas en base de donnee, entree invalide !",400)
     return resp

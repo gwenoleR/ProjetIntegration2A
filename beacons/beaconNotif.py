@@ -8,7 +8,7 @@ context = SSL.Context(SSL.SSLv23_METHOD)
 cer = os.path.join(os.path.dirname(__file__), 'resources/udara.com.crt')
 key = os.path.join(os.path.dirname(__file__), 'resources/udara.com.key')
 
-url = "http://soc.catala.ovh/v2/translate"
+url = "http://translator.soc.catala.ovh/v2/translate"
 drapeauxPays = ["🇺🇸", "🇪🇸", "🇫🇷", "🇩🇪", "🇮🇹", "🇧🇷"]
 model_id = ["en-es", "en-fr", "en-de", "en-it", "en-pt"]
 phraseATraduire = "Welcome,you are near the Toto stadium! You can buy your country flag at the stadium's store"
@@ -20,8 +20,7 @@ app = Flask(__name__)
 def getTraduction():
 
     headers = {
-        "Content-Type":"application/json",
-        "Host": "translator.soc.docker"
+        "Content-Type":"application/json"
     }
 
     for i in range(0, 5):
