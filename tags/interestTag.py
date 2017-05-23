@@ -111,6 +111,44 @@ def bestTagsOfUser():
         retour.append(interestTags[i])
     return make_response(json.dumps({"tags" : retour}), 200)
 
+@app.route("/bestPoiOfUser",methods=['POST'])
+def bestPoiOfUser():
+    data = json.loads(request.data)
+    jsonFields = checkRequest(data,["_id"])
+    if jsonFields == None:
+        response = {"resp":"Mauvais formatage du JSON"}
+        resp = make_response(json.dumps(response),400)
+        resp.headers['Content-Type'] = 'application/json'
+        return resp
+    _id = jsonFields[0]
+    user = userExist(_id)
+    if user == None:
+        response = {"resp":"L'utilisateur n'existe pas !"}
+        resp = make_response(json.dumps(response),400)
+        resp.headers['Content-Type'] = 'application/json'
+        print (response)
+        return resp
+    interestPoi = user["poi"]
+    distincPoi = list(set(interestPoi))
+    print distincPoi
+
+    bestPoi = []
+    for p in distincPoi:
+        print interestPoi.count(p)
+        bestPoi.append(interestPoi.count(p))
+
+    retour = []
+    for i in bestPoi:
+        maxi = max(bestPoi)
+        print maxi
+        p = bestPoi.index(maxi)
+        print p
+        bestPoi[p] = -1
+        retour.append(distincPoi[p])
+
+    print(retour)
+
+    return make_response("",200)
 
 def checkRequest(data,required):
     try:
