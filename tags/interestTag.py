@@ -148,7 +148,7 @@ def bestPoiOfUser():
 
     print(retour)
 
-    return make_response("",200)
+    return make_response(json.dumps({"poi" : retour}),200)
 
 def checkRequest(data,required):
     try:
