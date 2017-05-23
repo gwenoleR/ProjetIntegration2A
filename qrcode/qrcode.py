@@ -65,6 +65,7 @@ def getQrCode():
     try:
         uid = str(data['user_id'])
         typeRetour = str(data['type'])
+        print("type retour  = " ,typeRetour)
     except KeyError:
         resp = make_response("Mauvais formatage du JSON",400)
         return resp
