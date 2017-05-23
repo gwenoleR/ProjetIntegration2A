@@ -11,10 +11,13 @@
       <div class="jumbotron vertical-center">
         <h1 align="center">Formulaire</h1>
         <hr />
-        <form class='formulaire'>
-          <label>Nom:</label><input type="text" name="nom" id="nomUser">
-          <label>Prénom:</label><input type="text" name="prenom" id="prenomUser">
-          <label>Nationalité:</label><select name="nationalite" id="natio">
+        
+        
+      </div>     
+      <form class='formulaire'>
+          <label>FName:</label><input type="text" name="nom" id="nomUser">
+          <label>LName:</label><input type="text" name="prenom" id="prenomUser">
+          <label>Country:</label><select name="nationalite" id="natio">
             <option>{{typeNatio[0]}}
             <option>{{typeNatio[1]}}
             <option>{{typeNatio[2]}}
@@ -23,18 +26,26 @@
             <option>{{typeNatio[5]}}
             <option>{{typeNatio[6]}}
             </select>
+          <label>LanSpoken:</label><select name="langage" id="language">
+            <option>en
+            <option>fr
+            <option>es
+            <option>it
+            <option>pt
+            <option>de
+            </select>
           <label>Type:</label><select name="typePersonne" id="type">
             <option>{{typePerson[0]}}
             <option>{{typePerson[1]}}
             <option>{{typePerson[2]}}
             <option>{{typePerson[3]}}
             <option>{{typePerson[4]}}
-            </select>
-             <div class="text-center"><button id="buttonSubmit" class="btn btn-primary btn-sx" type="button">Send</button></div>
+            </select>             
         </form>
+        <div class="text-center"><button id="buttonSubmit" class="btn btn-primary btn-sx" type="button">Send</button></div>
+
+        <span class="text-center" id="qr"></span>
         
-      </div>     
-      
     </div>
     <script type="text/javascript" src="static/js/jquery-2.0.3.min.js"></script>    
     <script type="text/javascript" src="static/js/application.js"></script>
