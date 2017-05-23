@@ -77,12 +77,12 @@ def getQrCode():
             qrCode = { "b64" : qrcode_png64 }
             resp = make_response(json.dumps(qrCode),200)
             resp.headers['Content-Type'] = 'application/json'
-            print(qrCode)
         elif typeRetour == "html":
             htmlPng= '<img src="data:image/png;base64,' + qrcode_png64 + '">'
-            print(htmlPng)
             resp = make_response(htmlPng,200)
             resp.headers['Content-Type'] = 'text/html'
+        else:
+            resp = make_response("Type de retour attendu non specifie !",400)
     else:
         resp = make_response("Le qrcode n'existe pas en base de donnee, entree invalide !",400)
     return resp
