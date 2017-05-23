@@ -13,7 +13,7 @@ def initDatabase():
     db = client['jo']
     return db
 
-@app.route("/getInterestTags", methods=['POST'])
+@app.route("/getInterestPosts", methods=['POST'])
 def getInterestTags():
         data = json.loads(request.data)
         jsonFields = checkRequest(data,["_id"])
