@@ -1,0 +1,4 @@
+tweepy
+flask
+watson-developer-cloud
+pymongo
