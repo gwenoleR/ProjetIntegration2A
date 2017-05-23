@@ -25,10 +25,58 @@ MongoClient.connect(url, function (err, db) {
 
 
 app.post("/initUserTags", function (req, res) {
-    res.sendStatus(201)
+    body = '';
+    post = null;
+    req.on('data', function (data) {
+        body += data;
+        console.log(body);
+    });
+    //We'll wait the end signal of the request to treat it's content.
+    req.on('end', function () {
+        post = qs.parse(body);
+        //let idUser = new ObjectID(post._id);
+        console.log("post request :", post);
+        let idToFind = ObjectID(post._id);
+        console.log("id : ", idToFind);
+        tagArray = []
 
+        for (n in post.tags) {
+            tagArray.push({name: post.tags[n], weight: 10})
+        }
+
+        console.log(tagArray);
+
+        MongoClient.connect(url, function (err, db) {
+            assert.equal(null, err);
+
+
+            db.collection('user').updateOne(
+                {
+                    _id: idToFind
+                }, {
+                    $push: {
+                        "tags": {$each: tagArray}
+                    }
+                }, {
+                    returnOriginal: false
+                    , upsert: false
+                }, function (err, r) {
+                    assert.equal(null, err);
+                    if (err) {
+                        console.log(err)
+                        res.sendStatus(400)
+                    } else {
+                        console.log(r)
+                        console.log("updated ");
+
+                    }
+                    db.close();
+                });
+
+            res.sendStatus(201)
+        });
+    });
 });
-
 
 app.get("/getPostAbout/:tag", function (req, res) {
     console.log(req.params)
