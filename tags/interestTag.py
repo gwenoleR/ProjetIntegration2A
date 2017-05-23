@@ -58,7 +58,7 @@ def getBestTags():
     moyennes = []
     for p in poids:
         if poids[p]["occurence"] != 0:
-            moy = poids[p]["poids"] / poids[p]["occurence"] 
+            moy = poids[p]["poids"] / poids[p]["occurence"]
             moyennes.append({ p : { "moyenne" : moy }})
     mo = []
     for index, m in enumerate(moyennes):
@@ -74,6 +74,43 @@ def getBestTags():
     for m in maxis:
         liste.append(m["name"])
     return make_response(json.dumps(liste),200)
+
+@app.route("/bestTagsOfUser",methods=['POST'])
+def bestTagsOfUser():
+    data = json.loads(request.data)
+    jsonFields = checkRequest(data,["_id"])
+    if jsonFields == None:
+        response = {"resp":"Mauvais formatage du JSON"}
+        resp = make_response(json.dumps(response),400)
+        resp.headers['Content-Type'] = 'application/json'
+        return resp
+    _id = jsonFields[0]
+    user = userExist(_id)
+    if user == None:
+        response = {"resp":"L'utilisateur n'existe pas !"}
+        resp = make_response(json.dumps(response),400)
+        resp.headers['Content-Type'] = 'application/json'
+        print (response)
+        return resp
+    interestTags = user['tags']
+
+    weights = []
+    for w in interestTags:
+        weights.append(w["weight"])
+
+    index = []
+
+    for i in range(3):
+        maxi = max(weights)
+        a = weights.index(maxi)
+        index.append(a)
+        weights[a] = -1
+
+    retour = []
+    for i in index:
+        retour.append(interestTags[i])
+    return make_response(json.dumps(retour), 200)
+
 
 def checkRequest(data,required):
     try:
