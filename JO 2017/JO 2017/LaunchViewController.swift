@@ -9,13 +9,18 @@
 import UIKit
 import Alamofire
 
-class LaunchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class LaunchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     var tags : [String] = []
     var interestTag : [String] = []
     
     @IBOutlet weak var interets: UITableView!
     @IBOutlet weak var twitterAccount: UITextField!
+    
+    @IBOutlet weak var titre: UILabel!
+    @IBOutlet weak var titre1: UILabel!
+    @IBOutlet weak var twit: UILabel!
+    @IBOutlet weak var start: UIButton!
     
     @IBAction func go(_ sender: Any) {
         // /initUserTags
@@ -26,39 +31,75 @@ class LaunchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         Alamofire.request("http://feeder.soc.catala.ovh/initUserTags", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseData{ response in
             
-            debugPrint("All Response Info: \(response)")
-            
             if let data = response.result.value, let utf8Text = String(data: data, encoding: .utf8) {
                 print("Data: \(utf8Text)")
                 UserDefaults.standard.set("ok", forKey: "first")
-                self.performSegue(withIdentifier: "run", sender: self);
+                
             }
             
         }
         
-        //UserDefaults.standard.set("ok", forKey: "first")
+        if let twitterName = twitterAccount.text{
+            let twitterParam : Parameters = [
+                "twitterName" : twitterName
+            ]
+            Alamofire.request("http://profiling.soc.catala.ovh/", method: .post, parameters: twitterParam, encoding: JSONEncoding.default).validate().responseJSON{
+                response in
+                if let r = response.result.value{
+                    print(r)
+                }
+                
+                print(response.debugDescription)
+                
+                switch response.result{
+                case .success:
+                    print("ok")
+                case .failure:
+                    print("error twitter")
+                }
+            }
+        }
+        
+        
+        self.performSegue(withIdentifier: "run", sender: self);
+
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UserDefaults.standard.string(forKey: "user_language") != "en"{
+            
+            
+            translate(chaine: titre.text!, to: UserDefaults.standard.string(forKey: "user_language")!){ retour in
+                self.titre.text = retour
+            }
+            translate(chaine: titre1.text!, to: UserDefaults.standard.string(forKey: "user_language")!){ retour in
+                self.titre1.text = retour
+            }
+            translate(chaine: twit.text!, to: UserDefaults.standard.string(forKey: "user_language")!){ retour in
+                self.twit.text = retour
+            }
+            translate(chaine: start.currentTitle!, to: UserDefaults.standard.string(forKey: "user_language")!){ retour in
+                self.start.setTitle(retour, for: UIControlState.normal)
+            }
+        }
 
         self.interets.allowsMultipleSelection = true
+        self.twitterAccount.delegate = self;
 
-        
-        let headers: HTTPHeaders = [
-            "Host": "feeder.soc.docker",
-            ]
-        
         //GET: /getTags
         Alamofire.request("http://feeder.soc.catala.ovh/getTags").validate().responseJSON { response in
             switch response.result {
             case .success:
-                //print(response.result.value ?? "")
                 let json = JSON(response.result.value!)
                 
                 for tag in json{
-                    print(tag)
                     self.tags.append(tag.1["_id"].stringValue)
                 }
                 DispatchQueue.main.async { self.interets.reloadData() }
@@ -109,15 +150,4 @@ class LaunchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         interestTag.remove(at: index)
         
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

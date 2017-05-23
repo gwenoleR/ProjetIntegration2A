@@ -27,7 +27,6 @@ depends-top-level:
 - "CastingPrecedence"
 - !private "Data"
 - !private "Geotification"
-- !private "HTTPHeaders"
 - !private "JSONEncoding"
 - !private "NSData"
 - !private "NSKeyedUnarchiver"
@@ -106,7 +105,6 @@ depends-member:
 - ["C7JO_201711AppDelegate", "CLRegion"]
 - !private ["C7JO_201711AppDelegate", "Data"]
 - !private ["C7JO_201711AppDelegate", "Geotification"]
-- !private ["C7JO_201711AppDelegate", "HTTPHeaders"]
 - !private ["C7JO_201711AppDelegate", "JSONEncoding"]
 - !private ["C7JO_201711AppDelegate", "NSData"]
 - !private ["C7JO_201711AppDelegate", "NSKeyedUnarchiver"]
@@ -526,7 +524,6 @@ depends-member:
 - ["CSo8NSObject", "CLRegion"]
 - !private ["CSo8NSObject", "Data"]
 - !private ["CSo8NSObject", "Geotification"]
-- !private ["CSo8NSObject", "HTTPHeaders"]
 - !private ["CSo8NSObject", "JSONEncoding"]
 - !private ["CSo8NSObject", "NSData"]
 - !private ["CSo8NSObject", "NSKeyedUnarchiver"]
@@ -727,7 +724,6 @@ depends-member:
 - ["CSo11UIResponder", "CLRegion"]
 - !private ["CSo11UIResponder", "Data"]
 - !private ["CSo11UIResponder", "Geotification"]
-- !private ["CSo11UIResponder", "HTTPHeaders"]
 - !private ["CSo11UIResponder", "JSONEncoding"]
 - !private ["CSo11UIResponder", "NSData"]
 - !private ["CSo11UIResponder", "NSKeyedUnarchiver"]

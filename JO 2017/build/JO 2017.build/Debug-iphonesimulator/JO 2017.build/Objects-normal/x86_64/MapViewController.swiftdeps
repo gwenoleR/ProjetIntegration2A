@@ -58,7 +58,6 @@ depends-top-level:
 - "Error"
 - !private "EventType"
 - "Geotification"
-- !private "HTTPHeaders"
 - "HandleMapSearch"
 - !private "JSON"
 - !private "JSONEncoding"
@@ -1298,7 +1297,6 @@ depends-member:
 - ["C7JO_201717MapViewController", "Error"]
 - !private ["C7JO_201717MapViewController", "EventType"]
 - ["C7JO_201717MapViewController", "Geotification"]
-- !private ["C7JO_201717MapViewController", "HTTPHeaders"]
 - !private ["C7JO_201717MapViewController", "JSON"]
 - !private ["C7JO_201717MapViewController", "JSONEncoding"]
 - !private ["C7JO_201717MapViewController", "LocationSearchTable"]
@@ -1575,7 +1573,6 @@ depends-member:
 - ["CSo8NSObject", "Error"]
 - !private ["CSo8NSObject", "EventType"]
 - ["CSo8NSObject", "Geotification"]
-- !private ["CSo8NSObject", "HTTPHeaders"]
 - !private ["CSo8NSObject", "JSON"]
 - !private ["CSo8NSObject", "JSONEncoding"]
 - !private ["CSo8NSObject", "LocationSearchTable"]
@@ -2275,7 +2272,6 @@ depends-member:
 - ["CSo11UIResponder", "Error"]
 - !private ["CSo11UIResponder", "EventType"]
 - ["CSo11UIResponder", "Geotification"]
-- !private ["CSo11UIResponder", "HTTPHeaders"]
 - !private ["CSo11UIResponder", "JSON"]
 - !private ["CSo11UIResponder", "JSONEncoding"]
 - !private ["CSo11UIResponder", "LocationSearchTable"]
@@ -2663,7 +2659,6 @@ depends-member:
 - ["CSo16UIViewController", "Error"]
 - !private ["CSo16UIViewController", "EventType"]
 - ["CSo16UIViewController", "Geotification"]
-- !private ["CSo16UIViewController", "HTTPHeaders"]
 - !private ["CSo16UIViewController", "JSON"]
 - !private ["CSo16UIViewController", "JSONEncoding"]
 - !private ["CSo16UIViewController", "LocationSearchTable"]

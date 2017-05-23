@@ -10,6 +10,8 @@
 		8712A03A5B9205C755955E84 /* Pods_JO_2017.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8B37592ED661E0454E39F5 /* Pods_JO_2017.framework */; };
 		A54AFBEA1ED31DCB0056C9B3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54AFBE91ED31DCB0056C9B3 /* LaunchViewController.swift */; };
 		A57CC9581ED04B3500913FF5 /* SearchTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CC9571ED04B3500913FF5 /* SearchTagViewController.swift */; };
+		A5B51ACD1ED42BDA006ACB46 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B51ACC1ED42BDA006ACB46 /* AccountViewController.swift */; };
+		A5B51ACF1ED43BFD006ACB46 /* QrCodeViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B51ACE1ED43BFD006ACB46 /* QrCodeViewerViewController.swift */; };
 		A5BDEA1B1ECAFFF700E41639 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BDEA1A1ECAFFF700E41639 /* AppDelegate.swift */; };
 		A5BDEA201ECAFFF700E41639 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5BDEA1E1ECAFFF700E41639 /* Main.storyboard */; };
 		A5BDEA221ECAFFF700E41639 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5BDEA211ECAFFF700E41639 /* Assets.xcassets */; };
@@ -50,6 +52,8 @@
 		6142E2AF17D05B99E46C6BB1 /* Pods-JO 2017.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JO 2017.release.xcconfig"; path = "Pods/Target Support Files/Pods-JO 2017/Pods-JO 2017.release.xcconfig"; sourceTree = "<group>"; };
 		A54AFBE91ED31DCB0056C9B3 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		A57CC9571ED04B3500913FF5 /* SearchTagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTagViewController.swift; sourceTree = "<group>"; };
+		A5B51ACC1ED42BDA006ACB46 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = ../AccountViewController.swift; sourceTree = "<group>"; };
+		A5B51ACE1ED43BFD006ACB46 /* QrCodeViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrCodeViewerViewController.swift; sourceTree = "<group>"; };
 		A5BDEA171ECAFFF700E41639 /* JO 2017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JO 2017.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5BDEA1A1ECAFFF700E41639 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5BDEA1F1ECAFFF700E41639 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 				A5E2375D1ECDA6CA00C59DD8 /* ScanQRCodeViewController.swift */,
 				A57CC9571ED04B3500913FF5 /* SearchTagViewController.swift */,
 				A54AFBE91ED31DCB0056C9B3 /* LaunchViewController.swift */,
+				A5B51ACC1ED42BDA006ACB46 /* AccountViewController.swift */,
+				A5B51ACE1ED43BFD006ACB46 /* QrCodeViewerViewController.swift */,
 			);
 			path = "JO 2017";
 			sourceTree = "<group>";
@@ -372,9 +378,11 @@
 			files = (
 				A5E2375C1ECD8EAA00C59DD8 /* SearchAnnotation.swift in Sources */,
 				A5E2375E1ECDA6CA00C59DD8 /* ScanQRCodeViewController.swift in Sources */,
+				A5B51ACD1ED42BDA006ACB46 /* AccountViewController.swift in Sources */,
 				A5E237561ECC46EB00C59DD8 /* DetailFeedViewController.swift in Sources */,
 				A5BDEA491ECB02D700E41639 /* Geotification.swift in Sources */,
 				A5BDEA541ECB05D200E41639 /* MapViewController.swift in Sources */,
+				A5B51ACF1ED43BFD006ACB46 /* QrCodeViewerViewController.swift in Sources */,
 				A57CC9581ED04B3500913FF5 /* SearchTagViewController.swift in Sources */,
 				A5E237581ECC837700C59DD8 /* LocationSearchTable.swift in Sources */,
 				A54AFBEA1ED31DCB0056C9B3 /* LaunchViewController.swift in Sources */,

@@ -6,11 +6,12 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Carte-->
+        <!--Maps-->
         <scene sceneID="4Kb-02-TKs">
             <objects>
                 <viewController id="Ngg-my-WdP" customClass="MapViewController" customModule="JO_2017" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,7 +34,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Carte" id="srD-Lk-nOK">
+                    <navigationItem key="navigationItem" title="Maps" id="srD-Lk-nOK">
                         <barButtonItem key="rightBarButtonItem" image="CurrentLocation" id="xBY-pA-Ztg">
                             <connections>
                                 <action selector="zoomToCurrentLocationWithSender:" destination="Ngg-my-WdP" id="Ohs-ky-dlP"/>
@@ -105,7 +106,7 @@
         <!--ScanQR Code View Controller-->
         <scene sceneID="2a5-J9-oQy">
             <objects>
-                <viewController id="dpg-kr-kZe" customClass="ScanQRCodeViewController" customModule="JO_2017" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Root_View" id="dpg-kr-kZe" customClass="ScanQRCodeViewController" customModule="JO_2017" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ecq-Bq-Ttd"/>
                         <viewControllerLayoutGuide type="bottom" id="sU3-cg-pQJ"/>
@@ -143,7 +144,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No QR code is detected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRO-ll-aUQ">
-                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="578" width="375" height="40"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Rno-dy-OYQ"/>
@@ -185,6 +186,7 @@
                     <connections>
                         <segue destination="XsE-Oz-GA5" kind="relationship" relationship="viewControllers" id="T9s-kE-jAp"/>
                         <segue destination="J1h-Ym-0ho" kind="relationship" relationship="viewControllers" id="b23-Fb-CQC"/>
+                        <segue destination="5xv-dj-h3T" kind="relationship" relationship="viewControllers" id="fhy-jI-XZx"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vFW-UY-Rsh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -259,7 +261,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Feeds" id="rDj-RP-JJC">
-                        <barButtonItem key="rightBarButtonItem" image="loupe" id="PHd-WP-SqD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="PHd-WP-SqD">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="BnV-f3-Dr7" kind="show" id="log-ni-hXr"/>
@@ -288,15 +290,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdp-xP-lQ6">
-                                <rect key="frame" x="83" y="30" width="209" height="68"/>
-                                <string key="text">Bienvenue aux 
-Jeux Olympiques</string>
+                                <rect key="frame" x="85" y="30" width="206" height="68"/>
+                                <string key="text">Welcome on 
+Olympics Games</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ctW-Rk-H2n">
-                                <rect key="frame" x="16" y="232.5" width="343" height="202"/>
+                                <rect key="frame" x="16" y="233" width="343" height="202"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="Jyv-ly-be4"/>
@@ -326,20 +328,20 @@ Jeux Olympiques</string>
                                     <outlet property="delegate" destination="WQk-T0-PbC" id="Ygg-CG-jME"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Compte Twitter : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C74-dP-2ki">
-                                <rect key="frame" x="16" y="454.5" width="131.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter Account :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C74-dP-2ki">
+                                <rect key="frame" x="16" y="455" width="130" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Twitter Account" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vLY-7H-2Ol">
-                                <rect key="frame" x="16" y="485.5" width="123" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="@BarackObama" borderStyle="roundedRect" placeholder="Twitter Account" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vLY-7H-2Ol">
+                                <rect key="frame" x="16" y="486" width="218" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selectionnez vos centres d'interets :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZJ-8Y-c76">
-                                <rect key="frame" x="16" y="199" width="277" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your center of interest :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZJ-8Y-c76">
+                                <rect key="frame" x="16" y="199" width="231" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -351,7 +353,8 @@ Jeux Olympiques</string>
                                     <constraint firstAttribute="width" constant="172" id="62p-2j-zak"/>
                                     <constraint firstAttribute="height" constant="94" id="ypB-F5-PqZ"/>
                                 </constraints>
-                                <state key="normal" title="Commencer">
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="Start">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -360,7 +363,9 @@ Jeux Olympiques</string>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="vLY-7H-2Ol" secondAttribute="trailing" constant="125" id="0uG-Hs-Q6W"/>
                             <constraint firstItem="C74-dP-2ki" firstAttribute="top" secondItem="ctW-Rk-H2n" secondAttribute="bottom" constant="20" id="5nb-a8-8PZ"/>
                             <constraint firstItem="ypx-i5-fNl" firstAttribute="top" secondItem="PVb-qa-C5D" secondAttribute="bottom" id="Dli-az-rny"/>
                             <constraint firstItem="ctW-Rk-H2n" firstAttribute="top" secondItem="sZJ-8Y-c76" secondAttribute="bottom" constant="12.5" id="I2j-S2-4d4"/>
@@ -377,13 +382,163 @@ Jeux Olympiques</string>
                     </view>
                     <connections>
                         <outlet property="interets" destination="ctW-Rk-H2n" id="dFT-hv-2Ob"/>
+                        <outlet property="start" destination="PVb-qa-C5D" id="uDt-1P-u3A"/>
+                        <outlet property="titre" destination="Jdp-xP-lQ6" id="CEb-5d-b0R"/>
+                        <outlet property="titre1" destination="sZJ-8Y-c76" id="joc-6r-vmr"/>
+                        <outlet property="twit" destination="C74-dP-2ki" id="HYz-WQ-kNn"/>
                         <outlet property="twitterAccount" destination="vLY-7H-2Ol" id="duJ-OI-udY"/>
                         <segue destination="bTq-CI-ajh" kind="show" identifier="run" id="U4N-G0-vez"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MBq-YA-LeG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1722" y="466"/>
+            <point key="canvasLocation" x="-1722.4000000000001" y="465.51724137931041"/>
+        </scene>
+        <!--My Account-->
+        <scene sceneID="rLe-ao-30J">
+            <objects>
+                <viewController id="f44-MY-hg9" customClass="AccountViewController" customModule="JO_2017" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Mah-4D-GZg"/>
+                        <viewControllerLayoutGuide type="bottom" id="7gO-SH-XYX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XP7-Ae-cQM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWj-Wm-XjJ">
+                                <rect key="frame" x="16" y="79" width="343" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="Mjq-P9-ZSb"/>
+                                </constraints>
+                                <string key="text">Jean
+Dupont</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dF-Ms-mgr">
+                                <rect key="frame" x="61" y="564" width="252" height="39"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <state key="normal" title="Disconnect">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deconnexion:" destination="f44-MY-hg9" eventType="touchUpInside" id="zRT-pz-KcH"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Historique des positions :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uua-qY-JqI">
+                                <rect key="frame" x="16" y="167" width="285" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgu-BA-a3E">
+                                <rect key="frame" x="61" y="188" width="253" height="82"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="82" id="gmA-aF-OBK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mes centres d'interets :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0G-y6-Thw">
+                                <rect key="frame" x="16" y="285" width="180" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ufe-vo-jbg">
+                                <rect key="frame" x="61" y="306" width="240" height="82"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="82" id="Q43-y7-lfG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3dF-Ms-mgr" firstAttribute="centerX" secondItem="AWj-Wm-XjJ" secondAttribute="centerX" id="2Pr-64-7eq"/>
+                            <constraint firstItem="Ufe-vo-jbg" firstAttribute="leading" secondItem="fgu-BA-a3E" secondAttribute="leading" id="8hm-lq-Tg8"/>
+                            <constraint firstItem="Ufe-vo-jbg" firstAttribute="top" secondItem="u0G-y6-Thw" secondAttribute="bottom" id="B7f-uE-wGu"/>
+                            <constraint firstItem="AWj-Wm-XjJ" firstAttribute="top" secondItem="Mah-4D-GZg" secondAttribute="bottom" constant="15" id="Dkj-KW-qes"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ufe-vo-jbg" secondAttribute="trailing" constant="58" id="Ef0-sW-CS6"/>
+                            <constraint firstItem="7gO-SH-XYX" firstAttribute="top" secondItem="3dF-Ms-mgr" secondAttribute="bottom" constant="15" id="GGq-zt-J3a"/>
+                            <constraint firstItem="fgu-BA-a3E" firstAttribute="top" secondItem="Uua-qY-JqI" secondAttribute="bottom" id="ID6-0p-NPI"/>
+                            <constraint firstItem="fgu-BA-a3E" firstAttribute="leading" secondItem="XP7-Ae-cQM" secondAttribute="leadingMargin" constant="45" id="SIx-Ve-eoT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fgu-BA-a3E" secondAttribute="trailing" constant="45" id="SRy-zk-HhI"/>
+                            <constraint firstItem="AWj-Wm-XjJ" firstAttribute="leading" secondItem="Uua-qY-JqI" secondAttribute="trailing" constant="-285" id="TUh-A6-T7h"/>
+                            <constraint firstItem="3dF-Ms-mgr" firstAttribute="leading" secondItem="XP7-Ae-cQM" secondAttribute="leadingMargin" constant="45" id="a0j-65-CKI"/>
+                            <constraint firstItem="Uua-qY-JqI" firstAttribute="top" secondItem="AWj-Wm-XjJ" secondAttribute="bottom" constant="20" id="a2F-Be-QY5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3dF-Ms-mgr" secondAttribute="trailing" constant="46" id="bA1-rU-yi6"/>
+                            <constraint firstItem="AWj-Wm-XjJ" firstAttribute="centerX" secondItem="XP7-Ae-cQM" secondAttribute="centerX" id="bec-Xe-9cg"/>
+                            <constraint firstItem="3dF-Ms-mgr" firstAttribute="centerX" secondItem="XP7-Ae-cQM" secondAttribute="centerX" id="cWM-Lj-iXu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AWj-Wm-XjJ" secondAttribute="trailing" id="gC0-Ag-SSq"/>
+                            <constraint firstItem="fgu-BA-a3E" firstAttribute="centerX" secondItem="XP7-Ae-cQM" secondAttribute="centerX" id="jLz-rr-AQG"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Uua-qY-JqI" secondAttribute="leading" id="qcC-UF-Qze"/>
+                            <constraint firstItem="u0G-y6-Thw" firstAttribute="top" secondItem="fgu-BA-a3E" secondAttribute="bottom" constant="15" id="tgs-wJ-dO4"/>
+                            <constraint firstItem="u0G-y6-Thw" firstAttribute="leading" secondItem="Uua-qY-JqI" secondAttribute="leading" id="zzw-c6-Uaw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="My Account" id="J9t-n7-Fnf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="bmc-A4-kJk">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="sdf-W9-75a" kind="show" id="RRC-m4-PiL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="disconnect" destination="3dF-Ms-mgr" id="EFD-pn-1ba"/>
+                        <outlet property="name" destination="AWj-Wm-XjJ" id="51e-wh-9fa"/>
+                        <outlet property="positions" destination="fgu-BA-a3E" id="2PM-6f-MKx"/>
+                        <outlet property="tags" destination="Ufe-vo-jbg" id="CYQ-iK-2Rg"/>
+                        <outlet property="titre1" destination="Uua-qY-JqI" id="PiY-bt-M3d"/>
+                        <outlet property="titre2" destination="u0G-y6-Thw" id="gbo-6w-ijT"/>
+                        <segue destination="dpg-kr-kZe" kind="show" identifier="deconnexion" id="v4C-vj-cmU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IpE-Oj-73v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="872.79999999999995" y="1596.2518740629687"/>
+        </scene>
+        <!--Qr Code Viewer View Controller-->
+        <scene sceneID="8vR-Qi-5Ar">
+            <objects>
+                <viewController id="sdf-W9-75a" customClass="QrCodeViewerViewController" customModule="JO_2017" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GXa-nU-wWa"/>
+                        <viewControllerLayoutGuide type="bottom" id="D7k-Ri-dYu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cbi-Rc-xuR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cIu-He-xRO">
+                                <rect key="frame" x="16" y="162" width="343" height="343"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cIu-He-xRO" secondAttribute="height" multiplier="1:1" id="q7x-ZB-S2n"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="D7k-Ri-dYu" firstAttribute="top" secondItem="cIu-He-xRO" secondAttribute="bottom" constant="113" id="BOt-dz-kVv"/>
+                            <constraint firstItem="cIu-He-xRO" firstAttribute="top" secondItem="GXa-nU-wWa" secondAttribute="bottom" constant="98" id="Ote-eu-CIQ"/>
+                            <constraint firstItem="cIu-He-xRO" firstAttribute="centerX" secondItem="cbi-Rc-xuR" secondAttribute="centerX" id="WYh-ME-wXx"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="cIu-He-xRO" secondAttribute="leading" id="jAw-d1-ydV"/>
+                            <constraint firstItem="cIu-He-xRO" firstAttribute="centerY" secondItem="cbi-Rc-xuR" secondAttribute="centerY" id="zQb-1y-xih"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="qrCode" destination="cIu-He-xRO" id="D3F-Qc-rra"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Wz-FE-pFt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="872.79999999999995" y="2292.5037481259374"/>
         </scene>
         <!--Search Tag View Controller-->
         <scene sceneID="t7F-MD-0Bd">
@@ -426,7 +581,7 @@ Jeux Olympiques</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RSv-KE-gwT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="990" y="1678"/>
+            <point key="canvasLocation" x="1928.8" y="1677.2113943028487"/>
         </scene>
         <!--Detail Feed View Controller-->
         <scene sceneID="LjF-Jl-R22">
@@ -491,11 +646,11 @@ Jeux Olympiques</string>
             </objects>
             <point key="canvasLocation" x="1829.5999999999999" y="859.52023988005999"/>
         </scene>
-        <!--Carte-->
+        <!--Maps-->
         <scene sceneID="szI-8P-wCM">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XsE-Oz-GA5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Carte" id="hUY-OS-mEm"/>
+                    <tabBarItem key="tabBarItem" title="Maps" image="map" id="hUY-OS-mEm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="97M-eH-uut">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -511,11 +666,11 @@ Jeux Olympiques</string>
             </objects>
             <point key="canvasLocation" x="-66" y="123"/>
         </scene>
-        <!--News-->
+        <!--Feeds-->
         <scene sceneID="lSS-hP-JWU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="J1h-Ym-0ho" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="News" id="b9d-rr-ALI"/>
+                    <tabBarItem key="tabBarItem" title="Feeds" image="news" id="b9d-rr-ALI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="q1v-6k-yms">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -549,11 +704,33 @@ Jeux Olympiques</string>
             </objects>
             <point key="canvasLocation" x="621.60000000000002" y="-543.77811094452773"/>
         </scene>
+        <!--My Account-->
+        <scene sceneID="Id2-2U-1Ux">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5xv-dj-h3T" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Account" image="account" id="9lf-3J-jKN"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JGZ-am-ANN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.91084003448486328" green="0.70461124181747437" blue="0.43550699949264526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="f44-MY-hg9" kind="relationship" relationship="rootViewController" id="R1h-nC-mUa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kbI-ub-SgU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-66.400000000000006" y="1596.2518740629687"/>
+        </scene>
     </scenes>
     <resources>
         <image name="CurrentLocation" width="15" height="15"/>
+        <image name="account" width="25" height="25"/>
         <image name="cross" width="16" height="16"/>
-        <image name="loupe" width="20" height="22"/>
+        <image name="map" width="25" height="25"/>
+        <image name="news" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xzh-0z-11W"/>

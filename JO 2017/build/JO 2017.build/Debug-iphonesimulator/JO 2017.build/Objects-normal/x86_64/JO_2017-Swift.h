@@ -138,11 +138,27 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import ObjectiveC;
 @import MapKit;
 @import AVFoundation;
-@import Alamofire;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
+@class UILabel;
+@class UITextView;
+@class NSBundle;
+@class NSCoder;
+
+SWIFT_CLASS("_TtC7JO_201721AccountViewController")
+@interface AccountViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified name;
+@property (nonatomic, weak) IBOutlet UITextView * _Null_unspecified positions;
+@property (nonatomic, weak) IBOutlet UITextView * _Null_unspecified tags;
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (IBAction)deconnexion:(id _Nonnull)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class UIWindow;
 @class CLLocationManager;
 @class UIApplication;
@@ -164,10 +180,6 @@ SWIFT_CLASS("_TtC7JO_201711AppDelegate")
 - (void)locationManager:(CLLocationManager * _Nonnull)manager didExitRegion:(CLRegion * _Nonnull)region;
 @end
 
-@class UILabel;
-@class UITextView;
-@class NSBundle;
-@class NSCoder;
 
 SWIFT_CLASS("_TtC7JO_201724DetailFeedViewController")
 @interface DetailFeedViewController : UIViewController
@@ -304,13 +316,6 @@ SWIFT_CLASS("_TtC7JO_201717MapViewController")
 - (void)dropPinZoomInPlacemark:(MKPlacemark * _Nonnull)placemark;
 @end
 
-
-@interface MapViewController (SWIFT_EXTENSION(JO_2017)) <CLLocationManagerDelegate>
-- (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
-- (void)locationManager:(CLLocationManager * _Nonnull)manager monitoringDidFailForRegion:(CLRegion * _Nullable)region withError:(NSError * _Nonnull)error;
-- (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
-@end
-
 @class MKAnnotationView;
 @protocol MKOverlay;
 @class MKOverlayRenderer;
@@ -320,6 +325,13 @@ SWIFT_CLASS("_TtC7JO_201717MapViewController")
 - (MKAnnotationView * _Nullable)mapView:(MKMapView * _Nonnull)mapView viewForAnnotation:(id <MKAnnotation> _Nonnull)annotation SWIFT_WARN_UNUSED_RESULT;
 - (MKOverlayRenderer * _Nonnull)mapView:(MKMapView * _Nonnull)mapView rendererForOverlay:(id <MKOverlay> _Nonnull)overlay SWIFT_WARN_UNUSED_RESULT;
 - (void)mapView:(MKMapView * _Nonnull)mapView annotationView:(MKAnnotationView * _Nonnull)view calloutAccessoryControlTapped:(UIControl * _Nonnull)control;
+@end
+
+
+@interface MapViewController (SWIFT_EXTENSION(JO_2017)) <CLLocationManagerDelegate>
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager monitoringDidFailForRegion:(CLRegion * _Nullable)region withError:(NSError * _Nonnull)error;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
 @end
 
 
@@ -364,7 +376,6 @@ SWIFT_CLASS("_TtC7JO_201723SearchTagViewController")
 @interface SearchTagViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, copy) NSArray<NSString *> * _Nonnull tags;
 @property (nonatomic, copy) NSString * _Nonnull selectedTag;
-@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nonnull headers;
 @property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified tableView;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;

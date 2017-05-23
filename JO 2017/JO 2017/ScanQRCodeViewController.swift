@@ -88,6 +88,14 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         if metadataObjects == nil || metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
             messageLabel.text = "No QR code is detected"
+            
+            if UserDefaults.standard.string(forKey: "user_language") != "en"{
+                
+                translate(chaine: messageLabel.text!, to: UserDefaults.standard.string(forKey: "user_language")!){ retour in
+                    self.messageLabel.text = retour
+                }
+            }
+            
             return
         }
         
@@ -102,11 +110,8 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             if metadataObj.stringValue != nil && readed == false{
                 
                 readed = true
-                messageLabel.text = metadataObj.stringValue
-                print(metadataObj.stringValue)
-                
-                
-                
+                messageLabel.text = "QrCode detected !"
+
                 //Send POST /checkQrCode
                 let parameters: Parameters = [
                     "user_id": metadataObj.stringValue
@@ -114,16 +119,11 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
                 
                 Alamofire.request("http://qrcode.soc.catala.ovh/checkQrCode", method: .post, parameters: parameters, encoding: JSONEncoding.default)
 .validate().responseJSON{ response in
-    
-                    print(response.request!.allHTTPHeaderFields!)
-                    print(response.description)
-                    
-                    
+
                     switch response.result {
                     case .success:
                         print("QRCode find")
                         if let result = response.result.value {
-                            print("JSON: \(result)")
                             
                             let json = JSON(result)
                             
@@ -131,15 +131,14 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
                             let nom = json["perso"]["nom"].stringValue
                             let prenom = json["perso"]["prenom"].stringValue
                             let type = json["perso"]["type"].stringValue
-                            let tags = json["tags"].arrayValue
+                            print(json["tags"].arrayValue)
+                            let language = json["perso"]["language"].stringValue
                             
                             UserDefaults.standard.set(id, forKey: "user_id")
                             UserDefaults.standard.set(nom, forKey: "user_nom")
                             UserDefaults.standard.set(prenom, forKey: "user_prenom")
                             UserDefaults.standard.set(type, forKey: "user_type")
-                            //UserDefaults.standard.set(tags, forKey: "tags")
-                            
-                            print(UserDefaults.standard.value(forKey: "user_id")!)
+                            UserDefaults.standard.set(language, forKey: "user_language")
    
                         }
                         self.performSegue(withIdentifier: "auth", sender: self);
@@ -167,15 +166,4 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        
-//    }
-//    
-
 }

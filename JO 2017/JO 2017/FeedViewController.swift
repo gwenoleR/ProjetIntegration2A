@@ -57,69 +57,120 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         var url = ""
         if tag == "" {
-            url = "http://feeder.soc.catala.ovh/getLast10Post"
+            url = "http://tags.soc.catala.ovh/getInterestPosts"
+            
+            let param : Parameters = [
+                "_id" : UserDefaults.standard.string(forKey: "user_id")!
+            ]
+        
+            Alamofire.request(url, method: .post, parameters: param, encoding: JSONEncoding.default).validate().responseJSON{ response in
+                switch response.result {
+                case .success:
+                    print("Validation Successful")
+                    if let result = response.result.value {
+                        
+                        let json = JSON(result)
+                        
+                        for f in json{
+                            
+                            let content = f.1["content"].stringValue
+                            let title = f.1["title"].stringValue
+                            let tagsArray = f.1["tags"].arrayValue
+                            let _id = f.1["_id"].stringValue
+                            
+                            var tags:[String] = []
+                            for t in tagsArray{
+                                tags.append(t.stringValue)
+                            }
+                            
+                            let feed = Feed(titre: title, content: content, tags: tags, id: _id)
+                            
+                            var add = true
+                            for f in self.feeds{
+                                if feed.isEqual(f){
+                                    add = false
+                                    break
+                                }
+                            }
+                            if add {
+                                self.feeds.append(feed)
+                            }
+                        }
+                        DispatchQueue.main.async { self.tableView.reloadData() }
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+
+                
+            }
+        
         }
         else{
             url = "http://feeder.soc.catala.ovh/getPostAbout/\(tag)"
-        }
-        
-        //GET: /GetLast10Post
-        Alamofire.request(url).validate().responseJSON { response in
-            switch response.result {
-            case .success:
-                print("Validation Successful")
-                if let result = response.result.value {
-                    
-                    let json = JSON(result)
-                    
-                    print(json)
-                    
-                    for f in json{
+            
+            Alamofire.request(url).validate().responseJSON { response in
+                switch response.result {
+                case .success:
+                    print("Validation Successful")
+                    if let result = response.result.value {
                         
-                        print(f)
+                        let json = JSON(result)
                         
-                        let content = f.1["content"].stringValue
-                        let title = f.1["title"].stringValue
-                        let tagsArray = f.1["tags"].arrayValue
-                        let _id = f.1["_id"].stringValue
-                        
-                        var tags:[String] = []
-                        for t in tagsArray{
-                            tags.append(t.stringValue)
-                        }
-                        
-                        let feed = Feed(titre: title, content: content, tags: tags, id: _id)
-                        
-                        var add = true
-                        for f in self.feeds{
-                            if feed.isEqual(f){
-                                add = false
-                                break
+                        for f in json{
+                            
+                            let content = f.1["content"].stringValue
+                            let title = f.1["title"].stringValue
+                            let tagsArray = f.1["tags"].arrayValue
+                            let _id = f.1["_id"].stringValue
+                            
+                            var tags:[String] = []
+                            for t in tagsArray{
+                                tags.append(t.stringValue)
+                            }
+                            
+                            let feed = Feed(titre: title, content: content, tags: tags, id: _id)
+                            
+                            var add = true
+                            for f in self.feeds{
+                                if feed.isEqual(f){
+                                    add = false
+                                    break
+                                }
+                            }
+                            if add {
+                                self.feeds.append(feed)
                             }
                         }
-                        if add {
-                            self.feeds.append(feed)
-                        }
+                        DispatchQueue.main.async { self.tableView.reloadData() }
                     }
-                    DispatchQueue.main.async { self.tableView.reloadData() }
+                case .failure(let error):
+                    print(error)
                 }
-            case .failure(let error):
-                print(error)
             }
         }
-
         
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getPost()
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if UserDefaults.standard.string(forKey: "user_language") != "en"{
+            
+            if let t = self.title{
+                translate(chaine: t, to: UserDefaults.standard.string(forKey: "user_language")!){ retour in
+                    self.title = retour
+                }
+            }
+        }
+        
         self.tableView.addSubview(self.refreshControl)
-        
-        getPost()
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -145,8 +196,6 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-        print(feeds[indexPath.row])
         selectedFeed = feeds[indexPath.row]
         self.performSegue(withIdentifier: "showDetail", sender: indexPath);
     }
@@ -154,8 +203,6 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail"{
-            
-            print(selectedFeed)
             
             guard let detailViewController = segue.destination as? DetailFeedViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")

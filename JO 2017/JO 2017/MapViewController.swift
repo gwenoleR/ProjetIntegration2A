@@ -31,34 +31,9 @@ class MapViewController: UIViewController {
     var resultSearchController:UISearchController!
     var selectedPin:MKPlacemark? = nil
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        super.viewDidLoad()
-        
-        
-        //MARK: Search Bar
-        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
-        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
-        resultSearchController?.searchResultsUpdater = locationSearchTable
-        let searchBar = resultSearchController!.searchBar
-        searchBar.sizeToFit()
-        searchBar.placeholder = "Search for places"
-        navigationItem.titleView = resultSearchController?.searchBar
-        resultSearchController?.hidesNavigationBarDuringPresentation = false
-        resultSearchController?.dimsBackgroundDuringPresentation = true
-        definesPresentationContext = true
-        locationSearchTable.mapView = mapView
-        locationSearchTable.handleMapSearchDelegate = self
-        
-        
-        locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
-        
-        
+    override func viewDidAppear(_ animated: Bool) {
+ 
         loadAllGeotifications()
-        
-        mapView.zoomToUserLocation()
-
         
         Alamofire.request("http://gps.soc.catala.ovh/getAllPoi", method: .get, encoding: JSONEncoding.default)
             .validate().responseJSON{ response in
@@ -66,12 +41,9 @@ class MapViewController: UIViewController {
                 switch response.result {
                 case .success:
                     if let result = response.result.value {
-                        print("JSON: \(result)")
                         
                         let json = JSON(result)
-                        
                         let points = json["poi"]
-                        
                         
                         for point in points{
                             
@@ -102,16 +74,33 @@ class MapViewController: UIViewController {
                     print("Failed to get POI")
                 }
         }
-       
+        mapView.zoomToUserLocation()
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //    if segue.identifier == "addGeotification" {
-        //      let navigationController = segue.destination as! UINavigationController
-        //      let vc = navigationController.viewControllers.first as! AddGeotificationViewController
-        //      vc.delegate = self
-        //    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        super.viewDidLoad()
+        
+        
+        //MARK: Search Bar
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController?.searchResultsUpdater = locationSearchTable
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search for places"
+        navigationItem.titleView = resultSearchController?.searchBar
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
+        locationSearchTable.mapView = mapView
+        locationSearchTable.handleMapSearchDelegate = self
+        
+        
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        
     }
     
     // MARK: Loading and saving functions
@@ -142,8 +131,6 @@ class MapViewController: UIViewController {
         }
         geotifications.append(geotification)
         mapView.addAnnotation(geotification)
-        //addRadiusOverlay(forGeotification: geotification)
-        updateGeotificationsCount()
     }
     
     func remove(geotification: Geotification) {
@@ -151,31 +138,6 @@ class MapViewController: UIViewController {
             geotifications.remove(at: indexInArray)
         }
         mapView.removeAnnotation(geotification)
-        removeRadiusOverlay(forGeotification: geotification)
-        updateGeotificationsCount()
-    }
-    
-    func updateGeotificationsCount() {
-        title = "Carte (\(geotifications.count))"
-        navigationItem.rightBarButtonItem?.isEnabled = (geotifications.count < 20)
-    }
-    
-    // MARK: Map overlay functions
-    func addRadiusOverlay(forGeotification geotification: Geotification) {
-        mapView?.add(MKCircle(center: geotification.coordinate, radius: geotification.radius))
-    }
-    
-    func removeRadiusOverlay(forGeotification geotification: Geotification) {
-        // Find exactly one overlay which has the same coordinates & radius to remove
-        guard let overlays = mapView?.overlays else { return }
-        for overlay in overlays {
-            guard let circleOverlay = overlay as? MKCircle else { continue }
-            let coord = circleOverlay.coordinate
-            if coord.latitude == geotification.coordinate.latitude && coord.longitude == geotification.coordinate.longitude && circleOverlay.radius == geotification.radius {
-                mapView?.remove(circleOverlay)
-                break
-            }
-        }
     }
     
     // MARK: Other mapview functions
@@ -184,27 +146,21 @@ class MapViewController: UIViewController {
     }
     
     func region(withGeotification geotification: Geotification) -> CLCircularRegion {
-        // 1
         let region = CLCircularRegion(center: geotification.coordinate, radius: geotification.radius, identifier: geotification.identifier)
-        // 2
         region.notifyOnEntry = (geotification.eventType == .onEntry)
         region.notifyOnExit = !region.notifyOnEntry
         return region
     }
     
     func startMonitoring(geotification: Geotification) {
-        // 1
         if !CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
             showAlert(withTitle:"Error", message: "Geofencing is not supported on this device!")
             return
         }
-        // 2
         if CLLocationManager.authorizationStatus() != .authorizedAlways {
             showAlert(withTitle:"Warning", message: "Your geotification is saved but will only be activated once you grant Geotify permission to access the device location.")
         }
-        // 3
         let region = self.region(withGeotification: geotification)
-        // 4
         locationManager.startMonitoring(for: region)
     }
     
@@ -224,22 +180,6 @@ class MapViewController: UIViewController {
     }
 }
 
-// MARK: AddGeotificationViewControllerDelegate
-//extension GeotificationsViewController: AddGeotificationsViewControllerDelegate {
-//
-//  func addGeotificationViewController(controller: AddGeotificationViewController, didAddCoordinate coordinate: CLLocationCoordinate2D, radius: Double, identifier: String, note: String, eventType: EventType) {
-//    controller.dismiss(animated: true, completion: nil)
-//    // 1
-//    let clampedRadius = min(radius, locationManager.maximumRegionMonitoringDistance)
-//    let geotification = Geotification(coordinate: coordinate, radius: clampedRadius, identifier: identifier, note: note, eventType: eventType)
-//    add(geotification: geotification)
-//    // 2
-//    startMonitoring(geotification: geotification)
-//    saveAllGeotifications()
-//  }
-//
-//}
-
 //MARK: Search Delegate
 extension MapViewController: HandleMapSearch {
     func dropPinZoomIn(placemark:MKPlacemark){
@@ -251,7 +191,6 @@ extension MapViewController: HandleMapSearch {
                 mapView.removeAnnotation(anno)
             }
         }
-        //mapView.removeAnnotation(mapView.annotations.last!)
         
         let annotation = SearchAnnotation(coordinate: placemark.coordinate, name: "search")
         annotation.coordinate = placemark.coordinate
@@ -303,9 +242,7 @@ extension MapViewController: MKMapViewDelegate {
                     annotationView.leftCalloutAccessoryView = removeButton
                     annotationView.image = UIImage(named: "stadium")
                 }
-               
             }
-            
             else {
                 annotationView?.annotation = annotation
             }
@@ -330,20 +267,7 @@ extension MapViewController: MKMapViewDelegate {
         return nil
     }
     
-    
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        if overlay is MKCircle {
-            let circleRenderer = MKCircleRenderer(overlay: overlay)
-            circleRenderer.lineWidth = 1.0
-            circleRenderer.strokeColor = .purple
-            circleRenderer.fillColor = UIColor.purple.withAlphaComponent(0.4)
-            return circleRenderer
-        }
-        return MKOverlayRenderer(overlay: overlay)
-    }
-    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        // Delete geotification
         if view.annotation is Geotification{
             let geotification = view.annotation as! Geotification
             remove(geotification: geotification)

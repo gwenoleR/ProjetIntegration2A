@@ -16,20 +16,14 @@ class SearchTagViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var tableView: UITableView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.title = "Tags"
-                
+    override func viewDidAppear(_ animated: Bool) {
         //GET: /getTags
         Alamofire.request("http://feeder.soc.catala.ovh/getTags").validate().responseJSON { response in
             switch response.result {
             case .success:
-                //print(response.result.value ?? "")
                 let json = JSON(response.result.value!)
                 
                 for tag in json{
-                    print(tag)
                     self.tags.append(tag.1["_id"].stringValue)
                 }
                 DispatchQueue.main.async { self.tableView.reloadData() }
@@ -38,6 +32,13 @@ class SearchTagViewController: UIViewController, UITableViewDelegate, UITableVie
                 print(error)
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.title = "Tags"
+ 
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,7 +62,6 @@ class SearchTagViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(tags[indexPath.row])
         selectedTag = tags[indexPath.row]
         
         let parameters: Parameters = [
@@ -71,13 +71,8 @@ class SearchTagViewController: UIViewController, UITableViewDelegate, UITableVie
             
         ]
         
-        print(parameters)
-        
-        
         Alamofire.request("http://feeder.soc.catala.ovh/updateTagWeight", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseData{ response in
-            
-            debugPrint("All Response Info: \(response)")
-            
+
             if let data = response.result.value, let utf8Text = String(data: data, encoding: .utf8) {
                 print("Data: \(utf8Text)")
             }
@@ -91,9 +86,7 @@ class SearchTagViewController: UIViewController, UITableViewDelegate, UITableVie
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "getPost"{
-            
-            print(selectedTag)
-            
+
             guard let postViewController = segue.destination as? FeedViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
