@@ -35,18 +35,18 @@ app.post("/initUserTags", function (req, res) {
     });
     //We'll wait the end signal of the request to treat it's content.
     req.on('end', function () {
-        post = qs.parse(body);
+        post = qs.parse(JSON.stringify(body));
         //let idUser = new ObjectID(post._id);
         console.log("post request :", post);
         let idToFind = ObjectID(post._id);
         console.log("id : ", idToFind);
-        tagArray = []
-
+        tagArray = [];
+        console.log("Generating tags array")
         for (n in post.tags) {
             tagArray.push({name: post.tags[n], weight: 10})
         }
 
-        console.log(tagArray);
+        console.log("tags : ", tagArray);
 
         MongoClient.connect(url, function (err, db) {
             assert.equal(null, err);
