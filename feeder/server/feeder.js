@@ -41,7 +41,7 @@ app.post("/initUserTags", function (req, res) {
         let idToFind = ObjectID(post._id);
         console.log("id : ", idToFind);
         tagArray = [];
-        console.log("Generating tags array")
+        console.log("Generating tags array", post.tags)
         for (n in post.tags) {
             tagArray.push({name: post.tags[n], weight: 10})
         }
