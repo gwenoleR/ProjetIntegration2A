@@ -68,9 +68,7 @@ app.post("/initUserTags", function (req, res) {
                         console.log(err)
                         res.sendStatus(400)
                     } else {
-                        console.log(r)
                         console.log("updated ");
-
                     }
                     db.close();
                 });
