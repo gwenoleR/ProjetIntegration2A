@@ -35,16 +35,17 @@ app.post("/initUserTags", function (req, res) {
     });
     //We'll wait the end signal of the request to treat it's content.
     req.on('end', function () {
-        post = body
+        post = JSON.parse(body)
         //let idUser = new ObjectID(post._id);
         console.log("post request :", post);
-        let idToFind = body._id;
+        let idToFind = post._id;
         console.log("id : ", idToFind);
         tagArray = [];
-        console.log("Generating tags array", body.tags)
-        console.log("post id", body._id)
+        console.log("Generating tags array", post.tags)
+        console.log("post id", post._id)
         for (n in post.tags) {
-            tagArray.push({name: body.tags[n], weight: 10})
+            console.log(post.tags[n])
+            tagArray.push({name: post.tags[n], weight: 10})
         }
 
         console.log("tags : ", tagArray);
@@ -111,7 +112,7 @@ app.get('/getTags', function (req, res) {
     try {
         MongoClient.connect(url, function (err, db) {
             assert.equal(null, err);
-            console.log("Getting tgs...");
+            console.log("Getting tags...");
             db.collection('tags').find({}).toArray(function (err, results) {
                 assert.equal(err, null);
                 //console.log("Found the following records");
@@ -516,7 +517,6 @@ app.get('/userBehaviourData/:user', function (req, res) {
         res.sendStatus(500)
     }
 })
-
 
 
 app.listen(3000, function () {
