@@ -73,6 +73,6 @@ threadTweetsCompteur = threading.Thread(None, threadCompteurTweets, None)
 threadTweetsCompteur.start()
 listener = StdOutListener()
 stream = Stream(auth, listener)
-stream.filter(track=['#JOIMERIR', '#JO', '#python', '#snap'])
+stream.filter(track=['#JOIMERIR', '#JO'])
 
    
