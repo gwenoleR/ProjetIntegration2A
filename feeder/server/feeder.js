@@ -38,13 +38,13 @@ app.post("/initUserTags", function (req, res) {
         post = body
         //let idUser = new ObjectID(post._id);
         console.log("post request :", post);
-        let idToFind = post._id;
+        let idToFind = body._id;
         console.log("id : ", idToFind);
         tagArray = [];
-        console.log("Generating tags array", post.tags)
-        console.log("post id", post._id)
+        console.log("Generating tags array", body.tags)
+        console.log("post id", body._id)
         for (n in post.tags) {
-            tagArray.push({name: post.tags[n], weight: 10})
+            tagArray.push({name: body.tags[n], weight: 10})
         }
 
         console.log("tags : ", tagArray);
