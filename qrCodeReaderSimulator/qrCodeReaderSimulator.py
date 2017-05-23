@@ -22,7 +22,7 @@ def simulateIoT():
         res["_id"] = str(oid)
         results2.append(res)
     while True:
-        for iot in range(1,5):
+        for iot in range(1,3):
             iotname = "fakeReader-soc" + str(iot)
             nbm = random.randint(0,len(results2)-1)
             
@@ -59,7 +59,7 @@ def simulateIoT():
 
             dweepy.dweet_for(url,p)
         dweepy.dweet_for("usersOnSite-soc",{"usersOnSite":usersOnSite})
-        time.sleep(1)
+        #time.sleep(1)
 
 
 
