@@ -36,9 +36,8 @@ app.post("/initUserTags", function (req, res) {
     //We'll wait the end signal of the request to treat it's content.
     req.on('end', function () {
         post = JSON.parse(body)
-        //let idUser = new ObjectID(post._id);
         console.log("post request :", post);
-        let idToFind = post._id;
+        let idToFind = ObjectID(post._id);
         console.log("id : ", idToFind);
         tagArray = [];
         console.log("Generating tags array", post.tags)
