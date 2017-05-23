@@ -63,7 +63,7 @@ app.post("/initUserTags", function (req, res) {
                     }
                 }, {
                     returnOriginal: false
-                    , upsert: false
+                    , upsert: true
                 }, function (err, r) {
                     assert.equal(null, err);
                     if (err) {
