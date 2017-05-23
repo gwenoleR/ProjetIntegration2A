@@ -191,7 +191,7 @@ app.post('/updateTagWeight', function (req, res) {
     });
     //We'll wait the end signal of the request to treat it's content.
     req.on('end', function () {
-        post = qs.parse(body);
+        post = JSON.parse(body);
         //let idUser = new ObjectID(post._id);
         console.log("post request :", post);
         let idToFind = ObjectID(post._id);
@@ -237,14 +237,12 @@ app.post('/updateTagWeight', function (req, res) {
                                         console.log(err)
                                         res.sendStatus(400)
                                     } else {
-                                        console.log(r)
                                         console.log("updated ");
 
                                     }
                                     db.close();
                                 })
                         } else {
-                            console.log(r.lastErrorObject.updatedExisting)
                             console.log("updated ");
                             res.sendStatus(201)
                         }
