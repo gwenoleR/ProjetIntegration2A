@@ -131,28 +131,40 @@ def decryptBehavior(behavior, twitterName):
     isOk = writeProfileInDb(behaviorParsed)
     
 
-def isUserExist(username):
+def isUserExistInTwitter(username):
     try:
         users = api.get_user(username)
     except tweepy.TweepError as e:
         return e
     return True
        
+def isUserExistInDB(username):
+    retour = profilingCollection.find_one({"arobase":username})
+    if(retour == None):
+        return False
+    else:
+        return True
 
 @app.route('/', methods=['POST'])
 def behavior():    
     
     data = request.get_json()    
     twitterName = data['twitterName']
-    isOk = isUserExist(twitterName)
+    isOk = isUserExistInTwitter(twitterName)
     if(isOk == True):
-        behaviorJson = getBehavior(twitterName)
-        decryptBehavior(behaviorJson, twitterName)
-        resp = make_response("Behavior send successfull", 200)
-        resp.mimetype = 'application/json'
-        return resp
+        isUserInDb = isUserExistInDB(twitterName)
+        if(isUserInDb == False):
+            behaviorJson = getBehavior(twitterName)
+            decryptBehavior(behaviorJson, twitterName)
+            resp = make_response(json.dumps("Behavior send successfull"), 200)
+            resp.mimetype = 'application/json'
+            return resp
+        else:
+            resp = make_response(json.dumps("This user already exists in DB"), 400)
+            resp.mimetype = 'application/json'
+            return resp
     else:
-        resp = make_response("This user doesn't exist", 400)
+        resp = make_response(json.dumps("This user doesn't exist"), 400)
         resp.mimetype = 'application/json'
         return resp
 
