@@ -67,7 +67,7 @@ def showQrCode():
     print(stringToRender)  
     
     return make_response(stringToRender,200)
-    #return render_template('index.html', qrCode= stringToRender,typePerson = listType,typeNatio= listNatio)
+    
 
 @app.route('/')
 def pageBeacon():
@@ -92,5 +92,5 @@ def addUsersMongo():
 if __name__ == '__main__':    
     getType()
     getNationalite()
-    app.run()
+    app.run(host='0.0.0.0')
 
