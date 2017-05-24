@@ -1,4 +1,5 @@
 from flask import Flask, request, make_response, render_template, send_file
+from flask_cors import CORS, cross_origin
 import requests
 import json
 from pymongo import MongoClient
@@ -6,6 +7,7 @@ from bson.objectid import ObjectId
 import time
 
 app = Flask(__name__)
+CORS(app)
 
 dburl = 'mongodb://soc.catala.ovh:27017/'
 listType = []
