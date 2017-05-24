@@ -18,7 +18,7 @@ $(function(){
 
     $.ajax({
       type: "POST",
-      url: "http://inscription.jo.catala.ovh/addUsers",
+      url: "http://addusers/addUsers",
       contentType: "application/json",      
       data: JSON.stringify({ "perso" :{ "nom":nom, "prenom" : prenom, "nationalite":nationalite,"language": language, "type":type }}),
 
@@ -41,7 +41,7 @@ $(function(){
     $.ajax({
     
       type: "POST",
-      url: "http://inscription.jo.catala.ovh/getQrCode",
+      url: "http://addusers/getQrCode",
       contentType: "application/json",      
       data: JSON.stringify({"":""}),
 
