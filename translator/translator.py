@@ -7,8 +7,8 @@ app = Flask(__name__)
 CORS(app)
 
 language_translator = LanguageTranslatorV2(
-    username='cb384893-5d32-44e7-83ea-85dfb79bf5b9',
-    password='OLg13FG8CBXO')
+    username='',
+    password='')
 
 listLangages = []
 listLangagesForJson = {"models":{"model_id":[""]}}
