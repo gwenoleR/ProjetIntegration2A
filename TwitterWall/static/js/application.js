@@ -20,7 +20,7 @@ inbox.onmessage = function(message) {
     sautDeLigne = "";
   }else {
     console.log("image pas vide");
-    imageOrnot = ":small";
+    imageOrnot = ":medium";
     sautDeLigne = "<br>";
   }
   $("#twitter-wall").append("<div class='panel panel-default'><div class='panel-heading'>" + $('<span/>').text(data.name).html()+ $('<span/>').text(" @").html() + $('<span/>').text(data.screen_name).html() + "</div><div class='panel-body'>" + $('<span/>').text(data.text).html()+sautDeLigne+ "<img  src="+ data.image+ imageOrnot +">" + "</div></div>");
