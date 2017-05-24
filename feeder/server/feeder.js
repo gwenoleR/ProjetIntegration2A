@@ -3,21 +3,26 @@
  */
 
 let express = require('express');
+
 let app = express();
+
 let qs = require('querystring');
+
 let ObjectID = require('mongodb').ObjectID;
 
 let MongoClient = require('mongodb').MongoClient
     , assert = require('assert');
 
-
 let parameters = require('../JSON/params.json');
 
-
 app.set('view engine', 'ejs');
+
 app.set('views', __dirname + "/views/");
+
+
 // Connection URL
 let url = 'mongodb://' + parameters.mongoDB.host + ':27017/' + parameters.mongoDB.database;
+
 // Use connect method to connect to the Server
 MongoClient.connect(url, function (err, db) {
     assert.equal(null, err);
@@ -78,6 +83,7 @@ app.post("/initUserTags", function (req, res) {
         });
     });
 });
+
 
 app.get("/getPostAbout/:tag", function (req, res) {
     console.log(req.params)
@@ -150,6 +156,7 @@ app.get('/getLastPost', function (req, res) {
     }
 });
 
+
 app.get('/getLastUser', function (req, res) {
     response = null;
     try {
@@ -172,15 +179,6 @@ app.get('/getLastUser', function (req, res) {
 });
 
 
-app.get('/tag', function (req, res) {
-    post = {
-        'title': 'tagTitle',
-        'content': 'Hey its a post with some tags',
-        'tags': ['sport', 'some', 'sex']
-    };
-    res.send(post)
-});
-
 app.post('/updateTagWeight', function (req, res) {
 
     body = '';
@@ -191,7 +189,7 @@ app.post('/updateTagWeight', function (req, res) {
     });
     //We'll wait the end signal of the request to treat it's content.
     req.on('end', function () {
-        post = qs.parse(body);
+        post = JSON.parse(body);
         //let idUser = new ObjectID(post._id);
         console.log("post request :", post);
         let idToFind = ObjectID(post._id);
@@ -237,14 +235,12 @@ app.post('/updateTagWeight', function (req, res) {
                                         console.log(err)
                                         res.sendStatus(400)
                                     } else {
-                                        console.log(r)
                                         console.log("updated ");
 
                                     }
                                     db.close();
                                 })
                         } else {
-                            console.log(r.lastErrorObject.updatedExisting)
                             console.log("updated ");
                             res.sendStatus(201)
                         }
@@ -491,10 +487,6 @@ app.post('/saveDest', function (req, res) {
     });
 });
 
-
-app.get('/user/:user', function () {
-
-})
 
 app.get('/userBehaviourData/:user', function (req, res) {
     response = null;

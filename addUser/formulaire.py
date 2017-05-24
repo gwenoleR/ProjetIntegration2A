@@ -1,4 +1,5 @@
 from flask import Flask, request, make_response, render_template, send_file
+from flask_cors import CORS, cross_origin
 import requests
 import json
 from pymongo import MongoClient
@@ -6,6 +7,7 @@ from bson.objectid import ObjectId
 import time
 
 app = Flask(__name__)
+CORS(app)
 
 dburl = 'mongodb://soc.catala.ovh:27017/'
 listType = []
@@ -67,7 +69,7 @@ def showQrCode():
     print(stringToRender)  
     
     return make_response(stringToRender,200)
-    #return render_template('index.html', qrCode= stringToRender,typePerson = listType,typeNatio= listNatio)
+    
 
 @app.route('/')
 def pageBeacon():
@@ -92,5 +94,5 @@ def addUsersMongo():
 if __name__ == '__main__':    
     getType()
     getNationalite()
-    app.run()
+    app.run(host='0.0.0.0')
 

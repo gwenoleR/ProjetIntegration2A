@@ -54,7 +54,7 @@
 <script type="application/javascript">
 
     $.ajax({
-        url: "http://localhost:3000/getTags"
+        url: "http://feeder.soc.catala.ovh/getTags"
     })
         .done(function (response) {
 
@@ -69,7 +69,7 @@
         tagname = $('#newTagName').val();
         $.ajax({
             method: "POST",
-            url: "http://localhost:3000/post_new_tag",
+            url: "http://feeder.soc.catala.ovh/post_new_tag",
             data: {
                 name: tagname
             }
@@ -100,7 +100,7 @@
         console.log("tags :", tags)
         $.ajax({
             method: "POST",
-            url: "http://localhost:3000/post_new",
+            url: "http://feeder.soc.catala.ovh/post_new",
             data: {
                 title: $('#title').val(),
                 content: $('#content').val(),
