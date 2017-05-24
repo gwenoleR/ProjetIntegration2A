@@ -9,18 +9,35 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style>
         .progress {
-            width: 65%;
+            width: 100%;
         }
 
+        li {
+            width: 33%;
+            height: 100%;
+            display: inline-block;
+        }
 
+        #background {
+            background: url("http://16004-presscdn-0-50.pagely.netdna-cdn.com/wp-content/uploads/Nsa-eagle-white.jpg") no-repeat center;
+            background-size: contain;
+            position: absolute;
+            opacity: 0.1;
+            height: 100%;
+            width: 100%;
+
+        }
     </style>
 </head>
 <body>
+
+
+<div id="background"></div>
 <h1><%- data[0].arobase %></h1>
 
 <ul>
     <li>
-        <h3>Top 5 :</h3>
+        <h3>Big 5 :</h3>
 
         <% data[0].behavior.big5.personality.forEach(function(item){ %>
         <div class="name"><%= item.name %></div>
@@ -28,7 +45,6 @@
             <div class="skills progress-bar" role="progressbar" aria-valuenow="<%= Math.trunc(item.percentage*100) %>"
                  aria-valuemin="0" aria-valuemax="100"><%= Math.trunc(item.percentage*100) %>
             </div>
-
         </div>
         <% })%>
     </li>
@@ -41,7 +57,6 @@
             <div class="skills progress-bar" role="progressbar" aria-valuenow="<%= Math.trunc(item.percentage*100) %>"
                  aria-valuemin="0" aria-valuemax="100"><%= Math.trunc(item.percentage*100) %>
             </div>
-
         </div>
         <% })%>
     </li>
@@ -70,6 +85,13 @@
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 
+
+<script>
+    $('.progress-bar').each(function () {
+        let value = $(this).html();
+        $(this).width(value + "%");
+    })
+</script>
 
 </body>
 </html>

@@ -79,6 +79,7 @@ app.post("/initUserTags", function (req, res) {
     });
 });
 
+
 app.get("/getPostAbout/:tag", function (req, res) {
     console.log(req.params)
     response = null;
@@ -150,6 +151,7 @@ app.get('/getLastPost', function (req, res) {
     }
 });
 
+
 app.get('/getLastUser', function (req, res) {
     response = null;
     try {
@@ -171,15 +173,6 @@ app.get('/getLastUser', function (req, res) {
     }
 });
 
-
-app.get('/tag', function (req, res) {
-    post = {
-        'title': 'tagTitle',
-        'content': 'Hey its a post with some tags',
-        'tags': ['sport', 'some', 'sex']
-    };
-    res.send(post)
-});
 
 app.post('/updateTagWeight', function (req, res) {
 
@@ -493,6 +486,7 @@ app.post('/saveDest', function (req, res) {
 app.get('/user/:user', function () {
 
 })
+
 
 app.get('/userBehaviourData/:user', function (req, res) {
     response = null;

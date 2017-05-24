@@ -12,6 +12,7 @@ dburl = 'mongodb://soc.catala.ovh:27017/'
 def init():
     initReaders()
     initPois()
+    initScreens()
 
 def initDatabase():
     client = MongoClient(dburl)
@@ -30,11 +31,20 @@ def initPois():
     for r in result:
         pois.append({"poi_id": str(r['_id']), "note": r["note"]})
 
+def initScreens():
+    for r in readers: 
+        response = requests.get("http://beacon.catala.ovh")
+        if response.status_code == 200:
+            html = response.content
+            tosend = {"html": html}
+            screenName = "html-" + r["dweet_id"]
+            dweepy.dweet_for(screenName ,tosend)
+    
+
 def listenDweets():
     for r in readers :
         dweet = dweepy.get_latest_dweet_for(r["dweet_id"])
         if r['last_dweet'] != dweet[0]["created"]:
-            
             print(dweet)
             try:
                 sendRequestCheckQrcode(str(dweet[0]["content"]["user_id"]),r)
@@ -93,10 +103,12 @@ def sendDweetForUsersInSite():
 
 def sendDweetForBestTags():
     result = requests.get("http://tags.soc.catala.ovh/getBestTags")
-    tags = json.loads(result.content)
-    bestTags = {"tags" : tags}
-    dweepy.dweet_for("tagsDash-soc", bestTags)
-
+    try : 
+        tags = json.loads(result.content)
+        bestTags = {"tags" : tags}
+        dweepy.dweet_for("tagsDash-soc", bestTags)
+    except ValueError:
+        print("")
 if __name__ == "__main__":
     init()
     while(True):
