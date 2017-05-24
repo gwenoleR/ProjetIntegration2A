@@ -1,0 +1,60 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [
+    {
+      'type': 'directory',
+      'name': "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/build/Debug-iphoneos/Alamofire/Alamofire.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "Alamofire-Swift.h",
+          'external-contents': "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/build/Debug-iphoneos/Alamofire/Alamofire.framework/Headers/Alamofire-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "Alamofire-umbrella.h",
+          'external-contents': "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/Pods/Target Support Files/Alamofire/Alamofire-umbrella.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/build/Debug-iphoneos/Alamofire/Alamofire.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/build/Pods.build/Debug-iphoneos/Alamofire.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/build/Debug-iphoneos/Pods_JO_2017.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "Pods-JO 2017-umbrella.h",
+          'external-contents': "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/Pods/Target Support Files/Pods-JO 2017/Pods-JO 2017-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "Pods_JO_2017-Swift.h",
+          'external-contents': "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/build/Debug-iphoneos/Pods_JO_2017.framework/Headers/Pods_JO_2017-Swift.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/build/Debug-iphoneos/Pods_JO_2017.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/build/Pods.build/Debug-iphoneos/Pods-JO 2017.build/module.modulemap"
+        }
+      ]
+    }
+  ]
+}
