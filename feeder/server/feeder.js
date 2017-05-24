@@ -3,21 +3,26 @@
  */
 
 let express = require('express');
+
 let app = express();
+
 let qs = require('querystring');
+
 let ObjectID = require('mongodb').ObjectID;
 
 let MongoClient = require('mongodb').MongoClient
     , assert = require('assert');
 
-
 let parameters = require('../JSON/params.json');
 
-
 app.set('view engine', 'ejs');
+
 app.set('views', __dirname + "/views/");
+
+
 // Connection URL
 let url = 'mongodb://' + parameters.mongoDB.host + ':27017/' + parameters.mongoDB.database;
+
 // Use connect method to connect to the Server
 MongoClient.connect(url, function (err, db) {
     assert.equal(null, err);
@@ -481,11 +486,6 @@ app.post('/saveDest', function (req, res) {
         }
     });
 });
-
-
-app.get('/user/:user', function () {
-
-})
 
 
 app.get('/userBehaviourData/:user', function (req, res) {
