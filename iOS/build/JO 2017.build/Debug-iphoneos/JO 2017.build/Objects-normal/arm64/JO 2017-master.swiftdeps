@@ -1,0 +1,18 @@
+version: "Apple Swift version 3.1 (swiftlang-802.0.53 clang-802.0.42)"
+options: "a390ba7eddb907ca01e4460de5aa1753"
+build_time: [548890600, 725155000]
+inputs:
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/SearchAnnotation.swift": [548890377, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/ScanQRCodeViewController.swift": [548890419, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/AccountViewController.swift": [548890587, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/DetailFeedViewController.swift": [548890276, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/Geotification.swift": [548252588, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/MapViewController.swift": [548890179, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/QrCodeViewerViewController.swift": [548890598, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/SearchTagViewController.swift": [548890475, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/LocationSearchTable.swift": [548784628, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/LaunchViewController.swift": [548890520, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/Utilities.swift": [548889984, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/SwiftyJSON.swift": [548613435, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/FeedViewController.swift": [548890258, 0]
+  "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/JO 2017/AppDelegate.swift": [548859562, 0]

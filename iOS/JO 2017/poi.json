@@ -1,0 +1,22 @@
+{"poi" :
+  [
+   {
+      "coordinate" : [{"latitude" : 42.6744495984564},{"longitude" : 2.84780717455116}],
+      "radius" : 15,
+      "note" : "Stade",
+      "eventType" : "On Entry"
+   },
+   {
+      "coordinate" : [{"latitude" : 42.6744495984564},{"longitude" : 3.0}],
+      "radius" : 10,
+      "note" : "Piscine",
+      "eventType" : "On Entry"
+   },
+   {
+      "coordinate" : [{"latitude" : 42.6953512537341},{"longitude" : 2.87508796842391}],
+      "radius" : 30,
+      "note" : "Maison",
+      "eventType" : "On Entry"
+   }
+  ]
+}

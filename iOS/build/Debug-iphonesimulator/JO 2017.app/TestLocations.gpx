@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<gpx version="1.1" creator="Xcode">
+  <!--<wpt lat="37.422" lon="-122.084058">
+    <name>Google</name>
+  </wpt>
+  <wpt lat="37.331695" lon="-122.0322801">
+    <name>Apple</name>
+  </wpt>-->
+  <wpt lat="42.6744495984564" lon="2.84780717455116">
+    <name>Imerir</name>
+  </wpt>
+  <wpt lat="42.6744495984564" lon="3.0">
+    <name>Cabes</name>
+  </wpt>
+  <wpt lat="42.6953512537341" lon="2.87508796842391">
+      <name>Maison</name>
+  </wpt>
+  
+</gpx>

@@ -1,0 +1,498 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "SearchController"
+provides-nominal:
+- "C7JO_201716SearchController"
+provides-member:
+- ["C7JO_201716SearchController", ""]
+provides-dynamic-lookup:
+- "didReceiveMemoryWarning"
+- "resultSearchController"
+- "viewDidLoad"
+depends-top-level:
+- "AssignmentPrecedence"
+- !private "BooleanLiteralType"
+- "CastingPrecedence"
+- !private "LocationSearchTable"
+- "SearchController"
+- !private "StringLiteralType"
+- "UISearchController"
+depends-member:
+- !private ["Ps9AnyObject", "UISearchController"]
+- !private ["Ps9AnyObject", "definesPresentationContext"]
+- !private ["Ps9AnyObject", "didReceiveMemoryWarning"]
+- !private ["Ps9AnyObject", "dimsBackgroundDuringPresentation"]
+- !private ["Ps9AnyObject", "hidesNavigationBarDuringPresentation"]
+- !private ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "instantiateViewController"]
+- !private ["Ps9AnyObject", "navigationItem"]
+- !private ["Ps9AnyObject", "placeholder"]
+- !private ["Ps9AnyObject", "resultSearchController"]
+- !private ["Ps9AnyObject", "searchBar"]
+- !private ["Ps9AnyObject", "searchResultsUpdater"]
+- !private ["Ps9AnyObject", "sizeToFit"]
+- !private ["Ps9AnyObject", "storyboard"]
+- !private ["Ps9AnyObject", "titleView"]
+- !private ["Ps9AnyObject", "viewDidLoad"]
+- ["Ps9AnyObject", ""]
+- !private ["PSo15CALayerDelegate", "placeholder"]
+- !private ["PSo15CALayerDelegate", "sizeToFit"]
+- !private ["Ps7CVarArg", "UISearchController"]
+- !private ["Ps7CVarArg", "definesPresentationContext"]
+- !private ["Ps7CVarArg", "didReceiveMemoryWarning"]
+- !private ["Ps7CVarArg", "dimsBackgroundDuringPresentation"]
+- !private ["Ps7CVarArg", "hidesNavigationBarDuringPresentation"]
+- !private ["Ps7CVarArg", "init"]
+- !private ["Ps7CVarArg", "instantiateViewController"]
+- !private ["Ps7CVarArg", "navigationItem"]
+- !private ["Ps7CVarArg", "placeholder"]
+- !private ["Ps7CVarArg", "resultSearchController"]
+- !private ["Ps7CVarArg", "searchBar"]
+- !private ["Ps7CVarArg", "searchResultsUpdater"]
+- !private ["Ps7CVarArg", "sizeToFit"]
+- !private ["Ps7CVarArg", "storyboard"]
+- !private ["Ps7CVarArg", "titleView"]
+- !private ["Ps7CVarArg", "viewDidLoad"]
+- ["Ps7CVarArg", ""]
+- !private ["Ps10Comparable", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "UISearchController"]
+- !private ["Ps28CustomDebugStringConvertible", "definesPresentationContext"]
+- !private ["Ps28CustomDebugStringConvertible", "didReceiveMemoryWarning"]
+- !private ["Ps28CustomDebugStringConvertible", "dimsBackgroundDuringPresentation"]
+- !private ["Ps28CustomDebugStringConvertible", "hidesNavigationBarDuringPresentation"]
+- !private ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "instantiateViewController"]
+- !private ["Ps28CustomDebugStringConvertible", "navigationItem"]
+- !private ["Ps28CustomDebugStringConvertible", "placeholder"]
+- !private ["Ps28CustomDebugStringConvertible", "resultSearchController"]
+- !private ["Ps28CustomDebugStringConvertible", "searchBar"]
+- !private ["Ps28CustomDebugStringConvertible", "searchResultsUpdater"]
+- !private ["Ps28CustomDebugStringConvertible", "sizeToFit"]
+- !private ["Ps28CustomDebugStringConvertible", "storyboard"]
+- !private ["Ps28CustomDebugStringConvertible", "titleView"]
+- !private ["Ps28CustomDebugStringConvertible", "viewDidLoad"]
+- ["Ps28CustomDebugStringConvertible", ""]
+- !private ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps17CustomReflectable", "init"]
+- !private ["Ps23CustomStringConvertible", "UISearchController"]
+- !private ["Ps23CustomStringConvertible", "definesPresentationContext"]
+- !private ["Ps23CustomStringConvertible", "didReceiveMemoryWarning"]
+- !private ["Ps23CustomStringConvertible", "dimsBackgroundDuringPresentation"]
+- !private ["Ps23CustomStringConvertible", "hidesNavigationBarDuringPresentation"]
+- !private ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "instantiateViewController"]
+- !private ["Ps23CustomStringConvertible", "navigationItem"]
+- !private ["Ps23CustomStringConvertible", "placeholder"]
+- !private ["Ps23CustomStringConvertible", "resultSearchController"]
+- !private ["Ps23CustomStringConvertible", "searchBar"]
+- !private ["Ps23CustomStringConvertible", "searchResultsUpdater"]
+- !private ["Ps23CustomStringConvertible", "sizeToFit"]
+- !private ["Ps23CustomStringConvertible", "storyboard"]
+- !private ["Ps23CustomStringConvertible", "titleView"]
+- !private ["Ps23CustomStringConvertible", "viewDidLoad"]
+- ["Ps23CustomStringConvertible", ""]
+- !private ["Ps9Equatable", "UISearchController"]
+- !private ["Ps9Equatable", "definesPresentationContext"]
+- !private ["Ps9Equatable", "didReceiveMemoryWarning"]
+- !private ["Ps9Equatable", "dimsBackgroundDuringPresentation"]
+- !private ["Ps9Equatable", "hidesNavigationBarDuringPresentation"]
+- !private ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "instantiateViewController"]
+- !private ["Ps9Equatable", "navigationItem"]
+- !private ["Ps9Equatable", "placeholder"]
+- !private ["Ps9Equatable", "resultSearchController"]
+- !private ["Ps9Equatable", "searchBar"]
+- !private ["Ps9Equatable", "searchResultsUpdater"]
+- !private ["Ps9Equatable", "sizeToFit"]
+- !private ["Ps9Equatable", "storyboard"]
+- !private ["Ps9Equatable", "titleView"]
+- !private ["Ps9Equatable", "viewDidLoad"]
+- ["Ps9Equatable", ""]
+- !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps26ExpressibleByStringLiteral", "init"]
+- !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
+- !private ["Ps8Hashable", "UISearchController"]
+- !private ["Ps8Hashable", "definesPresentationContext"]
+- !private ["Ps8Hashable", "didReceiveMemoryWarning"]
+- !private ["Ps8Hashable", "dimsBackgroundDuringPresentation"]
+- !private ["Ps8Hashable", "hidesNavigationBarDuringPresentation"]
+- !private ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "instantiateViewController"]
+- !private ["Ps8Hashable", "navigationItem"]
+- !private ["Ps8Hashable", "placeholder"]
+- !private ["Ps8Hashable", "resultSearchController"]
+- !private ["Ps8Hashable", "searchBar"]
+- !private ["Ps8Hashable", "searchResultsUpdater"]
+- !private ["Ps8Hashable", "sizeToFit"]
+- !private ["Ps8Hashable", "storyboard"]
+- !private ["Ps8Hashable", "titleView"]
+- !private ["Ps8Hashable", "viewDidLoad"]
+- ["Ps8Hashable", ""]
+- !private ["P7JO_201717JSONSubscriptType", "init"]
+- !private ["C7JO_201719LocationSearchTable", "deinit"]
+- !private ["Ps25LosslessStringConvertible", "init"]
+- !private ["Ps10MirrorPath", "init"]
+- !private ["PSo8NSCoding", "UISearchController"]
+- !private ["PSo8NSCoding", "definesPresentationContext"]
+- !private ["PSo8NSCoding", "didReceiveMemoryWarning"]
+- !private ["PSo8NSCoding", "dimsBackgroundDuringPresentation"]
+- !private ["PSo8NSCoding", "hidesNavigationBarDuringPresentation"]
+- !private ["PSo8NSCoding", "init"]
+- !private ["PSo8NSCoding", "navigationItem"]
+- !private ["PSo8NSCoding", "placeholder"]
+- !private ["PSo8NSCoding", "resultSearchController"]
+- !private ["PSo8NSCoding", "searchBar"]
+- !private ["PSo8NSCoding", "searchResultsUpdater"]
+- !private ["PSo8NSCoding", "sizeToFit"]
+- !private ["PSo8NSCoding", "storyboard"]
+- !private ["PSo8NSCoding", "titleView"]
+- !private ["PSo8NSCoding", "viewDidLoad"]
+- ["PSo8NSCoding", ""]
+- !private ["PSo9NSCopying", "init"]
+- !private ["PSo26NSExtensionRequestHandling", "UISearchController"]
+- !private ["PSo26NSExtensionRequestHandling", "definesPresentationContext"]
+- !private ["PSo26NSExtensionRequestHandling", "didReceiveMemoryWarning"]
+- !private ["PSo26NSExtensionRequestHandling", "dimsBackgroundDuringPresentation"]
+- !private ["PSo26NSExtensionRequestHandling", "hidesNavigationBarDuringPresentation"]
+- !private ["PSo26NSExtensionRequestHandling", "init"]
+- !private ["PSo26NSExtensionRequestHandling", "navigationItem"]
+- !private ["PSo26NSExtensionRequestHandling", "resultSearchController"]
+- !private ["PSo26NSExtensionRequestHandling", "searchBar"]
+- !private ["PSo26NSExtensionRequestHandling", "searchResultsUpdater"]
+- !private ["PSo26NSExtensionRequestHandling", "storyboard"]
+- !private ["PSo26NSExtensionRequestHandling", "viewDidLoad"]
+- ["PSo26NSExtensionRequestHandling", ""]
+- !private ["PSo16NSMutableCopying", "init"]
+- !private ["CSo8NSObject", "LocationSearchTable"]
+- ["CSo8NSObject", "UISearchController"]
+- !private ["CSo8NSObject", "definesPresentationContext"]
+- ["CSo8NSObject", "didReceiveMemoryWarning"]
+- !private ["CSo8NSObject", "dimsBackgroundDuringPresentation"]
+- !private ["CSo8NSObject", "hidesNavigationBarDuringPresentation"]
+- ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "instantiateViewController"]
+- !private ["CSo8NSObject", "navigationItem"]
+- !private ["CSo8NSObject", "placeholder"]
+- ["CSo8NSObject", "resultSearchController"]
+- !private ["CSo8NSObject", "searchBar"]
+- !private ["CSo8NSObject", "searchResultsUpdater"]
+- !private ["CSo8NSObject", "sizeToFit"]
+- !private ["CSo8NSObject", "storyboard"]
+- !private ["CSo8NSObject", "titleView"]
+- ["CSo8NSObject", "viewDidLoad"]
+- !private ["PSo16NSObjectProtocol", "UISearchController"]
+- !private ["PSo16NSObjectProtocol", "definesPresentationContext"]
+- !private ["PSo16NSObjectProtocol", "didReceiveMemoryWarning"]
+- !private ["PSo16NSObjectProtocol", "dimsBackgroundDuringPresentation"]
+- !private ["PSo16NSObjectProtocol", "hidesNavigationBarDuringPresentation"]
+- !private ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "instantiateViewController"]
+- !private ["PSo16NSObjectProtocol", "navigationItem"]
+- !private ["PSo16NSObjectProtocol", "placeholder"]
+- !private ["PSo16NSObjectProtocol", "resultSearchController"]
+- !private ["PSo16NSObjectProtocol", "searchBar"]
+- !private ["PSo16NSObjectProtocol", "searchResultsUpdater"]
+- !private ["PSo16NSObjectProtocol", "sizeToFit"]
+- !private ["PSo16NSObjectProtocol", "storyboard"]
+- !private ["PSo16NSObjectProtocol", "titleView"]
+- !private ["PSo16NSObjectProtocol", "viewDidLoad"]
+- ["PSo16NSObjectProtocol", ""]
+- !private ["PSo14NSSecureCoding", "init"]
+- !private ["CSo8NSString", "init"]
+- !private ["C7JO_201716SearchController", "LocationSearchTable"]
+- ["C7JO_201716SearchController", "UISearchController"]
+- !private ["C7JO_201716SearchController", "definesPresentationContext"]
+- ["C7JO_201716SearchController", "deinit"]
+- ["C7JO_201716SearchController", "didReceiveMemoryWarning"]
+- ["C7JO_201716SearchController", "init"]
+- !private ["C7JO_201716SearchController", "navigationItem"]
+- ["C7JO_201716SearchController", "resultSearchController"]
+- !private ["C7JO_201716SearchController", "storyboard"]
+- ["C7JO_201716SearchController", "viewDidLoad"]
+- !private ["SS", "init"]
+- !private ["Ps16TextOutputStream", "init"]
+- !private ["Ps20TextOutputStreamable", "init"]
+- !private ["PSo29UIAccessibilityIdentification", "placeholder"]
+- !private ["PSo29UIAccessibilityIdentification", "sizeToFit"]
+- !private ["PSo12UIAppearance", "placeholder"]
+- !private ["PSo12UIAppearance", "sizeToFit"]
+- !private ["PSo21UIAppearanceContainer", "UISearchController"]
+- !private ["PSo21UIAppearanceContainer", "definesPresentationContext"]
+- !private ["PSo21UIAppearanceContainer", "didReceiveMemoryWarning"]
+- !private ["PSo21UIAppearanceContainer", "dimsBackgroundDuringPresentation"]
+- !private ["PSo21UIAppearanceContainer", "hidesNavigationBarDuringPresentation"]
+- !private ["PSo21UIAppearanceContainer", "init"]
+- !private ["PSo21UIAppearanceContainer", "navigationItem"]
+- !private ["PSo21UIAppearanceContainer", "placeholder"]
+- !private ["PSo21UIAppearanceContainer", "resultSearchController"]
+- !private ["PSo21UIAppearanceContainer", "searchBar"]
+- !private ["PSo21UIAppearanceContainer", "searchResultsUpdater"]
+- !private ["PSo21UIAppearanceContainer", "sizeToFit"]
+- !private ["PSo21UIAppearanceContainer", "storyboard"]
+- !private ["PSo21UIAppearanceContainer", "viewDidLoad"]
+- ["PSo21UIAppearanceContainer", ""]
+- !private ["PSo16UIBarPositioning", "placeholder"]
+- !private ["PSo16UIBarPositioning", "sizeToFit"]
+- !private ["PSo18UIContentContainer", "UISearchController"]
+- !private ["PSo18UIContentContainer", "definesPresentationContext"]
+- !private ["PSo18UIContentContainer", "didReceiveMemoryWarning"]
+- !private ["PSo18UIContentContainer", "dimsBackgroundDuringPresentation"]
+- !private ["PSo18UIContentContainer", "hidesNavigationBarDuringPresentation"]
+- !private ["PSo18UIContentContainer", "init"]
+- !private ["PSo18UIContentContainer", "navigationItem"]
+- !private ["PSo18UIContentContainer", "resultSearchController"]
+- !private ["PSo18UIContentContainer", "searchBar"]
+- !private ["PSo18UIContentContainer", "searchResultsUpdater"]
+- !private ["PSo18UIContentContainer", "storyboard"]
+- !private ["PSo18UIContentContainer", "viewDidLoad"]
+- ["PSo18UIContentContainer", ""]
+- !private ["PSo17UICoordinateSpace", "placeholder"]
+- !private ["PSo17UICoordinateSpace", "sizeToFit"]
+- !private ["PSo13UIDynamicItem", "placeholder"]
+- !private ["PSo13UIDynamicItem", "sizeToFit"]
+- !private ["PSo18UIFocusEnvironment", "UISearchController"]
+- !private ["PSo18UIFocusEnvironment", "definesPresentationContext"]
+- !private ["PSo18UIFocusEnvironment", "didReceiveMemoryWarning"]
+- !private ["PSo18UIFocusEnvironment", "dimsBackgroundDuringPresentation"]
+- !private ["PSo18UIFocusEnvironment", "hidesNavigationBarDuringPresentation"]
+- !private ["PSo18UIFocusEnvironment", "init"]
+- !private ["PSo18UIFocusEnvironment", "navigationItem"]
+- !private ["PSo18UIFocusEnvironment", "placeholder"]
+- !private ["PSo18UIFocusEnvironment", "resultSearchController"]
+- !private ["PSo18UIFocusEnvironment", "searchBar"]
+- !private ["PSo18UIFocusEnvironment", "searchResultsUpdater"]
+- !private ["PSo18UIFocusEnvironment", "sizeToFit"]
+- !private ["PSo18UIFocusEnvironment", "storyboard"]
+- !private ["PSo18UIFocusEnvironment", "viewDidLoad"]
+- ["PSo18UIFocusEnvironment", ""]
+- !private ["PSo11UIFocusItem", "placeholder"]
+- !private ["PSo11UIFocusItem", "sizeToFit"]
+- !private ["CSo16UINavigationItem", "titleView"]
+- !private ["CSo11UIResponder", "LocationSearchTable"]
+- ["CSo11UIResponder", "UISearchController"]
+- !private ["CSo11UIResponder", "definesPresentationContext"]
+- ["CSo11UIResponder", "didReceiveMemoryWarning"]
+- !private ["CSo11UIResponder", "dimsBackgroundDuringPresentation"]
+- !private ["CSo11UIResponder", "hidesNavigationBarDuringPresentation"]
+- ["CSo11UIResponder", "init"]
+- !private ["CSo11UIResponder", "navigationItem"]
+- !private ["CSo11UIResponder", "placeholder"]
+- ["CSo11UIResponder", "resultSearchController"]
+- !private ["CSo11UIResponder", "searchBar"]
+- !private ["CSo11UIResponder", "searchResultsUpdater"]
+- !private ["CSo11UIResponder", "sizeToFit"]
+- !private ["CSo11UIResponder", "storyboard"]
+- ["CSo11UIResponder", "viewDidLoad"]
+- !private ["PSo30UIResponderStandardEditActions", "UISearchController"]
+- !private ["PSo30UIResponderStandardEditActions", "definesPresentationContext"]
+- !private ["PSo30UIResponderStandardEditActions", "didReceiveMemoryWarning"]
+- !private ["PSo30UIResponderStandardEditActions", "dimsBackgroundDuringPresentation"]
+- !private ["PSo30UIResponderStandardEditActions", "hidesNavigationBarDuringPresentation"]
+- !private ["PSo30UIResponderStandardEditActions", "init"]
+- !private ["PSo30UIResponderStandardEditActions", "navigationItem"]
+- !private ["PSo30UIResponderStandardEditActions", "placeholder"]
+- !private ["PSo30UIResponderStandardEditActions", "resultSearchController"]
+- !private ["PSo30UIResponderStandardEditActions", "searchBar"]
+- !private ["PSo30UIResponderStandardEditActions", "searchResultsUpdater"]
+- !private ["PSo30UIResponderStandardEditActions", "sizeToFit"]
+- !private ["PSo30UIResponderStandardEditActions", "storyboard"]
+- !private ["PSo30UIResponderStandardEditActions", "viewDidLoad"]
+- ["PSo30UIResponderStandardEditActions", ""]
+- !private ["CSo11UISearchBar", "placeholder"]
+- !private ["CSo11UISearchBar", "sizeToFit"]
+- !private ["CSo18UISearchController", "LocationSearchTable"]
+- ["CSo18UISearchController", "UISearchController"]
+- !private ["CSo18UISearchController", "definesPresentationContext"]
+- ["CSo18UISearchController", "didReceiveMemoryWarning"]
+- !private ["CSo18UISearchController", "dimsBackgroundDuringPresentation"]
+- !private ["CSo18UISearchController", "hidesNavigationBarDuringPresentation"]
+- ["CSo18UISearchController", "init"]
+- !private ["CSo18UISearchController", "navigationItem"]
+- ["CSo18UISearchController", "resultSearchController"]
+- !private ["CSo18UISearchController", "searchBar"]
+- !private ["CSo18UISearchController", "searchResultsUpdater"]
+- !private ["CSo18UISearchController", "storyboard"]
+- ["CSo18UISearchController", "viewDidLoad"]
+- ["CSo18UISearchController", ""]
+- !private ["PSo16UIStateRestoring", "UISearchController"]
+- !private ["PSo16UIStateRestoring", "definesPresentationContext"]
+- !private ["PSo16UIStateRestoring", "didReceiveMemoryWarning"]
+- !private ["PSo16UIStateRestoring", "dimsBackgroundDuringPresentation"]
+- !private ["PSo16UIStateRestoring", "hidesNavigationBarDuringPresentation"]
+- !private ["PSo16UIStateRestoring", "init"]
+- !private ["PSo16UIStateRestoring", "navigationItem"]
+- !private ["PSo16UIStateRestoring", "resultSearchController"]
+- !private ["PSo16UIStateRestoring", "searchBar"]
+- !private ["PSo16UIStateRestoring", "searchResultsUpdater"]
+- !private ["PSo16UIStateRestoring", "storyboard"]
+- !private ["PSo16UIStateRestoring", "viewDidLoad"]
+- ["PSo16UIStateRestoring", ""]
+- !private ["CSo12UIStoryboard", "instantiateViewController"]
+- !private ["PSo17UITextInputTraits", "placeholder"]
+- !private ["PSo17UITextInputTraits", "sizeToFit"]
+- !private ["PSo18UITraitEnvironment", "UISearchController"]
+- !private ["PSo18UITraitEnvironment", "definesPresentationContext"]
+- !private ["PSo18UITraitEnvironment", "didReceiveMemoryWarning"]
+- !private ["PSo18UITraitEnvironment", "dimsBackgroundDuringPresentation"]
+- !private ["PSo18UITraitEnvironment", "hidesNavigationBarDuringPresentation"]
+- !private ["PSo18UITraitEnvironment", "init"]
+- !private ["PSo18UITraitEnvironment", "navigationItem"]
+- !private ["PSo18UITraitEnvironment", "placeholder"]
+- !private ["PSo18UITraitEnvironment", "resultSearchController"]
+- !private ["PSo18UITraitEnvironment", "searchBar"]
+- !private ["PSo18UITraitEnvironment", "searchResultsUpdater"]
+- !private ["PSo18UITraitEnvironment", "sizeToFit"]
+- !private ["PSo18UITraitEnvironment", "storyboard"]
+- !private ["PSo18UITraitEnvironment", "viewDidLoad"]
+- ["PSo18UITraitEnvironment", ""]
+- !private ["CSo6UIView", "placeholder"]
+- !private ["CSo6UIView", "sizeToFit"]
+- !private ["CSo16UIViewController", "LocationSearchTable"]
+- ["CSo16UIViewController", "UISearchController"]
+- !private ["CSo16UIViewController", "definesPresentationContext"]
+- ["CSo16UIViewController", "didReceiveMemoryWarning"]
+- !private ["CSo16UIViewController", "dimsBackgroundDuringPresentation"]
+- !private ["CSo16UIViewController", "hidesNavigationBarDuringPresentation"]
+- ["CSo16UIViewController", "init"]
+- !private ["CSo16UIViewController", "navigationItem"]
+- ["CSo16UIViewController", "resultSearchController"]
+- !private ["CSo16UIViewController", "searchBar"]
+- !private ["CSo16UIViewController", "searchResultsUpdater"]
+- !private ["CSo16UIViewController", "storyboard"]
+- ["CSo16UIViewController", "viewDidLoad"]
+- !private ["PSo37UIViewControllerAnimatedTransitioning", "UISearchController"]
+- !private ["PSo37UIViewControllerAnimatedTransitioning", "definesPresentationContext"]
+- !private ["PSo37UIViewControllerAnimatedTransitioning", "didReceiveMemoryWarning"]
+- !private ["PSo37UIViewControllerAnimatedTransitioning", "dimsBackgroundDuringPresentation"]
+- !private ["PSo37UIViewControllerAnimatedTransitioning", "hidesNavigationBarDuringPresentation"]
+- !private ["PSo37UIViewControllerAnimatedTransitioning", "init"]
+- !private ["PSo37UIViewControllerAnimatedTransitioning", "navigationItem"]
+- !private ["PSo37UIViewControllerAnimatedTransitioning", "resultSearchController"]
+- !private ["PSo37UIViewControllerAnimatedTransitioning", "searchBar"]
+- !private ["PSo37UIViewControllerAnimatedTransitioning", "searchResultsUpdater"]
+- !private ["PSo37UIViewControllerAnimatedTransitioning", "storyboard"]
+- !private ["PSo37UIViewControllerAnimatedTransitioning", "viewDidLoad"]
+- ["PSo37UIViewControllerAnimatedTransitioning", ""]
+- !private ["PSo37UIViewControllerTransitioningDelegate", "UISearchController"]
+- !private ["PSo37UIViewControllerTransitioningDelegate", "definesPresentationContext"]
+- !private ["PSo37UIViewControllerTransitioningDelegate", "didReceiveMemoryWarning"]
+- !private ["PSo37UIViewControllerTransitioningDelegate", "dimsBackgroundDuringPresentation"]
+- !private ["PSo37UIViewControllerTransitioningDelegate", "hidesNavigationBarDuringPresentation"]
+- !private ["PSo37UIViewControllerTransitioningDelegate", "init"]
+- !private ["PSo37UIViewControllerTransitioningDelegate", "navigationItem"]
+- !private ["PSo37UIViewControllerTransitioningDelegate", "resultSearchController"]
+- !private ["PSo37UIViewControllerTransitioningDelegate", "searchBar"]
+- !private ["PSo37UIViewControllerTransitioningDelegate", "searchResultsUpdater"]
+- !private ["PSo37UIViewControllerTransitioningDelegate", "storyboard"]
+- !private ["PSo37UIViewControllerTransitioningDelegate", "viewDidLoad"]
+- ["PSo37UIViewControllerTransitioningDelegate", ""]
+- !private ["Ps37_DefaultCustomPlaygroundQuickLookable", "placeholder"]
+- !private ["Ps37_DefaultCustomPlaygroundQuickLookable", "sizeToFit"]
+- !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
+- !private ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
+- !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
+- !private ["Ps33_ExpressibleByStringInterpolation", "init"]
+- !private ["Ps35_HasCustomAnyHashableRepresentation", "init"]
+- !private ["Ps9_Hashable", "UISearchController"]
+- !private ["Ps9_Hashable", "definesPresentationContext"]
+- !private ["Ps9_Hashable", "didReceiveMemoryWarning"]
+- !private ["Ps9_Hashable", "dimsBackgroundDuringPresentation"]
+- !private ["Ps9_Hashable", "hidesNavigationBarDuringPresentation"]
+- !private ["Ps9_Hashable", "init"]
+- !private ["Ps9_Hashable", "instantiateViewController"]
+- !private ["Ps9_Hashable", "navigationItem"]
+- !private ["Ps9_Hashable", "placeholder"]
+- !private ["Ps9_Hashable", "resultSearchController"]
+- !private ["Ps9_Hashable", "searchBar"]
+- !private ["Ps9_Hashable", "searchResultsUpdater"]
+- !private ["Ps9_Hashable", "sizeToFit"]
+- !private ["Ps9_Hashable", "storyboard"]
+- !private ["Ps9_Hashable", "titleView"]
+- !private ["Ps9_Hashable", "viewDidLoad"]
+- ["Ps9_Hashable", ""]
+- !private ["Ps21_ObjectiveCBridgeable", "init"]
+depends-nominal:
+- "Ps9AnyObject"
+- !private "PSo15CALayerDelegate"
+- "Ps7CVarArg"
+- !private "Ps10Comparable"
+- "Ps28CustomDebugStringConvertible"
+- !private "Ps29CustomPlaygroundQuickLookable"
+- !private "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "Ps9Equatable"
+- !private "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- !private "Ps26ExpressibleByStringLiteral"
+- !private "Ps33ExpressibleByUnicodeScalarLiteral"
+- "Ps8Hashable"
+- !private "P7JO_201717JSONSubscriptType"
+- !private "C7JO_201719LocationSearchTable"
+- !private "Ps25LosslessStringConvertible"
+- !private "Ps10MirrorPath"
+- "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- "PSo26NSExtensionRequestHandling"
+- !private "PSo16NSMutableCopying"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "PSo14NSSecureCoding"
+- !private "CSo8NSString"
+- "C7JO_201716SearchController"
+- !private "SS"
+- !private "Ps16TextOutputStream"
+- !private "Ps20TextOutputStreamable"
+- !private "PSo29UIAccessibilityIdentification"
+- !private "PSo12UIAppearance"
+- "PSo21UIAppearanceContainer"
+- !private "PSo16UIBarPositioning"
+- "PSo18UIContentContainer"
+- !private "PSo17UICoordinateSpace"
+- !private "PSo13UIDynamicItem"
+- "PSo18UIFocusEnvironment"
+- !private "PSo11UIFocusItem"
+- !private "CSo16UINavigationItem"
+- "CSo11UIResponder"
+- "PSo30UIResponderStandardEditActions"
+- !private "CSo11UISearchBar"
+- "CSo18UISearchController"
+- "PSo16UIStateRestoring"
+- !private "CSo12UIStoryboard"
+- !private "PSo17UITextInputTraits"
+- "PSo18UITraitEnvironment"
+- !private "CSo6UIView"
+- "CSo16UIViewController"
+- "PSo37UIViewControllerAnimatedTransitioning"
+- "PSo37UIViewControllerTransitioningDelegate"
+- !private "Ps37_DefaultCustomPlaygroundQuickLookable"
+- !private "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
+- !private "Ps34_ExpressibleByBuiltinStringLiteral"
+- !private "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
+- !private "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
+- !private "Ps33_ExpressibleByStringInterpolation"
+- !private "Ps35_HasCustomAnyHashableRepresentation"
+- "Ps9_Hashable"
+- !private "Ps21_ObjectiveCBridgeable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreText.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+interface-hash: "18453de2207cc38e30fd5a14747d2084"

@@ -1,0 +1,457 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "GeoKey"
+- "EventType"
+- "Geotification"
+provides-nominal:
+- "V7JO_20176GeoKey"
+- "O7JO_20179EventType"
+- "C7JO_201713Geotification"
+provides-member:
+- ["V7JO_20176GeoKey", ""]
+- ["O7JO_20179EventType", ""]
+- ["C7JO_201713Geotification", ""]
+provides-dynamic-lookup:
+- "coordinate"
+- "encode"
+- "identifier"
+- "isEqual"
+- "note"
+- "radius"
+- "subtitle"
+- "title"
+depends-top-level:
+- !private "&&"
+- "=="
+- "AssignmentPrecedence"
+- "Bool"
+- !private "BooleanLiteralType"
+- "CLLocationCoordinate2D"
+- "CLLocationDistance"
+- "CastingPrecedence"
+- "EventType"
+- "GeoKey"
+- "Geotification"
+- "MKAnnotation"
+- "NSCoder"
+- "NSCoding"
+- "NSObject"
+- "String"
+- "StringLiteralType"
+- !private "~="
+depends-member:
+- !private ["Ps9AnyObject", "CLLocationCoordinate2D"]
+- !private ["Ps9AnyObject", "EventType"]
+- !private ["Ps9AnyObject", "GeoKey"]
+- ["Ps9AnyObject", "coordinate"]
+- !private ["Ps9AnyObject", "decodeDouble"]
+- !private ["Ps9AnyObject", "decodeObject"]
+- ["Ps9AnyObject", "encode"]
+- ["Ps9AnyObject", "encodeWithCoder"]
+- !private ["Ps9AnyObject", "eventType"]
+- !private ["Ps9AnyObject", "identifier"]
+- ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "isEmpty"]
+- !private ["Ps9AnyObject", "note"]
+- !private ["Ps9AnyObject", "radius"]
+- ["Ps9AnyObject", "subtitle"]
+- ["Ps9AnyObject", "title"]
+- ["Ps9AnyObject", ""]
+- !private ["Ps17BitwiseOperations", "hashValue"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["VSC22CLLocationCoordinate2D", "init"]
+- !private ["VSC22CLLocationCoordinate2D", "latitude"]
+- !private ["VSC22CLLocationCoordinate2D", "longitude"]
+- !private ["Ps7CVarArg", "CLLocationCoordinate2D"]
+- !private ["Ps7CVarArg", "EventType"]
+- !private ["Ps7CVarArg", "GeoKey"]
+- ["Ps7CVarArg", "coordinate"]
+- !private ["Ps7CVarArg", "decodeDouble"]
+- !private ["Ps7CVarArg", "decodeObject"]
+- ["Ps7CVarArg", "encode"]
+- ["Ps7CVarArg", "encodeWithCoder"]
+- !private ["Ps7CVarArg", "eventType"]
+- !private ["Ps7CVarArg", "hashValue"]
+- !private ["Ps7CVarArg", "identifier"]
+- ["Ps7CVarArg", "init"]
+- !private ["Ps7CVarArg", "isEmpty"]
+- !private ["Ps7CVarArg", "note"]
+- !private ["Ps7CVarArg", "radius"]
+- ["Ps7CVarArg", "subtitle"]
+- ["Ps7CVarArg", "title"]
+- ["Ps7CVarArg", ""]
+- !private ["Ps10Comparable", "hashValue"]
+- ["Ps10Comparable", "init"]
+- !private ["Ps10Comparable", "isEmpty"]
+- !private ["Ps28CustomDebugStringConvertible", "CLLocationCoordinate2D"]
+- !private ["Ps28CustomDebugStringConvertible", "EventType"]
+- !private ["Ps28CustomDebugStringConvertible", "GeoKey"]
+- ["Ps28CustomDebugStringConvertible", "coordinate"]
+- !private ["Ps28CustomDebugStringConvertible", "decodeDouble"]
+- !private ["Ps28CustomDebugStringConvertible", "decodeObject"]
+- ["Ps28CustomDebugStringConvertible", "encode"]
+- ["Ps28CustomDebugStringConvertible", "encodeWithCoder"]
+- !private ["Ps28CustomDebugStringConvertible", "eventType"]
+- !private ["Ps28CustomDebugStringConvertible", "identifier"]
+- ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "isEmpty"]
+- !private ["Ps28CustomDebugStringConvertible", "note"]
+- !private ["Ps28CustomDebugStringConvertible", "radius"]
+- ["Ps28CustomDebugStringConvertible", "subtitle"]
+- ["Ps28CustomDebugStringConvertible", "title"]
+- ["Ps28CustomDebugStringConvertible", ""]
+- !private ["Ps29CustomPlaygroundQuickLookable", "_getBuiltinLogicValue"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "hashValue"]
+- ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "isEmpty"]
+- !private ["Ps17CustomReflectable", "_getBuiltinLogicValue"]
+- !private ["Ps17CustomReflectable", "hashValue"]
+- ["Ps17CustomReflectable", "init"]
+- !private ["Ps17CustomReflectable", "isEmpty"]
+- !private ["Ps23CustomStringConvertible", "CLLocationCoordinate2D"]
+- !private ["Ps23CustomStringConvertible", "EventType"]
+- !private ["Ps23CustomStringConvertible", "GeoKey"]
+- !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- ["Ps23CustomStringConvertible", "coordinate"]
+- !private ["Ps23CustomStringConvertible", "decodeDouble"]
+- !private ["Ps23CustomStringConvertible", "decodeObject"]
+- ["Ps23CustomStringConvertible", "encode"]
+- ["Ps23CustomStringConvertible", "encodeWithCoder"]
+- !private ["Ps23CustomStringConvertible", "eventType"]
+- !private ["Ps23CustomStringConvertible", "hashValue"]
+- !private ["Ps23CustomStringConvertible", "identifier"]
+- ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "isEmpty"]
+- !private ["Ps23CustomStringConvertible", "note"]
+- !private ["Ps23CustomStringConvertible", "radius"]
+- ["Ps23CustomStringConvertible", "subtitle"]
+- ["Ps23CustomStringConvertible", "title"]
+- ["Ps23CustomStringConvertible", ""]
+- !private ["Ps9Equatable", "CLLocationCoordinate2D"]
+- !private ["Ps9Equatable", "EventType"]
+- !private ["Ps9Equatable", "GeoKey"]
+- !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- ["Ps9Equatable", "_toAnyHashable"]
+- ["Ps9Equatable", "coordinate"]
+- !private ["Ps9Equatable", "decodeDouble"]
+- !private ["Ps9Equatable", "decodeObject"]
+- ["Ps9Equatable", "encode"]
+- ["Ps9Equatable", "encodeWithCoder"]
+- !private ["Ps9Equatable", "eventType"]
+- ["Ps9Equatable", "hashValue"]
+- !private ["Ps9Equatable", "identifier"]
+- ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "isEmpty"]
+- !private ["Ps9Equatable", "note"]
+- !private ["Ps9Equatable", "radius"]
+- ["Ps9Equatable", "rawValue"]
+- ["Ps9Equatable", "subtitle"]
+- ["Ps9Equatable", "title"]
+- ["Ps9Equatable", ""]
+- ["O7JO_20179EventType", "RawValue"]
+- ["O7JO_20179EventType", "_toAnyHashable"]
+- ["O7JO_20179EventType", "deinit"]
+- ["O7JO_20179EventType", "hashValue"]
+- ["O7JO_20179EventType", "init"]
+- ["O7JO_20179EventType", "onEntry"]
+- ["O7JO_20179EventType", "onExit"]
+- ["O7JO_20179EventType", "rawValue"]
+- !private ["Ps27ExpressibleByBooleanLiteral", "_getBuiltinLogicValue"]
+- ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "isEmpty"]
+- !private ["Ps27ExpressibleByIntegerLiteral", "hashValue"]
+- ["Ps26ExpressibleByStringLiteral", "init"]
+- !private ["Ps26ExpressibleByStringLiteral", "isEmpty"]
+- ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
+- !private ["Ps33ExpressibleByUnicodeScalarLiteral", "isEmpty"]
+- ["V7JO_20176GeoKey", "eventType"]
+- ["V7JO_20176GeoKey", "identifier"]
+- ["V7JO_20176GeoKey", "init"]
+- ["V7JO_20176GeoKey", "latitude"]
+- ["V7JO_20176GeoKey", "longitude"]
+- ["V7JO_20176GeoKey", "note"]
+- ["V7JO_20176GeoKey", "radius"]
+- ["C7JO_201713Geotification", "Bool"]
+- ["C7JO_201713Geotification", "CLLocationCoordinate2D"]
+- ["C7JO_201713Geotification", "CLLocationDistance"]
+- ["C7JO_201713Geotification", "EventType"]
+- !private ["C7JO_201713Geotification", "GeoKey"]
+- ["C7JO_201713Geotification", "Geotification"]
+- ["C7JO_201713Geotification", "NSCoder"]
+- ["C7JO_201713Geotification", "String"]
+- ["C7JO_201713Geotification", "coordinate"]
+- ["C7JO_201713Geotification", "deinit"]
+- ["C7JO_201713Geotification", "encode"]
+- ["C7JO_201713Geotification", "encodeWithCoder"]
+- ["C7JO_201713Geotification", "eventType"]
+- ["C7JO_201713Geotification", "identifier"]
+- ["C7JO_201713Geotification", "init"]
+- ["C7JO_201713Geotification", "isEqual"]
+- ["C7JO_201713Geotification", "note"]
+- ["C7JO_201713Geotification", "radius"]
+- ["C7JO_201713Geotification", "subtitle"]
+- ["C7JO_201713Geotification", "title"]
+- !private ["Ps8Hashable", "CLLocationCoordinate2D"]
+- !private ["Ps8Hashable", "EventType"]
+- !private ["Ps8Hashable", "GeoKey"]
+- !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- ["Ps8Hashable", "_toAnyHashable"]
+- ["Ps8Hashable", "coordinate"]
+- !private ["Ps8Hashable", "decodeDouble"]
+- !private ["Ps8Hashable", "decodeObject"]
+- ["Ps8Hashable", "encode"]
+- ["Ps8Hashable", "encodeWithCoder"]
+- !private ["Ps8Hashable", "eventType"]
+- ["Ps8Hashable", "hashValue"]
+- !private ["Ps8Hashable", "identifier"]
+- ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "isEmpty"]
+- !private ["Ps8Hashable", "note"]
+- !private ["Ps8Hashable", "radius"]
+- ["Ps8Hashable", "rawValue"]
+- ["Ps8Hashable", "subtitle"]
+- ["Ps8Hashable", "title"]
+- ["Ps8Hashable", ""]
+- !private ["Si", "hashValue"]
+- !private ["Ps7Integer", "hashValue"]
+- !private ["Ps17IntegerArithmetic", "hashValue"]
+- !private ["P7JO_201717JSONSubscriptType", "hashValue"]
+- ["P7JO_201717JSONSubscriptType", "init"]
+- !private ["P7JO_201717JSONSubscriptType", "isEmpty"]
+- !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
+- ["Ps25LosslessStringConvertible", "init"]
+- !private ["Ps25LosslessStringConvertible", "isEmpty"]
+- !private ["PSo12MKAnnotation", "CLLocationCoordinate2D"]
+- !private ["PSo12MKAnnotation", "EventType"]
+- !private ["PSo12MKAnnotation", "GeoKey"]
+- ["PSo12MKAnnotation", "coordinate"]
+- ["PSo12MKAnnotation", "encode"]
+- ["PSo12MKAnnotation", "encodeWithCoder"]
+- !private ["PSo12MKAnnotation", "eventType"]
+- !private ["PSo12MKAnnotation", "identifier"]
+- ["PSo12MKAnnotation", "init"]
+- !private ["PSo12MKAnnotation", "note"]
+- !private ["PSo12MKAnnotation", "radius"]
+- ["PSo12MKAnnotation", "subtitle"]
+- ["PSo12MKAnnotation", "title"]
+- ["PSo12MKAnnotation", ""]
+- !private ["Ps10MirrorPath", "hashValue"]
+- ["Ps10MirrorPath", "init"]
+- !private ["Ps10MirrorPath", "isEmpty"]
+- !private ["CSo7NSCoder", "decodeDouble"]
+- !private ["CSo7NSCoder", "decodeObject"]
+- !private ["CSo7NSCoder", "encode"]
+- !private ["PSo8NSCoding", "CLLocationCoordinate2D"]
+- !private ["PSo8NSCoding", "EventType"]
+- !private ["PSo8NSCoding", "GeoKey"]
+- ["PSo8NSCoding", "coordinate"]
+- ["PSo8NSCoding", "encode"]
+- ["PSo8NSCoding", "encodeWithCoder"]
+- !private ["PSo8NSCoding", "eventType"]
+- !private ["PSo8NSCoding", "identifier"]
+- ["PSo8NSCoding", "init"]
+- !private ["PSo8NSCoding", "isEmpty"]
+- !private ["PSo8NSCoding", "note"]
+- !private ["PSo8NSCoding", "radius"]
+- ["PSo8NSCoding", "subtitle"]
+- ["PSo8NSCoding", "title"]
+- ["PSo8NSCoding", ""]
+- ["PSo9NSCopying", "init"]
+- !private ["PSo9NSCopying", "isEmpty"]
+- ["PSo16NSMutableCopying", "init"]
+- !private ["PSo16NSMutableCopying", "isEmpty"]
+- ["CSo8NSObject", "Bool"]
+- ["CSo8NSObject", "CLLocationCoordinate2D"]
+- ["CSo8NSObject", "CLLocationDistance"]
+- ["CSo8NSObject", "EventType"]
+- !private ["CSo8NSObject", "GeoKey"]
+- ["CSo8NSObject", "Geotification"]
+- ["CSo8NSObject", "NSCoder"]
+- ["CSo8NSObject", "String"]
+- ["CSo8NSObject", "coordinate"]
+- !private ["CSo8NSObject", "decodeDouble"]
+- !private ["CSo8NSObject", "decodeObject"]
+- ["CSo8NSObject", "encode"]
+- ["CSo8NSObject", "encodeWithCoder"]
+- ["CSo8NSObject", "eventType"]
+- ["CSo8NSObject", "identifier"]
+- ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "isEmpty"]
+- ["CSo8NSObject", "isEqual"]
+- ["CSo8NSObject", "note"]
+- ["CSo8NSObject", "radius"]
+- ["CSo8NSObject", "subtitle"]
+- ["CSo8NSObject", "title"]
+- ["CSo8NSObject", ""]
+- !private ["PSo16NSObjectProtocol", "CLLocationCoordinate2D"]
+- !private ["PSo16NSObjectProtocol", "EventType"]
+- !private ["PSo16NSObjectProtocol", "GeoKey"]
+- ["PSo16NSObjectProtocol", "coordinate"]
+- !private ["PSo16NSObjectProtocol", "decodeDouble"]
+- !private ["PSo16NSObjectProtocol", "decodeObject"]
+- ["PSo16NSObjectProtocol", "encode"]
+- ["PSo16NSObjectProtocol", "encodeWithCoder"]
+- !private ["PSo16NSObjectProtocol", "eventType"]
+- !private ["PSo16NSObjectProtocol", "identifier"]
+- ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "isEmpty"]
+- !private ["PSo16NSObjectProtocol", "note"]
+- !private ["PSo16NSObjectProtocol", "radius"]
+- ["PSo16NSObjectProtocol", "subtitle"]
+- ["PSo16NSObjectProtocol", "title"]
+- ["PSo16NSObjectProtocol", ""]
+- ["PSo14NSSecureCoding", "init"]
+- !private ["PSo14NSSecureCoding", "isEmpty"]
+- ["CSo8NSString", "init"]
+- !private ["CSo8NSString", "isEmpty"]
+- ["Ps16RawRepresentable", "_toAnyHashable"]
+- ["Ps16RawRepresentable", "hashValue"]
+- ["Ps16RawRepresentable", "init"]
+- ["Ps16RawRepresentable", "rawValue"]
+- ["Ps16RawRepresentable", ""]
+- !private ["Ps13SignedInteger", "hashValue"]
+- !private ["Ps12SignedNumber", "hashValue"]
+- !private ["Vs12StaticString", "init"]
+- !private ["Ps10Strideable", "hashValue"]
+- ["SS", "init"]
+- !private ["SS", "isEmpty"]
+- ["Ps16TextOutputStream", "init"]
+- !private ["Ps16TextOutputStream", "isEmpty"]
+- ["Ps20TextOutputStreamable", "init"]
+- !private ["Ps20TextOutputStreamable", "isEmpty"]
+- ["P9Alamofire14URLConvertible", "init"]
+- !private ["P9Alamofire14URLConvertible", "isEmpty"]
+- !private ["Ps35_ExpressibleByBuiltinBooleanLiteral", "_getBuiltinLogicValue"]
+- ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "isEmpty"]
+- !private ["Ps35_ExpressibleByBuiltinIntegerLiteral", "hashValue"]
+- ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
+- !private ["Ps34_ExpressibleByBuiltinStringLiteral", "isEmpty"]
+- ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
+- !private ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "isEmpty"]
+- ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
+- !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "isEmpty"]
+- ["Ps33_ExpressibleByStringInterpolation", "init"]
+- !private ["Ps33_ExpressibleByStringInterpolation", "isEmpty"]
+- ["Ps35_HasCustomAnyHashableRepresentation", "init"]
+- !private ["Ps35_HasCustomAnyHashableRepresentation", "isEmpty"]
+- !private ["Ps9_Hashable", "CLLocationCoordinate2D"]
+- !private ["Ps9_Hashable", "EventType"]
+- !private ["Ps9_Hashable", "GeoKey"]
+- !private ["Ps9_Hashable", "_getBuiltinLogicValue"]
+- ["Ps9_Hashable", "_toAnyHashable"]
+- ["Ps9_Hashable", "coordinate"]
+- !private ["Ps9_Hashable", "decodeDouble"]
+- !private ["Ps9_Hashable", "decodeObject"]
+- ["Ps9_Hashable", "encode"]
+- ["Ps9_Hashable", "encodeWithCoder"]
+- !private ["Ps9_Hashable", "eventType"]
+- ["Ps9_Hashable", "hashValue"]
+- !private ["Ps9_Hashable", "identifier"]
+- ["Ps9_Hashable", "init"]
+- !private ["Ps9_Hashable", "isEmpty"]
+- !private ["Ps9_Hashable", "note"]
+- !private ["Ps9_Hashable", "radius"]
+- ["Ps9_Hashable", "rawValue"]
+- ["Ps9_Hashable", "subtitle"]
+- ["Ps9_Hashable", "title"]
+- ["Ps9_Hashable", ""]
+- !private ["Ps14_Incrementable", "hashValue"]
+- !private ["Ps8_Integer", "hashValue"]
+- !private ["Ps18_IntegerArithmetic", "hashValue"]
+- !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["Ps21_ObjectiveCBridgeable", "hashValue"]
+- ["Ps21_ObjectiveCBridgeable", "init"]
+- !private ["Ps21_ObjectiveCBridgeable", "isEmpty"]
+- !private ["Ps21_ObjectiveCBridgeable", "latitude"]
+- !private ["Ps21_ObjectiveCBridgeable", "longitude"]
+- !private ["Ps14_SignedInteger", "hashValue"]
+- !private ["Ps11_Strideable", "hashValue"]
+depends-nominal:
+- "Ps9AnyObject"
+- !private "Ps17BitwiseOperations"
+- !private "Sb"
+- !private "VSC22CLLocationCoordinate2D"
+- "Ps7CVarArg"
+- "Ps10Comparable"
+- "Ps28CustomDebugStringConvertible"
+- "Ps29CustomPlaygroundQuickLookable"
+- "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "Ps9Equatable"
+- "O7JO_20179EventType"
+- !private "Ps27ExpressibleByBooleanLiteral"
+- "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- !private "Ps27ExpressibleByIntegerLiteral"
+- "Ps26ExpressibleByStringLiteral"
+- "Ps33ExpressibleByUnicodeScalarLiteral"
+- "V7JO_20176GeoKey"
+- "C7JO_201713Geotification"
+- "Ps8Hashable"
+- !private "Si"
+- !private "Ps7Integer"
+- !private "Ps17IntegerArithmetic"
+- "P7JO_201717JSONSubscriptType"
+- "Ps25LosslessStringConvertible"
+- "PSo12MKAnnotation"
+- "Ps10MirrorPath"
+- !private "CSo7NSCoder"
+- "PSo8NSCoding"
+- "PSo9NSCopying"
+- "PSo16NSMutableCopying"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- "PSo14NSSecureCoding"
+- "CSo8NSString"
+- "Ps16RawRepresentable"
+- !private "Ps13SignedInteger"
+- !private "Ps12SignedNumber"
+- !private "Vs12StaticString"
+- !private "Ps10Strideable"
+- "SS"
+- "Ps16TextOutputStream"
+- "Ps20TextOutputStreamable"
+- "P9Alamofire14URLConvertible"
+- !private "Ps35_ExpressibleByBuiltinBooleanLiteral"
+- "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
+- !private "Ps35_ExpressibleByBuiltinIntegerLiteral"
+- "Ps34_ExpressibleByBuiltinStringLiteral"
+- "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
+- "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
+- "Ps33_ExpressibleByStringInterpolation"
+- "Ps35_HasCustomAnyHashableRepresentation"
+- "Ps9_Hashable"
+- !private "Ps14_Incrementable"
+- !private "Ps8_Integer"
+- !private "Ps18_IntegerArithmetic"
+- "Ps21_ObjectiveCBridgeable"
+- !private "Ps14_SignedInteger"
+- !private "Ps11_Strideable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Metal.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreLocation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/MapKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreText.apinotesc"
+- "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/build/Debug-iphoneos/Alamofire/Alamofire.framework/Modules/Alamofire.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreLocation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/MapKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/SwiftOnoneSupport.swiftmodule"
+- "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/build/Debug-iphoneos/Alamofire/Alamofire.framework/Headers/Alamofire-umbrella.h"
+- "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/build/Debug-iphoneos/Alamofire/Alamofire.framework/Headers/Alamofire-Swift.h"
+- "/Users/Gwenole/Desktop/ProjetIntegration2A-git/JO 2017/build/Debug-iphoneos/Alamofire/Alamofire.framework/Modules/module.modulemap"
+interface-hash: "a84c185b4da6849cbb280b9884d22c01"
