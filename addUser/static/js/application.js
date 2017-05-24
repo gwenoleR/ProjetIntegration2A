@@ -18,7 +18,7 @@ $(function(){
 
     $.ajax({
       type: "POST",
-      url: "http://addusers/addUsers",
+      url: "http://adduser/addUsers",
       contentType: "application/json",      
       data: JSON.stringify({ "perso" :{ "nom":nom, "prenom" : prenom, "nationalite":nationalite,"language": language, "type":type }}),
 
@@ -41,7 +41,7 @@ $(function(){
     $.ajax({
     
       type: "POST",
-      url: "http://addusers/getQrCode",
+      url: "http://adduser/getQrCode",
       contentType: "application/json",      
       data: JSON.stringify({"":""}),
 
