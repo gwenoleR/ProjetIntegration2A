@@ -1,0 +1,3 @@
+dweepy
+pymongo
+requests
